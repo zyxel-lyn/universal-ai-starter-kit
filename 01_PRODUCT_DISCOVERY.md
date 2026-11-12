@@ -2,8 +2,6 @@
 name: product-discovery
 version: "1.0.0"
 document_type: "specialist-module"
-source: "UNIVERSAL_AI_WEB_APP_DEVELOPMENT_BOOTSTRAP_v1.2.md"
-source_internal_version: "1.3.0"
 language_default: "id-ID"
 ---
 
@@ -410,21 +408,3 @@ Modul lanjutan:
 - checkpoint dan keputusan lintas sesi → `07_PROJECT_CONTINUITY.md`
 
 Jangan menganggap handoff berarti seluruh modul lanjutan sudah tersedia. Ikuti mekanisme pencarian dan permintaan modul pada MASTER.
-
----
-
-# 13. Catatan Kesetiaan terhadap Sumber
-
-Modul ini memisahkan materi discovery dan approval dari dokumen bootstrap sumber, terutama:
-- Bagian 1 — First-Run Behavior,
-- Bagian 2 — Client–Developer Discovery & Approval Protocol,
-- Gates A–H,
-- Requirement State Vocabulary,
-- Flow Baseline,
-- Approval Package,
-- Client Command Semantics,
-- No-Guessing Rule,
-- keputusan teknis rutin,
-- UI/UX bootstrap setelah discovery.
-
-Materi UI-system gate dan standar desain rinci tetap ditempatkan pada modul UI/UX, bukan diduplikasi penuh di sini.

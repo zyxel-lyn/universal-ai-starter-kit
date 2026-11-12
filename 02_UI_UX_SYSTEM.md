@@ -2,8 +2,6 @@
 name: ui-ux-system
 version: "1.0.0"
 document_type: "specialist-module"
-source: "UNIVERSAL_AI_WEB_APP_DEVELOPMENT_BOOTSTRAP_v1.2.md"
-source_internal_version: "1.3.0"
 language_default: "id-ID"
 ---
 
@@ -828,19 +826,3 @@ Graphify atau source code saja tidak membuktikan kualitas visual/runtime.
 - State, keputusan, dan handoff → `07_PROJECT_CONTINUITY.md`
 
 Baca hanya modul yang relevan dan tersedia. Ikuti mekanisme pencarian/permintaan modul pada MASTER.
-
----
-
-# 11. Catatan Kesetiaan terhadap Sumber
-
-Modul ini memisahkan materi UI/UX dari dokumen sumber, terutama:
-- Bagian 2.10 — UI/UX Bootstrap After Discovery,
-- Bagian 2.11 — UI Component System Gate Before Page Proliferation,
-- Bagian 3 — UI Requirement Selector,
-- Bagian 4 — UX Requirements,
-- Bagian 5 — Skill Router,
-- Bagian 6 — Design-System Contract,
-- Bagian 7 — Reusable Component Strategy,
-- Appendix F — UI Component System Minimum Registry Template.
-
-Materi audit/Graphify dan memory efficiency yang berdiri sendiri tetap berada di modul QA/continuity atau MASTER sesuai tanggung jawabnya.

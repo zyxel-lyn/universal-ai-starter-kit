@@ -3,7 +3,6 @@ name: auto-setup-tools
 version: "1.0.0"
 language: "id-ID"
 purpose: "Panduan verifikasi runtime, AUTO-SETUP aset MCP dan skill yang tercantum, penggunaan tools, keamanan, serta kesinambungan workspace."
-source: "UNIVERSAL_AI_WEB_APP_DEVELOPMENT_BOOTSTRAP v1.3.0"
 ---
 
 # 06 — AUTO-SETUP, MCP, Tools & Skills
@@ -29,20 +28,19 @@ Modul ini mencakup:
 
 Modul ini **tidak** menganggap semua kemampuan tersedia di setiap platform. Ketersediaan harus diverifikasi pada runtime yang sedang digunakan.
 
-## 2. Persetujuan Standing AUTO-SETUP
+## 2. Persetujuan Instalasi dan Perubahan Runtime
 
-Bootstrap sumber mencatat bahwa client telah memberikan persetujuan berdiri pada 9 November 2026 untuk menyiapkan aset yang tercantum di dalamnya, selama setup bersifat idempoten dan mematuhi batas keamanan pada modul ini.
+Dokumen ini tidak memberikan persetujuan otomatis untuk memasang, menghapus, atau mengubah aset pada perangkat maupun akun pengguna.
 
-Konsekuensinya:
+Sebelum instalasi atau perubahan runtime:
+1. Periksa apakah capability sudah tersedia dan dapat digunakan.
+2. Jelaskan aset, sumber, versi, lokasi, serta perubahan yang akan dilakukan.
+3. Jelaskan efek samping dan kebutuhan restart atau perubahan konfigurasi.
+4. Minta persetujuan eksplisit pengguna sebelum melakukan instalasi atau perubahan.
+5. Gunakan kembali aset yang sudah tersedia dan hindari duplikasi.
+6. Persetujuan untuk satu aset tidak berlaku otomatis untuk aset atau tindakan lain.
 
-1. Aset yang tercantum dalam daftar AUTO-SETUP boleh diverifikasi dan dipasang tanpa meminta approval berulang.
-2. Aset yang sudah tersedia atau sudah aktif tidak boleh diduplikasi.
-3. Instalasi atau verifikasi satu aset yang gagal tidak boleh menghentikan langkah lain.
-4. AUTO-SETUP hanya berlaku untuk aset yang tercantum di modul ini.
-5. MCP, skill, atau tool baru di luar daftar memerlukan proses intake dan persetujuan client.
-6. Standing approval untuk setup bukan izin untuk menghapus file, mengubah project, mengirim secret, commit/push, atau menjalankan operasi destruktif.
-
-Jangan memperluas persetujuan ini ke aset atau operasi yang tidak tercantum.
+Pemeriksaan read-only terhadap runtime dan inventarisasi capability boleh dilakukan tanpa persetujuan instalasi, selama tidak mengubah kondisi sistem.
 
 ## 3. Batas Keamanan yang Selalu Berlaku
 
@@ -74,7 +72,7 @@ Sebelum operasi berikut dilakukan, jelaskan target dan efeknya:
 - menjalankan migrasi/destructive database operation,
 - mengubah akses atau permission.
 
-Operasi destruktif berisiko tinggi membutuhkan persetujuan spesifik per kasus. Standing approval AUTO-SETUP tidak menggantikan persetujuan tersebut.
+Operasi destruktif berisiko tinggi membutuhkan persetujuan spesifik per kasus. Persetujuan instalasi tidak menggantikan persetujuan spesifik untuk operasi tersebut.
 
 ### 3.3 Instalasi eksternal
 
@@ -101,7 +99,7 @@ Nama package, konfigurasi, atau path di dokumen bukan bukti bahwa aset sedang ak
 
 Sebelum setup:
 
-1. Identifikasi platform/runtime aktif: ZCode desktop, web chat, CLI, sandbox, remote workspace, atau lainnya.
+1. Identifikasi platform/runtime aktif: aplikasi desktop AI, web chat, CLI, sandbox, remote workspace, atau lainnya.
 2. Identifikasi root workspace yang benar-benar dapat diakses.
 3. Periksa apakah runtime memiliki terminal/shell, filesystem, Node.js, npm/npx, Git, dan akses internet yang diperlukan.
 4. Bila relevan, catat versi:
@@ -220,9 +218,9 @@ Browser MCP hanya dapat digunakan bila runtime memiliki jalur nyata ke mesin use
 
 Profil teknis dan prosedur deploy terdapat pada Bagian 12.
 
-### Step 4 — Skill Eksternal yang Disetujui
+### Step 4 — Skill Eksternal yang Memerlukan Persetujuan
 
-Daftar berikut adalah skill yang tercantum dalam bootstrap sumber dan memiliki standing approval untuk instalasi idempoten:
+Daftar berikut adalah referensi kandidat skill yang dapat dievaluasi jika relevan. Pencantuman dalam daftar bukan persetujuan untuk mengunduh, memasang, atau mengaktifkannya. Setiap instalasi memerlukan persetujuan eksplisit pengguna setelah aset, sumber, versi, lokasi, dan dampaknya dijelaskan.
 
 | # | Skill | Repository |
 |---|---|---|
@@ -263,23 +261,9 @@ Prosedur setiap repository:
 
 Periksa daftar skill yang tersedia pada runtime aktif.
 
-Contoh skill platform yang pernah terverifikasi pada z.ai web di source baseline:
+Daftar skill bersifat spesifik terhadap platform dan dapat berubah. Jangan memakai daftar historis dari platform lain sebagai bukti ketersediaan. Periksa nama, status enabled, lokasi, dan instruksi aktual melalui mekanisme yang didukung runtime saat ini.
 
-- `impeccable`
-- `components`
-- `ui-intergrity`
-- `fullstack-dev`
-- `docx`
-- `pdf`
-- `xlsx`
-- `charts`
-- `pptx`
-- `github`
-
-Daftar tersebut adalah catatan historis, bukan jaminan bahwa skill masih tersedia. Periksa nama, enabled state, dan instruksi aktual.
-
-Pada ZCode desktop, skill dapat dikelola melalui plugin atau sistem skill native. Sesuaikan dengan mekanisme platform yang benar-benar aktif.
-
+Ikuti mekanisme pengelolaan skill native, plugin, atau ekstensi yang benar-benar tersedia pada platform aktif. Jangan mengasumsikan mekanisme satu platform berlaku pada platform lain.
 Jangan:
 
 - mengklaim skill aktif karena namanya tercantum,
@@ -1007,21 +991,3 @@ Satu route yang terbuka bukan bukti seluruh aplikasi lolos QA. Hubungkan setiap 
 8. Skill baru di luar daftar membutuhkan intake dan approval.
 9. Jangan mengulang audit atau setup tanpa alasan.
 10. Project state dan handoff harus mencatat evidence, bukan klaim.
-
----
-
-## Source Mapping
-
-Modul ini memisahkan materi dari bootstrap utama:
-
-- Section A.0–A.6: AUTO-SETUP, standing approval, keamanan, persistence, ZCode scope, dan status reporting.
-- Section 5.1–5.4: skill sources, responsibilities, selection policy, external skill intake.
-- Appendix I: profil MCP shadcn, Ant Design, dan Browser MCP.
-- Appendix J: peta custom tools.
-- Appendix K: pola Windows dan mesin lokal.
-- Appendix L: generic stdio MCP driver.
-- Appendix M: Browser MCP kit deployment dan test flow.
-- Appendix N: startup checklist.
-- Appendix O: continuity without re-uploading.
-
-**Catatan source:** front matter pada file sumber menyatakan versi internal 1.3.0 dan tanggal 2026-11-10 walaupun nama file yang digunakan masih mengandung `v1.2`. Referensi versi pada modul ini mengikuti metadata internal sumber.

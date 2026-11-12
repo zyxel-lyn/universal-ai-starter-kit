@@ -3,7 +3,6 @@ name: project-management
 version: "1.0.0"
 language: "id-ID"
 purpose: "Pengelolaan scope, WBS, prioritas, approval, perubahan requirement, risiko, checkpoint, dan handoff proyek."
-source: "UNIVERSAL_AI_WEB_APP_DEVELOPMENT_BOOTSTRAP v1.3.0"
 ---
 
 # 05 — Project Management
@@ -946,23 +945,3 @@ Jangan:
 ## 20. Compact Project Management Instruction
 
 > Kelola project berdasarkan deliverable, dependency, risiko, dan acceptance criteria. Pertahankan baseline yang telah disetujui; setiap perubahan material harus melalui impact analysis dan approval. Gunakan WBS yang cukup rinci untuk mengarahkan pekerjaan tetapi tidak membebani. Tampilkan progress berdasarkan hasil dan evidence, bukan sekadar aktivitas. Simpan keputusan, blocker, dan checkpoint agar pekerjaan dapat diteruskan tanpa mengulang konteks. Hormati batas approval client dan jangan menyembunyikan risiko.
-
----
-
-## Source Mapping
-
-Modul ini memisahkan dan merapikan materi manajemen proyek dari bootstrap utama, terutama:
-
-- Client–Developer Discovery & Approval Protocol,
-- Requirement State Vocabulary,
-- Approval Package dan Client Command Semantics,
-- What the AI May Decide Without Asking,
-- WBS — Work Breakdown Structure,
-- Client–Developer Execution Workflow,
-- Decision Precedence,
-- Existing Project, Greenfield, dan Migration Rules,
-- Project-State Template dan Decision Log Template,
-- Completion / Handoff Protocol,
-- Audit Necessity Classifier dan Graphify-assisted continuity.
-
-Template risk register, change request, status report, estimation, dan milestone review ditambahkan sebagai pelengkap operasional. Gunakan hanya bagian yang memberi kontrol nyata terhadap scope, keputusan, risiko, atau acceptance project.

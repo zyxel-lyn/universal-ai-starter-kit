@@ -3,8 +3,6 @@ name: master-bootstrap
 version: "1.0.0"
 language_default: "id-ID"
 document_type: "master-router"
-source_document: "UNIVERSAL_AI_WEB_APP_DEVELOPMENT_BOOTSTRAP_v1.2.md"
-source_internal_version: "1.3.0"
 purpose: >-
   Entry point for modular AI-assisted website and application development.
   This file defines the operating contract, module discovery, task routing,
@@ -346,17 +344,3 @@ Starter Pack dapat dikembangkan bertahap. Karena itu:
 # 14. Instruksi Ringkas yang Selalu Berlaku
 
 > Baca MASTER terlebih dahulu. Verifikasi runtime dan akses file. Temukan modul pendamping tanpa menganggapnya otomatis tersedia. Pulihkan PROJECT_STATE dan keputusan proyek jika ada. Baca hanya modul yang relevan. Pahami alur produk sebelum mengunci UI. Bedakan kebutuhan pengguna dari rekomendasi AI. Bangun sistem komponen bersama untuk UI non-trivial. Pilih audit berdasarkan bukti dan risiko. Jangan mengklaim keberhasilan tanpa verifikasi. Jaga keamanan, catat checkpoint, dan lanjut hanya dari keputusan yang telah disetujui.
-
----
-
-# 15. Metadata dan Catatan Sumber
-
-Dokumen sumber yang dianalisis:
-`UNIVERSAL_AI_WEB_APP_DEVELOPMENT_BOOTSTRAP_v1.2.md`
-
-Catatan identitas versi sumber:
-- Nama file mengandung `v1.2`.
-- Front matter sumber menyatakan versi `1.3.0`.
-- Riwayat versi sumber mencatat `1.3.0` tanggal 2026-11-10 dan `1.2.0` tanggal 2026-09-30.
-
-MASTER ini mempertahankan mandat inti sumber dan mengubah struktur penggunaannya menjadi model modular. Rincian operasional yang panjang harus ditempatkan pada modul spesialis agar MASTER tetap ringkas dan mudah dijadikan entry point.

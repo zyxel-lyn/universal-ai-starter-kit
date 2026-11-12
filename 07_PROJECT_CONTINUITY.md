@@ -3,7 +3,6 @@ name: project-continuity
 version: "1.0.0"
 language: "id-ID"
 purpose: "Menjaga kesinambungan konteks, keputusan, requirement, evidence, dan pekerjaan lintas sesi maupun workspace."
-source: "UNIVERSAL_AI_WEB_APP_DEVELOPMENT_BOOTSTRAP v1.3.0"
 ---
 
 # 07 — Project Continuity & Handoff
@@ -477,7 +476,7 @@ Graphify membantu mengetahui area yang perlu diperiksa. Graphify bukan bukti bah
 Untuk memindahkan project ke percakapan ChatGPT Web baru, lampirkan artefak yang tersedia dan diperlukan, dalam urutan berikut:
 
 ```text
-01 UNIVERSAL_AI_WEB_APP_DEVELOPMENT_BOOTSTRAP.md
+01 MASTER_BOOTSTRAP.md
 02 PROJECT_STATE.md
 03 FLOW_BASELINE.md
 04 DESIGN.md
@@ -701,23 +700,3 @@ Jika pekerjaan terputus di tengah operasi:
 10. Secret tidak boleh masuk ke handoff pack.
 11. Jangan mengulang full audit tanpa alasan yang terklasifikasi.
 12. Setiap increment bermakna harus meninggalkan checkpoint dan next exact action.
-
----
-
-## Source Mapping
-
-Modul ini memisahkan materi continuity dari bootstrap utama:
-
-- Bagian 16: client–developer execution workflow dan approval transitions.
-- Bagian 17–20: decision precedence, existing project, greenfield, migration.
-- Bagian 21–22: quality gates dan evidence rules.
-- Bagian 23: PROJECT_STATE template.
-- Bagian 24: DECISIONS template.
-- Bagian 27–28: completion/handoff protocol dan compact AI instruction.
-- Appendix C: minimal Chat Migration Pack.
-- Appendix D: suggested repository context layout.
-- Appendix E: client-friendly approval and clarification templates.
-- Appendix G: Graphify/audit decision matrix.
-- Appendix O: continuity without re-uploading.
-
-**Catatan source:** metadata internal bootstrap menyatakan versi 1.3.0 (2026-11-10), meskipun nama file sumber masih mengandung `v1.2`.

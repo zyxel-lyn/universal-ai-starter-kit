@@ -3,7 +3,6 @@ name: engineering-standards
 version: "1.0.0"
 language: "id-ID"
 purpose: "Standar arsitektur, implementasi, keamanan, data, integrasi, performa, dan keandalan untuk proyek website dan aplikasi."
-source: "UNIVERSAL_AI_WEB_APP_DEVELOPMENT_BOOTSTRAP v1.3.0"
 ---
 
 # 03 — Engineering Standards
@@ -716,24 +715,3 @@ Jangan:
 ## 20. Compact Engineering Instruction
 
 > Bangun solusi paling sederhana yang memenuhi requirement yang disetujui. Jaga batas tanggung jawab, integritas data, keamanan server-side, error recovery, dan testability. Gunakan dependency secara selektif. Telusuri hanya area repository yang relevan dengan bantuan project state dan Graphify bila tersedia. Lindungi data dan secret. Jangan melakukan operasi destruktif tanpa persetujuan yang sesuai. Verifikasi klaim menggunakan bukti nyata, nyatakan batas verifikasi, dan perbarui checkpoint agar pekerjaan dapat dilanjutkan tanpa audit ulang yang tidak perlu.
-
----
-
-## Source Mapping
-
-Modul ini menyusun dan memperjelas materi engineering yang tersebar di bootstrap utama, terutama:
-
-- Operating Mandate dan prinsip production-ready,
-- keputusan teknis yang boleh diambil tanpa bertanya,
-- Clean Code + Memory Efficiency,
-- Graphify Integration dan Audit Necessity Classifier,
-- Security & Privacy Touchpoints,
-- Performance Quality Floor,
-- Existing Project Rules,
-- Greenfield Rules,
-- Migration Rules,
-- Evidence Rules,
-- Project-State dan Decision Log,
-- Completion / Handoff Protocol.
-
-Bagian seperti database integrity, API contracts, secrets handling, backup/restore, dan integration resilience ditambahkan sebagai standar engineering pelengkap agar modul dapat digunakan sebagai pedoman implementasi. Terapkan sesuai risiko proyek, bukan sebagai checklist wajib yang membebani semua prototype.
