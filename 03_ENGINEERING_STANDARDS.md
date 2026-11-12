@@ -632,17 +632,9 @@ Checklist yang relevan:
 - [ ] Dokumentasi dan project state diperbarui.
 - [ ] Hal yang belum diverifikasi dinyatakan secara eksplisit.
 
-Gunakan status:
+Jika checklist engineering ini dilacak sebagai task WBS, gunakan daftar status kanonis pada `05_PROJECT_MANAGEMENT.md` bagian 6.5. Jangan membuat daftar status task khusus di modul engineering.
 
-- `NOT STARTED`
-- `IN PROGRESS`
-- `IMPLEMENTED — NOT VERIFIED`
-- `VERIFIED`
-- `ACCEPTED`
-- `BLOCKED`
-- `REWORK REQUIRED`
-
-Jangan memakai `DONE`, `PASS`, atau `PRODUCTION READY` tanpa bukti yang sesuai.
+Untuk pelaporan evidence engineering, nyatakan secara spesifik apa yang telah diimplementasikan, dibangun, diuji, dan diverifikasi. Gunakan klasifikasi evidence pada MASTER; jangan menyamakan keberhasilan build/test tertentu dengan penerimaan client atau penyelesaian seluruh task. Jangan memakai `DONE`, `PASS`, atau `PRODUCTION READY` tanpa bukti yang sesuai.
 
 ## 17. Engineering Evidence
 
