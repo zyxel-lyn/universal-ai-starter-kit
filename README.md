@@ -1,117 +1,146 @@
 # Universal AI Development Starter Pack
 
-> Satu repository sebagai entry point dan panduan kerja modular untuk AI serta manusia.
+> One repository. One entry point. A consistent development workflow across AI tools.
 
-Starter Pack ini membantu AI memahami kebutuhan produk, merancang pengalaman pengguna, merencanakan dan membangun aplikasi, menguji hasil, serta menjaga kesinambungan project. Berikan **link repository dan satu instruksi awal**. AI bertanggung jawab membaca dokumentasi yang tersedia secara mandiri sebelum meminta informasi project.
+Universal AI Development Starter Pack adalah kumpulan instruksi modular untuk membantu AI menjalankan proses pengembangan aplikasi secara terstruktur, mulai dari memahami kebutuhan, merancang UI/UX, menyusun engineering plan, mengimplementasikan fitur, melakukan pengujian, hingga menjaga kesinambungan project.
+
+**Repository resmi:** https://github.com/zyxel-lyn/universal-ai-starter-kit
+
+Berikan link repository dan satu instruksi onboarding kepada AI. AI harus membaca dokumentasi secara mandiri sebelum meminta brief project. Starter Pack ini tidak memberi izin otomatis untuk mengubah project atau sistem pengguna.
 
 ---
 
-## Untuk AI: Prosedur Onboarding Wajib
+## 1. Onboarding Wajib untuk AI
 
-Ketika USER memberikan link repository Starter Pack ini, lakukan seluruh prosedur berikut dalam satu proses. Jangan meminta USER mengirim prompt tambahan untuk menyuruh Anda membaca file berikutnya.
+Saat menerima link repository ini, lakukan seluruh langkah berikut sebelum memulai pekerjaan project.
 
-### 1. Temukan dan inventarisasi dokumen
+### 1.1 Inventarisasi repository
 
-1. Identifikasi owner, repository, branch, dan root Starter Pack dari link yang diberikan.
-2. Periksa daftar file Markdown aktual pada root repository. Jangan mengandalkan inventaris statis atau jumlah file yang diingat.
-3. Baca README terlebih dahulu, kemudian seluruh dokumen Markdown yang merupakan bagian Starter Pack.
-4. Gunakan akses repository, halaman file, GitHub API, atau raw file URL yang tersedia. Jika satu tampilan terpotong, lanjutkan dari bagian/offset berikutnya atau ambil raw file tersebut. Pemotongan respons bukan bukti bahwa file tidak dapat diakses.
-5. Baca setiap file sampai akhir. Pastikan tidak ada bagian yang belum terbaca sebelum menandainya selesai.
-6. Catat nama file, fungsi, status pembacaan, dan batas verifikasi secara internal selama proses.
-7. Periksa referensi silang, file yang hilang, penomoran, istilah, versi publik, serta instruksi yang bertentangan.
+1. Identifikasi owner, nama repository, branch, dan struktur repository dari link yang diberikan.
+2. Periksa file dan folder Markdown yang benar-benar tersedia. Jangan mengandalkan daftar file yang diingat atau inventaris statis.
+3. Baca README terlebih dahulu.
+4. Setelah README, baca seluruh dokumen Markdown yang termasuk dalam Starter Pack, termasuk dokumen di subfolder jika ada.
+5. Catat nama file, fungsi, dan status pembacaannya agar tidak ada dokumen yang terlewat.
 
-**Jangan meminta ZIP, lampiran, atau unggahan ulang hanya karena satu respons pembacaan memiliki batas panjang.** Lakukan pembacaan bertahap dan gunakan jalur akses repository lain terlebih dahulu.
+### 1.2 Baca seluruh isi sampai selesai
 
-Jika setelah mencoba jalur akses repository yang wajar suatu file benar-benar tidak dapat diakses, sebutkan hanya file yang gagal beserta upaya yang telah dilakukan. Jangan mengklaim telah membacanya. Minta bantuan USER hanya untuk hambatan akses yang nyata, bukan untuk menggantikan pembacaan bertahap yang seharusnya dapat Anda lakukan sendiri.
+- Gunakan akses repository yang tersedia: GitHub, GitHub API, halaman file, atau raw file URL.
+- Jika respons terpotong atau memiliki batas panjang, lanjutkan dari bagian/nomor baris berikutnya. Alternatifnya, ambil isi file melalui raw file atau API.
+- Pastikan setiap dokumen dibaca dari awal sampai akhir sebelum menandainya selesai.
+- Jangan menganggap respons yang terpotong sebagai kegagalan akses.
+- **Jangan meminta ZIP, lampiran, atau unggahan ulang hanya karena batas panjang respons.** Lanjutkan pembacaan secara bertahap.
 
-### 2. Pahami sistem instruksi
+Jika sebuah file benar-benar tidak dapat diakses setelah jalur yang wajar dicoba, laporkan nama file, kendala spesifik, dan metode akses yang sudah dicoba. Jangan mengaku telah membaca file yang gagal diakses.
 
-- Perlakukan seluruh dokumen Starter Pack sebagai satu sistem yang saling melengkapi.
-- `MASTER_BOOTSTRAP.md` adalah pusat aturan kerja dan routing modul.
-- Modul bernomor menjelaskan prosedur spesialis. Baca dan terapkan modul sesuai kebutuhan pekerjaan setelah onboarding.
-- `PROJECT_MIGRATION_PROTOCOL.md` hanya aktif ketika USER meminta migrasi, handover, atau perpindahan project/chat/AI/platform.
-- Jangan menganggap rekomendasi AI sebagai keputusan atau persetujuan USER.
-- Jangan mengarang isi file, status runtime, keputusan, atau bukti.
+### 1.3 Pahami hubungan dan prioritas dokumen
 
-### 3. Batas tindakan
+Perlakukan dokumen Starter Pack sebagai satu sistem instruksi yang saling melengkapi:
 
-Pemberian link Starter Pack hanya mengizinkan pembacaan dan pemahaman dokumentasi tersebut.
+- `MASTER_BOOTSTRAP.md` adalah pusat aturan kerja, prinsip pengambilan keputusan, dan routing ke modul.
+- Modul bernomor menjelaskan prosedur spesialis sesuai tahap atau kebutuhan pekerjaan.
+- `PROJECT_MIGRATION_PROTOCOL.md` digunakan ketika USER meminta migrasi atau handover project, chat, AI, platform, maupun workspace.
+- README adalah entry point onboarding dan tidak menggantikan aturan rinci di MASTER atau modul terkait.
 
-Itu **bukan** izin untuk:
-- membuat atau mengubah project,
-- mengubah file repository,
-- menginstal atau menghapus dependency, tools, MCP, atau skills,
-- menjalankan setup atau konfigurasi,
+Periksa referensi silang, nama file, istilah, urutan proses, dan kemungkinan instruksi yang bertentangan. Jika ada konflik, jelaskan konflik tersebut dan gunakan prioritas yang ditetapkan MASTER. Jangan menyelesaikan konflik dengan asumsi yang tidak didukung dokumen.
+
+### 1.4 Batas izin
+
+Pemberian link repository ini hanya merupakan izin untuk membaca dan memahami dokumentasi Starter Pack.
+
+Link tersebut **bukan izin** untuk:
+
+- membuat, mengubah, atau menghapus project maupun file pengguna;
+- mengubah repository atau konfigurasi lokal;
+- memasang, memperbarui, atau menghapus dependency, tools, MCP, maupun skills;
+- menjalankan setup yang mengubah sistem;
 - melakukan commit, push, deployment, migrasi, atau tindakan destruktif.
 
-Tindakan tersebut memerlukan instruksi dan persetujuan yang sesuai dengan ruang lingkupnya.
+Minta instruksi dan persetujuan yang sesuai sebelum melakukan tindakan di luar pembacaan dokumentasi. Jangan menganggap rekomendasi AI sebagai keputusan atau persetujuan USER.
 
-### 4. Laporan onboarding
+### 1.5 Laporan onboarding
 
-Setelah semua dokumen berhasil dibaca, berikan satu laporan awal yang memuat:
-- jumlah dan daftar file Markdown aktual,
-- fungsi singkat setiap dokumen,
-- hubungan dan urutan kerja antar modul,
-- konflik atau referensi yang tidak valid,
-- status pembacaan setiap file,
-- konfirmasi kesiapan menerapkan workflow.
+Setelah seluruh dokumen berhasil dibaca, berikan satu laporan onboarding yang mencakup:
 
-Jangan mengirim laporan final sebelum pembacaan seluruh file selesai. Setelah laporan diberikan, tunggu tujuan project dari USER. Jangan memulai pekerjaan project hanya karena Starter Pack diberikan.
+1. Inventaris aktual seluruh dokumen Markdown dan jumlahnya.
+2. Fungsi singkat setiap dokumen.
+3. Hubungan, prioritas, dan urutan penggunaan modul.
+4. Hasil pemeriksaan konflik, referensi silang, dan file yang hilang.
+5. Status pembacaan setiap file: selesai atau gagal, disertai alasan yang spesifik.
+6. Kesiapan menerapkan workflow dan batasan yang masih ada.
 
----
-
-## Untuk Manusia: Cara Menggunakan
-
-### A. Memulai AI baru
-
-1. Pastikan repository dapat diakses oleh AI yang digunakan.
-2. Kirim link repository.
-3. Sertakan satu instruksi awal, misalnya:
-
-> Ini adalah Universal AI Development Starter Pack: https://github.com/zyxel-lyn/universal-ai-starter-kit
-
-Baca README dan seluruh dokumen Markdown Starter Pack sampai selesai menggunakan akses repository secara mandiri. Lakukan inventarisasi, pahami hubungan dan prioritas dokumen, periksa konflik, lalu berikan satu laporan onboarding.
-
-Jangan meminta ZIP atau unggahan ulang hanya karena respons pembacaan terpotong; lanjutkan membaca secara bertahap sampai seluruh dokumen selesai dibaca.
-
-Jangan mulai mengubah atau membuat project sebelum saya memberikan tujuan pekerjaan.
-
-4. Tunggu laporan onboarding. Setelah itu, berikan tujuan project.
-
-### B. Jika AI benar-benar tidak memiliki akses repository
-
-AI harus menjelaskan keterbatasan akses secara spesifik setelah mencoba jalur yang tersedia. Barulah USER dapat menyediakan dokumen melalui cara yang didukung platform. Keterbatasan platform tidak boleh disamarkan sebagai keberhasilan pembacaan.
-
-### C. Project baru
-
-Setelah onboarding selesai, sampaikan ide atau kebutuhan project. AI akan memilih modul yang relevan dan memulai discovery sesuai MASTER.
-
-### D. Project yang sedang berjalan
-
-Jika ingin memindahkan project ke chat, AI, platform, atau workspace lain, gunakan `PROJECT_MIGRATION_PROTOCOL.md`. Protokol ini terpisah dari onboarding project baru.
+Jangan menyatakan onboarding selesai jika masih ada dokumen yang belum dibaca. Setelah laporan onboarding diberikan, berhenti dan tunggu tujuan pekerjaan dari USER. Jangan mulai membuat atau mengubah project.
 
 ---
 
-## Struktur Repository
+## 2. Cara Menggunakan untuk Pengguna
 
-Inventaris selalu ditentukan dari isi repository aktual. Secara umum, Starter Pack terdiri dari:
-- README sebagai entry point onboarding,
-- MASTER sebagai pusat aturan dan routing,
-- modul spesialis untuk discovery, UI/UX, engineering, QA, project management, setup tools, dan continuity,
-- protokol migrasi khusus.
+### Memulai AI baru
 
-Jika file ditambah, dihapus, atau diganti nama, AI wajib mengikuti struktur aktual dan memperbarui laporannya. Jangan membuat file yang hilang tanpa instruksi USER.
+1. Pastikan AI yang digunakan dapat mengakses repository GitHub.
+2. Kirim link repository resmi berikut:
+
+   https://github.com/zyxel-lyn/universal-ai-starter-kit
+
+3. Kirim satu instruksi onboarding berikut:
+
+   > Ini adalah Universal AI Development Starter Pack: https://github.com/zyxel-lyn/universal-ai-starter-kit
+   >
+   > Baca README dan seluruh dokumen Markdown Starter Pack sampai selesai menggunakan akses repository secara mandiri. Lakukan inventarisasi, pahami hubungan dan prioritas dokumen, periksa konflik, lalu berikan satu laporan onboarding.
+   >
+   > Jangan meminta ZIP atau unggahan ulang hanya karena respons pembacaan terpotong; lanjutkan membaca secara bertahap sampai seluruh dokumen selesai dibaca.
+   >
+   > Jangan mulai mengubah atau membuat project sebelum saya memberikan tujuan pekerjaan.
+
+4. Tunggu laporan onboarding dari AI.
+5. Setelah onboarding selesai, berikan brief atau tujuan project.
+
+### Jika AI benar-benar tidak dapat mengakses repository
+
+AI harus menjelaskan kendala akses secara spesifik dan menyebutkan file yang gagal diakses setelah mencoba metode yang tersedia. USER baru perlu menyediakan dokumen secara manual jika memang ada hambatan akses nyata yang tidak dapat diatasi AI.
+
+### Memulai project
+
+Setelah onboarding, sampaikan ide, kebutuhan, atau masalah yang ingin diselesaikan. AI harus mengikuti `MASTER_BOOTSTRAP.md` untuk menentukan proses dan modul yang relevan.
+
+### Melanjutkan atau memindahkan project
+
+Untuk project yang sudah berjalan dan perlu dipindahkan ke chat, AI, platform, atau workspace lain, gunakan `PROJECT_MIGRATION_PROTOCOL.md`. Protokol migrasi tidak menggantikan onboarding Starter Pack.
 
 ---
 
-## Prinsip Utama
+## 3. Struktur dan Peran Dokumen
+
+Struktur repository aktual adalah sumber kebenaran. AI wajib menginventarisasi ulang isi repository saat onboarding dan tidak boleh mengarang file yang tidak tersedia.
+
+Secara konseptual, dokumen dikelompokkan sebagai berikut:
+
+| Dokumen | Peran |
+|---|---|
+| `README.md` | Entry point dan prosedur onboarding |
+| `MASTER_BOOTSTRAP.md` | Aturan utama, prinsip kerja, dan routing modul |
+| `01_PRODUCT_DISCOVERY.md` | Memahami masalah, kebutuhan, dan ruang lingkup produk |
+| `02_UI_UX_SYSTEM.md` | Proses desain UI/UX dan konsistensi sistem visual |
+| `03_ENGINEERING_STANDARDS.md` | Standar teknis dan implementasi engineering |
+| `04_QA_TESTING.md` | Strategi verifikasi, pengujian, dan pelaporan kualitas |
+| `05_PROJECT_MANAGEMENT.md` | Perencanaan, pelacakan, dan pengelolaan pekerjaan |
+| `06_AUTO_SETUP_TOOLS.md` | Evaluasi dan penyiapan tools dengan persetujuan pengguna |
+| `07_PROJECT_CONTINUITY.md` | Menjaga konteks, keputusan, dan kesinambungan project |
+| `PROJECT_MIGRATION_PROTOCOL.md` | Handover dan migrasi project antar lingkungan kerja |
+
+Tabel ini menjelaskan peran yang diharapkan, bukan pengganti pemeriksaan file aktual. Jika nama atau struktur file di repository berubah, ikuti kondisi repository yang sebenarnya dan laporkan perbedaannya.
+
+---
+
+## 4. Prinsip Kerja
 
 - **Read first, understand second, execute only when instructed.**
 - USER menentukan tujuan dan menyetujui keputusan penting.
 - AI bertanggung jawab membaca dokumentasi yang dapat diakses secara mandiri.
 - AI harus membedakan fakta, asumsi, rekomendasi, dan keputusan USER.
-- Tidak ada klaim pemeriksaan atau pengujian tanpa bukti.
-- Tidak ada perubahan project tanpa otorisasi yang sesuai.
+- Jangan mengarang isi dokumen, status runtime, keputusan, atau hasil pengujian.
+- Jangan mengklaim pemeriksaan atau pengujian tanpa bukti.
+- Jangan melakukan perubahan di luar ruang lingkup izin.
+- Jika informasi penting belum tersedia, tanyakan hal yang paling diperlukan sebelum mengambil keputusan.
 
 ---
 
