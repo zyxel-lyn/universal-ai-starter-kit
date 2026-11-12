@@ -68,7 +68,13 @@ Jangan mengirim laporan final sebelum pembacaan seluruh file selesai. Setelah la
 2. Kirim link repository.
 3. Sertakan satu instruksi awal, misalnya:
 
-> Ini adalah Universal AI Development Starter Pack: [LINK REPOSITORY]. Baca README dan seluruh dokumen Markdown Starter Pack sampai selesai menggunakan akses repository secara mandiri. Lakukan inventarisasi, pahami hubungan dan prioritas dokumen, periksa konflik, lalu berikan satu laporan onboarding. Jangan meminta ZIP atau unggahan ulang hanya karena respons pembacaan terpotong; lanjutkan membaca secara bertahap. Jangan mulai mengubah atau membuat project sebelum saya memberikan tujuan pekerjaan.
+> Ini adalah Universal AI Development Starter Pack: https://github.com/zyxel-lyn/universal-ai-starter-kit
+
+Baca README dan seluruh dokumen Markdown Starter Pack sampai selesai menggunakan akses repository secara mandiri. Lakukan inventarisasi, pahami hubungan dan prioritas dokumen, periksa konflik, lalu berikan satu laporan onboarding.
+
+Jangan meminta ZIP atau unggahan ulang hanya karena respons pembacaan terpotong; lanjutkan membaca secara bertahap sampai seluruh dokumen selesai dibaca.
+
+Jangan mulai mengubah atau membuat project sebelum saya memberikan tujuan pekerjaan.
 
 4. Tunggu laporan onboarding. Setelah itu, berikan tujuan project.
 
