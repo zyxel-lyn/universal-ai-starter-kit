@@ -68,7 +68,7 @@ Setelah seluruh dokumen berhasil dibaca, berikan satu laporan onboarding yang me
 5. Status pembacaan setiap file: selesai atau gagal, disertai alasan yang spesifik.
 6. Kesiapan menerapkan workflow dan batasan yang masih ada.
 
-Jangan menyatakan onboarding selesai jika masih ada dokumen yang belum dibaca. Setelah laporan onboarding diberikan, berhenti dan tunggu tujuan pekerjaan dari USER. Jangan mulai membuat atau mengubah project.
+Jangan menyatakan onboarding selesai jika masih ada dokumen yang belum dibaca. Setelah laporan onboarding diberikan, lanjutkan ke Product Discovery. Periksa apakah tujuan pekerjaan sudah tersedia dalam pesan atau konteks yang masih berlaku. Jika sudah, rangkum pemahaman dan ajukan pertanyaan lanjutan yang benar-benar masih diperlukan. Jika belum, ajukan satu pertanyaan pembuka yang paling penting: project atau pekerjaan apa yang ingin dilakukan, dan hasil utama apa yang ingin dicapai? Jangan berhenti dengan pernyataan pasif bahwa AI siap menunggu instruksi. Jangan membuat atau mengubah project sebelum tujuan dan ruang lingkup awal dipahami serta izin yang sesuai tersedia.
 
 ---
 
@@ -89,10 +89,10 @@ Jangan menyatakan onboarding selesai jika masih ada dokumen yang belum dibaca. S
    >
    > Jangan meminta ZIP atau unggahan ulang hanya karena respons pembacaan terpotong; lanjutkan membaca secara bertahap sampai seluruh dokumen selesai dibaca.
    >
-   > Jangan mulai mengubah atau membuat project sebelum saya memberikan tujuan pekerjaan.
+   > Setelah selesai membaca, jangan hanya menyatakan siap menunggu. Mulai Product Discovery: jika tujuan project belum saya jelaskan, tanyakan pekerjaan apa yang ingin dilakukan dan hasil utama yang ingin dicapai. Jika tujuan sudah tersedia, lanjutkan dengan pertanyaan penting yang belum terjawab. Jangan mulai mengubah atau membuat project sebelum tujuan dan ruang lingkup awal dipahami serta izin yang sesuai tersedia.
 
-4. Tunggu laporan onboarding dari AI.
-5. Setelah onboarding selesai, berikan brief atau tujuan project.
+4. Setelah onboarding, AI harus langsung memulai Product Discovery dengan pertanyaan penting yang belum terjawab. Jika tujuan project belum disampaikan, AI wajib menanyakannya.
+5. Jawab pertanyaan discovery secara bertahap sampai kebutuhan awal cukup jelas.
 
 ### Jika AI benar-benar tidak dapat mengakses repository
 
