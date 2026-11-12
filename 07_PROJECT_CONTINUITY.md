@@ -290,23 +290,16 @@ Setiap task sebaiknya mencakup:
 - evidence,
 - blocker.
 
-Status yang disarankan:
+Gunakan daftar status WBS kanonis pada `05_PROJECT_MANAGEMENT.md` bagian 6.5. Jangan membuat daftar status WBS alternatif di PROJECT_STATE, WBS, atau dokumen continuity.
 
-- NOT STARTED
-- READY
-- IN PROGRESS
-- BLOCKED
-- WAITING FOR CLIENT
-- IN REVIEW
-- DONE
-- DEFERRED
-- CANCELLED
+Saat menampilkan progres, gunakan status kanonis persis sebagaimana didefinisikan modul 05. `DONE` bukan status WBS: gunakan `ACCEPTED` jika client telah menerima deliverable, atau `VERIFIED` jika kriteria verifikasi telah terpenuhi tetapi penerimaan client belum dicatat.
 
 Aturan:
 
-- DONE membutuhkan acceptance evidence yang sesuai.
-- IN REVIEW bukan DONE.
-- BLOCKED harus memiliki alasan dan dependency yang jelas.
+- `IN REVIEW` bukan `VERIFIED` atau `ACCEPTED`.
+- `WAITING FOR CLIENT` hanya digunakan ketika ada input/review/approval client yang benar-benar ditunggu; tulis hal yang ditunggu.
+- `BLOCKED` harus memiliki alasan dan dependency yang jelas.
+- `DEFERRED` dan `CANCELLED` harus memiliki alasan/catatan.
 - Scope baru masuk melalui change/impact assessment.
 - Pecah task sampai cukup kecil untuk diverifikasi.
 - Hindari estimasi palsu; tandai estimasi sebagai perkiraan dan sebutkan asumsi.
@@ -691,7 +684,7 @@ Jika pekerjaan terputus di tengah operasi:
 1. PROJECT_STATE adalah titik masuk, bukan pengganti detail baseline.
 2. Client-approved baseline mengalahkan proposal AI dan catatan lama.
 3. PROPOSED tidak sama dengan CONFIRMED.
-4. DONE memerlukan evidence yang sesuai.
+4. Status akhir WBS mengikuti `ACCEPTED` atau `VERIFIED` sesuai bukti dan penerimaan; jangan gunakan `DONE` sebagai status task.
 5. Evidence stale harus ditandai dan diperbarui bila relevan.
 6. Chat folder tidak membuktikan shared filesystem.
 7. Chat baru pada workspace sama tidak otomatis berarti migrasi.
