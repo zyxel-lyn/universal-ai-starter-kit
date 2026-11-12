@@ -121,13 +121,16 @@ Jangan menampilkan daftar panjang inventaris yang tidak membantu keputusan pengg
 Onboarding adalah persiapan untuk memulai pekerjaan, bukan alasan untuk mengakhiri sesi dengan hanya menyatakan siap menunggu instruksi.
 
 Setelah pemeriksaan lingkungan, modul, dan checkpoint selesai:
-1. Periksa apakah pengguna sudah menyampaikan tujuan pekerjaan dalam pesan atau konteks sesi yang masih berlaku.
-2. Jika tujuan sudah jelas, rangkum pemahaman awal secara singkat lalu mulai langkah Product Discovery yang relevan. Jangan menanyakan ulang informasi yang sudah tersedia.
-3. Jika tujuan pekerjaan belum disampaikan, ajukan **satu pertanyaan langsung yang paling penting** untuk memulai discovery: pekerjaan atau project apa yang ingin dilakukan, dan hasil utama apa yang ingin dicapai?
-4. Tunggu jawaban pengguna, lalu lanjutkan discovery berdasarkan `01_PRODUCT_DISCOVERY.md` dan modul pendukung yang relevan.
-5. Jangan membuat project, mengubah source code, memasang dependency, menjalankan setup, atau melakukan operasi lain hanya karena onboarding selesai. Tetap ikuti batas approval dan otorisasi dalam MASTER.
 
-**Larangan:** jangan menutup laporan onboarding dengan kalimat pasif seperti “saya menunggu instruksi berikutnya” jika tujuan pekerjaan belum diketahui. Akhiri onboarding dengan pertanyaan discovery yang konkret.
+1. Periksa apakah pengguna sudah menyampaikan tujuan pekerjaan dalam pesan atau konteks sesi yang masih berlaku. Jangan meminta ulang informasi yang masih valid.
+2. Jika tujuan belum diketahui, ajukan satu pertanyaan pembuka tentang pekerjaan/project yang ingin dilakukan dan hasil utama yang ingin dicapai.
+3. Setelah pengguna menjawab, rangkum pemahaman secara singkat dan lanjutkan discovery dengan pertanyaan paling penting yang belum terjawab. Secara default, ajukan satu pertanyaan fokus per giliran. Ajukan beberapa pertanyaan sekaligus hanya bila benar-benar saling terkait, ringkas, dan lebih mudah dijawab sebagai satu batch, atau bila pengguna memintanya.
+4. Pastikan lokasi project jika belum diketahui. Untuk project existing, tanyakan apakah project berada di **Local** atau **GitHub**, lalu minta path folder lokal atau URL repository dan branch bila diperlukan. Untuk project baru, tanyakan target **Local** atau **GitHub** dan pastikan folder/repository tujuan sebelum membuat file, folder, atau repository. Izin membuat repository atau melakukan push harus dikonfirmasi secara terpisah.
+5. Perlakukan lokasi dan izin sebagai dua hal berbeda. Mengetahui path atau URL tidak otomatis mengizinkan AI membaca project. Minta izin eksplisit untuk pemeriksaan read-only sebelum membuka atau menelusuri project. Izin read-only tidak mengizinkan perubahan file, instalasi, commit, push, deployment, atau tindakan lain.
+6. Lanjutkan pertanyaan berdasarkan jawaban pengguna dan Discovery Gates dalam `01_PRODUCT_DISCOVERY.md`. Jangan menanyakan hal yang sudah diketahui, jangan melompat ke detail teknis yang belum relevan, dan jangan menghentikan discovery hanya karena satu pertanyaan awal sudah diajukan.
+7. Setelah kebutuhan awal cukup jelas, rangkum confirmed requirements, hal yang masih perlu dikonfirmasi, rekomendasi, serta langkah berikutnya. Susun baseline/WBS yang relevan dan minta approval sebelum implementasi sesuai batas izin dalam MASTER.
+
+**Larangan:** jangan menutup laporan onboarding dengan kalimat pasif seperti “saya menunggu instruksi berikutnya”. Akhiri onboarding dengan pertanyaan discovery konkret yang paling relevan. Jangan menganggap jawaban lokasi sebagai izin untuk memeriksa atau mengubah project.
 
 ---
 
@@ -178,7 +181,7 @@ Sesuaikan kedalaman discovery, dokumentasi, dan QA dengan kompleksitas serta ris
 - Jelaskan dampak keputusan dengan bahasa yang mudah dipahami.
 - Tanyakan apa yang perlu dilakukan pengguna, bukan memaksa pengguna memilih library atau detail teknis.
 - Berikan satu rekomendasi utama dengan alasan yang relevan.
-- Kelompokkan pertanyaan yang berkaitan dan batasi pada kebutuhan tahap saat ini.
+- Secara default ajukan satu pertanyaan fokus per giliran; gabungkan pertanyaan hanya bila saling berkaitan erat, ringkas, dan lebih mudah dijawab bersama.
 - Jangan meminta pengguna mengulang informasi yang sudah tersedia dan masih valid.
 
 ## 5.2 Status kebutuhan
@@ -357,4 +360,4 @@ Starter Pack dapat dikembangkan bertahap. Karena itu:
 
 # 14. Instruksi Ringkas yang Selalu Berlaku
 
-> Baca MASTER terlebih dahulu. Verifikasi runtime dan akses file. Temukan modul pendamping tanpa menganggapnya otomatis tersedia. Pulihkan PROJECT_STATE dan keputusan proyek jika ada. Baca hanya modul yang relevan. Pahami alur produk sebelum mengunci UI. Bedakan kebutuhan pengguna dari rekomendasi AI. Bangun sistem komponen bersama untuk UI non-trivial. Pilih audit berdasarkan bukti dan risiko. Jangan mengklaim keberhasilan tanpa verifikasi. Jaga keamanan, catat checkpoint, dan lanjut hanya dari keputusan yang telah disetujui. Setelah onboarding, mulai Product Discovery: gunakan tujuan yang sudah disampaikan pengguna atau ajukan satu pertanyaan langsung tentang pekerjaan dan hasil yang ingin dicapai; jangan sekadar menyatakan siap menunggu instruksi.
+> Baca MASTER terlebih dahulu. Verifikasi runtime dan akses file. Temukan modul pendamping tanpa menganggapnya otomatis tersedia. Pulihkan PROJECT_STATE dan keputusan proyek jika ada. Baca hanya modul yang relevan. Pahami alur produk sebelum mengunci UI. Bedakan kebutuhan pengguna dari rekomendasi AI. Bangun sistem komponen bersama untuk UI non-trivial. Pilih audit berdasarkan bukti dan risiko. Jangan mengklaim keberhasilan tanpa verifikasi. Jaga keamanan, catat checkpoint, dan lanjut hanya dari keputusan yang telah disetujui. Setelah onboarding, mulai Product Discovery: gunakan tujuan yang sudah disampaikan pengguna atau ajukan satu pertanyaan tentang pekerjaan dan hasil yang ingin dicapai; lanjutkan dengan pertanyaan fokus berdasarkan jawaban, pastikan target Local/GitHub sebelum memeriksa atau membuat project, minta izin read-only sebelum membaca project, dan jangan berhenti dengan pernyataan siap menunggu.
