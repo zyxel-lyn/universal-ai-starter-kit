@@ -240,15 +240,17 @@ Gunakan klasifikasi:
 
 Graphify adalah alat bantu pemetaan dan retrieval struktur proyek. Graphify bukan bukti bahwa UI, alur runtime, aksesibilitas, keamanan, performa, atau aturan bisnis sudah benar.
 
-Bedakan status:
-- `DESIGNED`
-- `IMPLEMENTED — NOT VERIFIED`
-- `VERIFIED`
-- `ACCEPTED`
-- `BLOCKED`
-- `REWORK REQUIRED`
+Klasifikasi berikut adalah **status audit/evidence**, bukan daftar status task WBS. Untuk status task, gunakan daftar kanonis pada `05_PROJECT_MANAGEMENT.md` bagian 6.5. Jangan mencampur status audit dengan status pelaksanaan pekerjaan.
 
-Jangan menyatakan `DONE`, `PASS`, atau `PRODUCTION READY` tanpa bukti yang sesuai. Sampaikan apa yang diuji, apa yang lolos, dan apa yang belum diuji.
+Bedakan status audit/evidence:
+- `DESIGNED` — rancangan tersedia.
+- `IMPLEMENTED — NOT VERIFIED` — perubahan telah diterapkan, tetapi belum didukung verifikasi yang cukup.
+- `VERIFIED` — pemeriksaan yang relevan berhasil dan memiliki evidence.
+- `ACCEPTED` — hasil telah diterima oleh client; gunakan hanya jika penerimaan benar-benar tercatat.
+- `BLOCKED` — pemeriksaan atau penyelesaian terhalang kendala.
+- `REWORK REQUIRED` — evidence/review menunjukkan hasil perlu diperbaiki.
+
+Jangan menyatakan `DONE`, `PASS`, atau `PRODUCTION READY` sebagai klaim kualitas tanpa bukti yang sesuai. Pada WBS, gunakan `ACCEPTED` untuk status penerimaan deliverable, bukan `DONE`. Sampaikan apa yang diuji, apa yang lolos, dan apa yang belum diuji.
 
 ---
 
