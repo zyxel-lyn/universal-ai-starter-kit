@@ -295,26 +295,31 @@ Jangan memberi semua item prioritas Critical. Prioritas harus membantu memilih u
 
 ### 6.5 WBS Status
 
-Gunakan status yang konsisten:
+Gunakan satu lifecycle status WBS berikut di seluruh artefak project. Modul 05 menjadi sumber definisi kanonis; modul lain harus merujuk daftar ini dan tidak membuat daftar status WBS yang berbeda.
 
-- `NOT STARTED`
-- `IN PROGRESS`
-- `IMPLEMENTED — NOT VERIFIED`
-- `VERIFIED`
-- `ACCEPTED`
-- `BLOCKED`
-- `DEFERRED`
-- `CANCELLED`
-- `REWORK REQUIRED`
+- `NOT STARTED` — pekerjaan sudah tercatat, tetapi belum siap atau belum dimulai.
+- `READY` — prasyarat dan dependency terpenuhi; pekerjaan siap dimulai.
+- `IN PROGRESS` — pekerjaan sedang dikerjakan.
+- `BLOCKED` — pekerjaan tidak dapat dilanjutkan karena kendala atau dependency; alasan dan pihak/aksi pembuka blocker wajib dicatat.
+- `IMPLEMENTED — NOT VERIFIED` — perubahan telah diterapkan, tetapi verifikasi yang relevan belum selesai atau belum memiliki bukti cukup.
+- `IN REVIEW` — hasil implementasi sedang ditinjau; belum boleh dianggap verified atau accepted.
+- `VERIFIED` — acceptance criteria teknis/fungsional yang menjadi tanggung jawab verifikasi telah diperiksa dan didukung evidence.
+- `WAITING FOR CLIENT` — pekerjaan telah disiapkan untuk keputusan, review, atau penerimaan client; pertanyaan/keputusan yang ditunggu harus dicatat.
+- `ACCEPTED` — client menerima deliverable sesuai scope dan acceptance criteria.
+- `REWORK REQUIRED` — review/verifikasi menemukan kekurangan yang harus diperbaiki sebelum dapat diterima.
+- `DEFERRED` — pekerjaan sengaja ditunda ke fase atau waktu berikutnya.
+- `CANCELLED` — pekerjaan tidak lagi diperlukan atau dikeluarkan dari scope melalui keputusan yang tercatat.
 
-Perbedaan penting:
+Aturan transisi dan interpretasi:
 
-- `IMPLEMENTED — NOT VERIFIED`: perubahan sudah dibuat, bukti belum cukup.
-- `VERIFIED`: pemeriksaan teknis yang relevan berhasil.
-- `ACCEPTED`: client menerima hasil sesuai scope.
-- `BLOCKED`: ada dependency atau kendala yang mencegah progress.
-- `DEFERRED`: item sengaja dipindahkan ke tahap berikutnya.
-- `CANCELLED`: item tidak lagi menjadi bagian pekerjaan.
+- `READY` bukan berarti pekerjaan sudah dimulai; gunakan `IN PROGRESS` ketika pengerjaan benar-benar dimulai.
+- `IMPLEMENTED — NOT VERIFIED` tidak boleh dinaikkan menjadi `VERIFIED` tanpa evidence.
+- `IN REVIEW` tidak sama dengan `VERIFIED` atau `ACCEPTED`.
+- `WAITING FOR CLIENT` menunjukkan ada input/review/approval yang benar-benar ditunggu, bukan status default setiap task.
+- `VERIFIED` tidak otomatis berarti `ACCEPTED`; penerimaan client dicatat terpisah.
+- `REWORK REQUIRED` kembali ke `IN PROGRESS` ketika perbaikan dimulai.
+- `BLOCKED`, `DEFERRED`, dan `CANCELLED` harus memiliki alasan/catatan yang jelas.
+- Status audit pada MASTER dan status approval package bukan status WBS; jangan mencampur klasifikasi tersebut.
 
 ### 6.6 Acceptance Criteria
 
