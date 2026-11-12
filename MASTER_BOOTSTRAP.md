@@ -116,6 +116,19 @@ Setelah pemeriksaan, laporkan:
 
 Jangan menampilkan daftar panjang inventaris yang tidak membantu keputusan pengguna.
 
+## 2.6 Mulai Product Discovery setelah onboarding
+
+Onboarding adalah persiapan untuk memulai pekerjaan, bukan alasan untuk mengakhiri sesi dengan hanya menyatakan siap menunggu instruksi.
+
+Setelah pemeriksaan lingkungan, modul, dan checkpoint selesai:
+1. Periksa apakah pengguna sudah menyampaikan tujuan pekerjaan dalam pesan atau konteks sesi yang masih berlaku.
+2. Jika tujuan sudah jelas, rangkum pemahaman awal secara singkat lalu mulai langkah Product Discovery yang relevan. Jangan menanyakan ulang informasi yang sudah tersedia.
+3. Jika tujuan pekerjaan belum disampaikan, ajukan **satu pertanyaan langsung yang paling penting** untuk memulai discovery: pekerjaan atau project apa yang ingin dilakukan, dan hasil utama apa yang ingin dicapai?
+4. Tunggu jawaban pengguna, lalu lanjutkan discovery berdasarkan `01_PRODUCT_DISCOVERY.md` dan modul pendukung yang relevan.
+5. Jangan membuat project, mengubah source code, memasang dependency, menjalankan setup, atau melakukan operasi lain hanya karena onboarding selesai. Tetap ikuti batas approval dan otorisasi dalam MASTER.
+
+**Larangan:** jangan menutup laporan onboarding dengan kalimat pasif seperti “saya menunggu instruksi berikutnya” jika tujuan pekerjaan belum diketahui. Akhiri onboarding dengan pertanyaan discovery yang konkret.
+
 ---
 
 # 3. Routing Modul Berdasarkan Pekerjaan
@@ -343,4 +356,4 @@ Starter Pack dapat dikembangkan bertahap. Karena itu:
 
 # 14. Instruksi Ringkas yang Selalu Berlaku
 
-> Baca MASTER terlebih dahulu. Verifikasi runtime dan akses file. Temukan modul pendamping tanpa menganggapnya otomatis tersedia. Pulihkan PROJECT_STATE dan keputusan proyek jika ada. Baca hanya modul yang relevan. Pahami alur produk sebelum mengunci UI. Bedakan kebutuhan pengguna dari rekomendasi AI. Bangun sistem komponen bersama untuk UI non-trivial. Pilih audit berdasarkan bukti dan risiko. Jangan mengklaim keberhasilan tanpa verifikasi. Jaga keamanan, catat checkpoint, dan lanjut hanya dari keputusan yang telah disetujui.
+> Baca MASTER terlebih dahulu. Verifikasi runtime dan akses file. Temukan modul pendamping tanpa menganggapnya otomatis tersedia. Pulihkan PROJECT_STATE dan keputusan proyek jika ada. Baca hanya modul yang relevan. Pahami alur produk sebelum mengunci UI. Bedakan kebutuhan pengguna dari rekomendasi AI. Bangun sistem komponen bersama untuk UI non-trivial. Pilih audit berdasarkan bukti dan risiko. Jangan mengklaim keberhasilan tanpa verifikasi. Jaga keamanan, catat checkpoint, dan lanjut hanya dari keputusan yang telah disetujui. Setelah onboarding, mulai Product Discovery: gunakan tujuan yang sudah disampaikan pengguna atau ajukan satu pertanyaan langsung tentang pekerjaan dan hasil yang ingin dicapai; jangan sekadar menyatakan siap menunggu instruksi.
