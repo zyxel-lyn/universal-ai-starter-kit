@@ -145,26 +145,19 @@ Jangan langsung:
 - Mengubah konfigurasi environment.
 - Menganggap status dari AI lama pasti masih sama dengan kondisi aktual.
 
-## 4.2 Minta Starter Pack kepada USER
+## 4.2 Pulihkan Starter Pack
 
-**AI BARU WAJIB meminta dokumen Starter Pack yang belum tersedia. Jangan menunggu USER mengetahui nama file yang harus diunggah.**
+**AI BARU bertanggung jawab memperoleh dan membaca Starter Pack. USER tidak perlu menebak atau mengunggah satu per satu nama modul jika repository sudah diberikan.**
 
-Dalam satu pesan, periksa dan minta dokumen berikut jika belum diunggah:
+Urutannya:
+1. Periksa apakah USER telah memberikan link repository Starter Pack pada chat atau dokumen handover.
+2. Jika link tersedia, buka repository tersebut dan ikuti prosedur onboarding pada README. Baca seluruh dokumen Markdown Starter Pack sampai selesai secara mandiri.
+3. Jika respons pembacaan terpotong, lanjutkan dari bagian berikutnya atau gunakan raw file/API repository. Jangan meminta ZIP hanya karena batas panjang respons.
+4. Jika link tidak tersedia, minta link repository Starter Pack dalam satu permintaan. Jika AI tidak dapat mengakses repository tersebut, jelaskan hambatan akses yang benar-benar terjadi dan minta hanya dokumen yang diperlukan.
+5. Jangan meminta dokumen yang sudah tersedia atau meminta semua modul secara terpisah tanpa alasan.
+6. Setelah Starter Pack dibaca, lanjutkan pemeriksaan manifest dan tentukan source project yang diperlukan dalam satu permintaan terstruktur.
 
-- `MASTER_BOOTSTRAP.md` — instruksi utama dan aturan kerja AI.
-- `07_PROJECT_CONTINUITY.md` — prosedur menjaga dan memulihkan konteks project.
-- Modul lain dari Starter Pack yang relevan, berdasarkan kebutuhan project dan pekerjaan berikutnya.
-
-Jangan meminta file yang sudah tersedia. Jangan meminta semua modul tanpa alasan. Namun, jika AI belum dapat menentukan modul mana yang relevan, minta daftar isi atau seluruh modul Starter Pack agar tidak salah memilih.
-
-Contoh permintaan:
-
-> Saya sudah membaca paket handover. Agar dapat melanjutkan project sesuai workflow yang berlaku, saya perlu dokumen Starter Pack berikut:
-> 1. `MASTER_BOOTSTRAP.md`
-> 2. `07_PROJECT_CONTINUITY.md`
-> 3. [Modul lain yang relevan, jika diperlukan]
->
-> Silakan unggah file-file tersebut. Setelah itu saya akan memeriksa kebutuhan source project dan meminta file tambahan yang diperlukan dalam satu daftar.
+AI baru tidak boleh mengklaim memahami Starter Pack sebelum dokumen yang diperlukan benar-benar dibaca.
 
 ## 4.3 Minta source project yang diperlukan
 
@@ -259,8 +252,8 @@ Selain dokumen, source project, asset, konfigurasi aman, database yang diperluka
 - [ ] Minta AI lama menyiapkan paket handover.
 - [ ] Simpan seluruh hasil handover.
 - [ ] Upload hasil handover ke AI baru.
-- [ ] Tunggu AI baru meminta Starter Pack dan source tambahan.
-- [ ] Upload file yang diminta AI baru.
+- [ ] Berikan link repository Starter Pack jika belum tercantum pada handover; AI baru membaca dokumennya secara mandiri.
+- [ ] Sediakan hanya source project atau artefak yang benar-benar belum tersedia dan diminta secara spesifik.
 - [ ] Baca ringkasan verifikasi dan konfirmasi sebelum implementasi.
 
 **USER tidak bertugas menebak dokumen yang diperlukan. AI baru bertanggung jawab membaca manifest, mengenali kekurangan, dan meminta file yang dibutuhkan.**

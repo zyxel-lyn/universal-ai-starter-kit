@@ -3,7 +3,6 @@ name: qa-testing
 version: "1.0.0"
 language: "id-ID"
 purpose: "Strategi pengujian, verifikasi, audit UX, aksesibilitas, visual, integrasi, regresi, dan release acceptance."
-source: "UNIVERSAL_AI_WEB_APP_DEVELOPMENT_BOOTSTRAP v1.3.0"
 ---
 
 # 04 — QA & Testing
@@ -707,21 +706,3 @@ Jangan:
 ## 25. Compact QA Instruction
 
 > Tentukan cakupan QA berdasarkan requirement, risiko, dan blast radius. Uji primary journey, boundary, error/recovery path, data, permission, dan regression yang relevan. Gunakan test otomatis serta pemeriksaan manual/visual/accessibility sesuai kebutuhan. Pastikan environment dan data aman sebelum menjalankan command. Catat command, hasil, evidence, defect, dan hal yang belum diverifikasi. Jangan mengklaim keberhasilan tanpa bukti. Pisahkan verified, client accepted, dan released.
-
----
-
-## Source Mapping
-
-Modul ini memisahkan materi quality dan release dari bootstrap utama, terutama:
-
-- Phase 5 — Quality, Accessibility & Design Review,
-- Phase 6 — Release & Handoff,
-- UI Component System Gate,
-- Page Definition of Ready / Done,
-- Critical / Important / Optional quality gates,
-- Evidence Rules,
-- Graphify Audit Necessity Classifier dan Audit / Graphify Decision Matrix,
-- Browser MCP verification profile dan browser test sequence,
-- Completion / Handoff Protocol.
-
-Detail test strategy, test data safety, defect lifecycle, security test coverage, dan QA report ditata menjadi prosedur operasional agar hasil verifikasi dapat diulang dan diaudit. Terapkan berdasarkan risiko dan target produk.

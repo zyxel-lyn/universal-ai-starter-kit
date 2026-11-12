@@ -1,133 +1,108 @@
 # Universal AI Development Starter Pack
 
-> Satu repository sebagai pintu masuk untuk AI dan panduan penggunaan untuk manusia.
+> Satu repository sebagai entry point dan panduan kerja modular untuk AI serta manusia.
 
-Starter Pack ini berisi seperangkat instruksi dan modul kerja agar AI dapat membantu merencanakan, merancang, membangun, menguji, dan memelihara project aplikasi secara terstruktur. Repository ini dirancang agar mudah dibagikan: **cukup berikan link repository kepada AI yang mendukung akses GitHub atau pembacaan URL.**
-
----
-
-## Untuk AI: Mulai dari Sini
-
-Jika USER memberikan link repository ini, ikuti prosedur berikut secara berurutan.
-
-### 1. Baca seluruh dokumentasi
-
-1. Baca README ini terlebih dahulu.
-2. Identifikasi seluruh file Markdown (`.md`) yang merupakan bagian dari Starter Pack di repository ini.
-3. Baca isi setiap dokumen Starter Pack sampai selesai. Jangan hanya membaca nama file, ringkasan, atau beberapa baris pertama.
-4. Buat inventaris nama file dan jelaskan fungsi setiap dokumen secara singkat.
-5. Periksa apakah ada file yang hilang, nomor modul yang lompat, referensi nama file yang sudah berubah, atau instruksi yang saling bertentangan.
-6. Jangan mengarang isi dokumen yang tidak dapat diakses. Jika akses GitHub atau isi file terbatas, sebutkan file yang belum terbaca dan minta USER menyediakan akses atau file tersebut.
-
-### 2. Pahami sistem sebelum menerapkannya
-
-- Perlakukan seluruh dokumen Starter Pack sebagai satu sistem instruksi yang saling melengkapi.
-- `MASTER_BOOTSTRAP.md` adalah entrypoint aturan kerja utama jika dokumen tersebut tersedia.
-- Modul lain menjelaskan prosedur khusus sesuai domainnya.
-- Jangan menganggap README menggantikan isi dokumen modul.
-- Jangan langsung mengubah source code, membuat project, menginstal dependency, atau menjalankan perintah hanya karena repository Starter Pack diberikan.
-- Membaca dan memahami Starter Pack **bukan** izin untuk mengubah repository project milik USER.
-
-### 3. Laporkan hasil pembacaan
-
-Setelah seluruh dokumen berhasil dibaca, sampaikan:
-- Daftar dokumen yang berhasil dibaca.
-- Fungsi singkat masing-masing dokumen.
-- Cara dokumen-dokumen tersebut bekerja sebagai satu workflow.
-- File yang hilang, tidak dapat diakses, atau memiliki konflik.
-- Konfirmasi bahwa instruksi telah dipahami dan siap digunakan.
-
-Jangan mengklaim seluruh dokumen telah dibaca jika ada file yang belum berhasil diakses.
-
-### 4. Tunggu tujuan USER
-
-Setelah memahami Starter Pack, tanyakan atau tunggu instruksi project yang ingin dikerjakan. Terapkan modul yang relevan berdasarkan jenis pekerjaan dan tahap project. Jangan memaksakan seluruh prosedur ke pekerjaan yang tidak relevan.
-
-### 5. Aturan khusus protokol migrasi
-
-`PROJECT_MIGRATION_PROTOCOL.md` adalah **protokol khusus**, bukan instruksi kerja default.
-
-- Aktifkan hanya jika USER meminta migrasi project, perpindahan chat/AI/platform, handover, atau pemulihan konteks project.
-- Jangan menjalankan proses handover hanya karena file ini ada di repository.
-- Jika migrasi diminta, baca dan ikuti seluruh protokol tersebut.
-- Jika migrasi tidak diminta, abaikan prosedur migrasi dan jalankan workflow Starter Pack yang relevan.
-
-### 6. Batas akses dan keamanan
-
-- Repository publik dapat dibaca tanpa autentikasi, tetapi repository privat memerlukan akses yang sah.
-- Jangan meminta USER membagikan password, token, API key, private key, atau credential.
-- Jangan menyalin secret ke dokumen, issue, commit, atau laporan.
-- Jangan melakukan commit, push, perubahan file, atau tindakan destruktif tanpa instruksi dan otorisasi USER.
-- Jika AI tidak memiliki konektor GitHub atau akses URL, minta USER mengunggah dokumen yang diperlukan. Jangan berpura-pura telah membaca repository.
+Starter Pack ini membantu AI memahami kebutuhan produk, merancang pengalaman pengguna, merencanakan dan membangun aplikasi, menguji hasil, serta menjaga kesinambungan project. Berikan **link repository dan satu instruksi awal**. AI bertanggung jawab membaca dokumentasi yang tersedia secara mandiri sebelum meminta informasi project.
 
 ---
 
-## Untuk Manusia: Cara Menggunakan Starter Pack
+## Untuk AI: Prosedur Onboarding Wajib
 
-### A. Menggunakan Starter Pack pada AI baru
+Ketika USER memberikan link repository Starter Pack ini, lakukan seluruh prosedur berikut dalam satu proses. Jangan meminta USER mengirim prompt tambahan untuk menyuruh Anda membaca file berikutnya.
 
-1. Pastikan AI yang digunakan dapat membuka link GitHub. Repository publik paling mudah dibaca.
-2. Salin link repository ini.
-3. Tempel link tersebut ke chat AI.
-4. Minta AI membaca README dan seluruh dokumen Markdown Starter Pack.
-5. AI seharusnya membuat inventaris dokumen, menjelaskan workflow, dan melaporkan jika ada file yang tidak dapat dibaca.
-6. Setelah AI memahami Starter Pack, berikan tujuan atau project yang ingin dikerjakan.
+### 1. Temukan dan inventarisasi dokumen
 
-**Contoh prompt untuk AI:**
+1. Identifikasi owner, repository, branch, dan root Starter Pack dari link yang diberikan.
+2. Periksa daftar file Markdown aktual pada root repository. Jangan mengandalkan inventaris statis atau jumlah file yang diingat.
+3. Baca README terlebih dahulu, kemudian seluruh dokumen Markdown yang merupakan bagian Starter Pack.
+4. Gunakan akses repository, halaman file, GitHub API, atau raw file URL yang tersedia. Jika satu tampilan terpotong, lanjutkan dari bagian/offset berikutnya atau ambil raw file tersebut. Pemotongan respons bukan bukti bahwa file tidak dapat diakses.
+5. Baca setiap file sampai akhir. Pastikan tidak ada bagian yang belum terbaca sebelum menandainya selesai.
+6. Catat nama file, fungsi, status pembacaan, dan batas verifikasi secara internal selama proses.
+7. Periksa referensi silang, file yang hilang, penomoran, istilah, versi publik, serta instruksi yang bertentangan.
 
-> Ini adalah repository Universal AI Development Starter Pack: [TEMPEL LINK REPOSITORY].
->
-> Baca README terlebih dahulu, lalu baca seluruh file Markdown Starter Pack di repository sampai selesai. Pahami hubungan dan prioritas antar dokumen. Jangan mulai membuat atau mengubah project dulu. Setelah selesai, laporkan daftar dokumen yang dibaca, fungsi masing-masing, konflik atau file yang hilang, dan konfirmasikan bahwa kamu siap menerapkan workflow ini.
+**Jangan meminta ZIP, lampiran, atau unggahan ulang hanya karena satu respons pembacaan memiliki batas panjang.** Lakukan pembacaan bertahap dan gunakan jalur akses repository lain terlebih dahulu.
 
-### B. Menggunakan Starter Pack pada AI yang tidak bisa membaca GitHub
+Jika setelah mencoba jalur akses repository yang wajar suatu file benar-benar tidak dapat diakses, sebutkan hanya file yang gagal beserta upaya yang telah dilakukan. Jangan mengklaim telah membacanya. Minta bantuan USER hanya untuk hambatan akses yang nyata, bukan untuk menggantikan pembacaan bertahap yang seharusnya dapat Anda lakukan sendiri.
 
-Jika AI tidak dapat mengakses repository:
-1. Minta AI menjelaskan bahwa akses repository tidak tersedia.
-2. Unduh repository sebagai ZIP dari GitHub, atau unduh dokumen yang diperlukan.
-3. Unggah ZIP/dokumen ke AI jika platform mendukungnya.
-4. Minta AI membaca seluruh dokumen Markdown, bukan langsung mengerjakan project.
+### 2. Pahami sistem instruksi
 
-### C. Menggunakan untuk project baru
+- Perlakukan seluruh dokumen Starter Pack sebagai satu sistem yang saling melengkapi.
+- `MASTER_BOOTSTRAP.md` adalah pusat aturan kerja dan routing modul.
+- Modul bernomor menjelaskan prosedur spesialis. Baca dan terapkan modul sesuai kebutuhan pekerjaan setelah onboarding.
+- `PROJECT_MIGRATION_PROTOCOL.md` hanya aktif ketika USER meminta migrasi, handover, atau perpindahan project/chat/AI/platform.
+- Jangan menganggap rekomendasi AI sebagai keputusan atau persetujuan USER.
+- Jangan mengarang isi file, status runtime, keputusan, atau bukti.
 
-1. Berikan link repository Starter Pack.
-2. Tunggu AI membaca dan memahami seluruh dokumen.
-3. Sampaikan ide atau kebutuhan project.
-4. Ikuti tahap discovery dan persetujuan yang diminta AI.
-5. AI menerapkan modul yang relevan sesuai tahap project.
+### 3. Batas tindakan
 
-### D. Memindahkan project lama ke chat atau AI baru
+Pemberian link Starter Pack hanya mengizinkan pembacaan dan pemahaman dokumentasi tersebut.
 
-1. Pada AI lama, minta AI menyiapkan dokumen handover dengan mengikuti `PROJECT_MIGRATION_PROTOCOL.md`.
-2. Simpan hasil handover project.
-3. Berikan hasil handover dan link repository Starter Pack kepada AI baru.
-4. AI baru membaca dokumen handover dan Starter Pack.
-5. AI baru wajib meminta sendiri file atau informasi project yang belum tersedia.
-6. Setelah konteks dan source diverifikasi, lanjutkan pekerjaan sesuai persetujuan USER.
+Itu **bukan** izin untuk:
+- membuat atau mengubah project,
+- mengubah file repository,
+- menginstal atau menghapus dependency, tools, MCP, atau skills,
+- menjalankan setup atau konfigurasi,
+- melakukan commit, push, deployment, migrasi, atau tindakan destruktif.
 
-Protokol migrasi hanya digunakan untuk perpindahan project yang memang sudah berjalan. Untuk project baru, tidak perlu membuat dokumen handover.
+Tindakan tersebut memerlukan instruksi dan persetujuan yang sesuai dengan ruang lingkupnya.
 
----
+### 4. Laporan onboarding
 
-## Struktur dan Inventaris Repository
+Setelah semua dokumen berhasil dibaca, berikan satu laporan awal yang memuat:
+- jumlah dan daftar file Markdown aktual,
+- fungsi singkat setiap dokumen,
+- hubungan dan urutan kerja antar modul,
+- konflik atau referensi yang tidak valid,
+- status pembacaan setiap file,
+- konfirmasi kesiapan menerapkan workflow.
 
-AI wajib memeriksa struktur repository yang aktual dan menginventarisasi semua dokumen Markdown. Jangan mengandalkan daftar statis yang mungkin tertinggal ketika modul ditambah, dihapus, atau diganti nama.
-
-| Jenis | Fungsi |
-|---|---|
-| README | Pintu masuk untuk AI dan panduan penggunaan untuk manusia |
-| Master Bootstrap | Aturan utama dan entrypoint workflow AI |
-| Modul bernomor | Panduan khusus untuk discovery, UI/UX, engineering, QA, setup, dan continuity |
-| Project Migration Protocol | Prosedur khusus untuk handover dan migrasi project |
-
-Jika penomoran modul tidak berurutan atau ada dokumen yang belum tersedia, AI harus melaporkannya secara transparan. Jangan membuat atau mengisi modul yang hilang tanpa instruksi USER.
+Jangan mengirim laporan final sebelum pembacaan seluruh file selesai. Setelah laporan diberikan, tunggu tujuan project dari USER. Jangan memulai pekerjaan project hanya karena Starter Pack diberikan.
 
 ---
 
-## Prinsip Penggunaan
+## Untuk Manusia: Cara Menggunakan
+
+### A. Memulai AI baru
+
+1. Pastikan repository dapat diakses oleh AI yang digunakan.
+2. Kirim link repository.
+3. Sertakan satu instruksi awal, misalnya:
+
+> Ini adalah Universal AI Development Starter Pack: [LINK REPOSITORY]. Baca README dan seluruh dokumen Markdown Starter Pack sampai selesai menggunakan akses repository secara mandiri. Lakukan inventarisasi, pahami hubungan dan prioritas dokumen, periksa konflik, lalu berikan satu laporan onboarding. Jangan meminta ZIP atau unggahan ulang hanya karena respons pembacaan terpotong; lanjutkan membaca secara bertahap. Jangan mulai mengubah atau membuat project sebelum saya memberikan tujuan pekerjaan.
+
+4. Tunggu laporan onboarding. Setelah itu, berikan tujuan project.
+
+### B. Jika AI benar-benar tidak memiliki akses repository
+
+AI harus menjelaskan keterbatasan akses secara spesifik setelah mencoba jalur yang tersedia. Barulah USER dapat menyediakan dokumen melalui cara yang didukung platform. Keterbatasan platform tidak boleh disamarkan sebagai keberhasilan pembacaan.
+
+### C. Project baru
+
+Setelah onboarding selesai, sampaikan ide atau kebutuhan project. AI akan memilih modul yang relevan dan memulai discovery sesuai MASTER.
+
+### D. Project yang sedang berjalan
+
+Jika ingin memindahkan project ke chat, AI, platform, atau workspace lain, gunakan `PROJECT_MIGRATION_PROTOCOL.md`. Protokol ini terpisah dari onboarding project baru.
+
+---
+
+## Struktur Repository
+
+Inventaris selalu ditentukan dari isi repository aktual. Secara umum, Starter Pack terdiri dari:
+- README sebagai entry point onboarding,
+- MASTER sebagai pusat aturan dan routing,
+- modul spesialis untuk discovery, UI/UX, engineering, QA, project management, setup tools, dan continuity,
+- protokol migrasi khusus.
+
+Jika file ditambah, dihapus, atau diganti nama, AI wajib mengikuti struktur aktual dan memperbarui laporannya. Jangan membuat file yang hilang tanpa instruksi USER.
+
+---
+
+## Prinsip Utama
 
 - **Read first, understand second, execute only when instructed.**
 - USER menentukan tujuan dan menyetujui keputusan penting.
-- AI bertanggung jawab memahami dokumentasi, mengidentifikasi kebutuhan, dan meminta informasi/file yang belum tersedia.
+- AI bertanggung jawab membaca dokumentasi yang dapat diakses secara mandiri.
 - AI harus membedakan fakta, asumsi, rekomendasi, dan keputusan USER.
 - Tidak ada klaim pemeriksaan atau pengujian tanpa bukti.
 - Tidak ada perubahan project tanpa otorisasi yang sesuai.
