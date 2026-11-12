@@ -68,7 +68,16 @@ Setelah seluruh dokumen berhasil dibaca, berikan satu laporan onboarding yang me
 5. Status pembacaan setiap file: selesai atau gagal, disertai alasan yang spesifik.
 6. Kesiapan menerapkan workflow dan batasan yang masih ada.
 
-Jangan menyatakan onboarding selesai jika masih ada dokumen yang belum dibaca. Setelah laporan onboarding diberikan, lanjutkan ke Product Discovery. Periksa apakah tujuan pekerjaan sudah tersedia dalam pesan atau konteks yang masih berlaku. Jika sudah, rangkum pemahaman dan ajukan pertanyaan lanjutan yang benar-benar masih diperlukan. Jika belum, ajukan satu pertanyaan pembuka yang paling penting: project atau pekerjaan apa yang ingin dilakukan, dan hasil utama apa yang ingin dicapai? Jangan berhenti dengan pernyataan pasif bahwa AI siap menunggu instruksi. Jangan membuat atau mengubah project sebelum tujuan dan ruang lingkup awal dipahami serta izin yang sesuai tersedia.
+Jangan menyatakan onboarding selesai jika masih ada dokumen yang belum dibaca. Setelah laporan onboarding diberikan, langsung mulai Product Discovery secara aktif:
+
+1. Periksa pesan dan konteks yang masih berlaku agar informasi yang sudah diberikan tidak ditanyakan ulang.
+2. Jika tujuan pekerjaan belum diketahui, tanyakan satu hal pembuka: project atau pekerjaan apa yang ingin dilakukan, dan hasil utama apa yang ingin dicapai?
+3. Setelah pengguna menjawab, rangkum pemahaman singkat lalu ajukan pertanyaan lanjutan yang paling penting berdasarkan jawaban tersebut. Secara default, ajukan satu pertanyaan fokus per giliran. Jangan berhenti setelah pertanyaan pembuka atau menutup percakapan dengan pernyataan pasif bahwa AI menunggu instruksi.
+4. Jika pekerjaan melibatkan project existing atau membutuhkan akses ke file/repository, pastikan lokasinya. Jika belum diketahui, tanyakan apakah project berada di **Local** (komputer pengguna) atau **GitHub**. Setelah itu, minta path folder lokal atau URL repository yang diperlukan; tanyakan branch hanya bila belum jelas atau relevan.
+5. Jika project baru akan dibuat, tanyakan apakah targetnya Local atau GitHub, lalu pastikan folder/repository tujuan sebelum membuat file, folder, atau repository. Untuk GitHub, izin membuat repository dan melakukan push harus dipastikan secara terpisah.
+6. Jawaban tentang lokasi bukan izin untuk mengakses atau mengubah project. Minta izin terpisah sebelum melakukan pemeriksaan read-only. Izin membaca tidak otomatis memberi izin menulis, menghapus, memasang tools, commit, atau push.
+
+Jangan membuat atau mengubah project sebelum tujuan dan ruang lingkup awal dipahami serta izin yang sesuai tersedia.
 
 ---
 
@@ -89,10 +98,10 @@ Jangan menyatakan onboarding selesai jika masih ada dokumen yang belum dibaca. S
    >
    > Jangan meminta ZIP atau unggahan ulang hanya karena respons pembacaan terpotong; lanjutkan membaca secara bertahap sampai seluruh dokumen selesai dibaca.
    >
-   > Setelah selesai membaca, jangan hanya menyatakan siap menunggu. Mulai Product Discovery: jika tujuan project belum saya jelaskan, tanyakan pekerjaan apa yang ingin dilakukan dan hasil utama yang ingin dicapai. Jika tujuan sudah tersedia, lanjutkan dengan pertanyaan penting yang belum terjawab. Jangan mulai mengubah atau membuat project sebelum tujuan dan ruang lingkup awal dipahami serta izin yang sesuai tersedia.
+   > Setelah selesai membaca, mulai Product Discovery secara aktif. Jika tujuan belum saya jelaskan, tanyakan project/pekerjaan apa yang ingin dilakukan dan hasil utamanya. Setelah jawaban saya, lanjutkan dengan pertanyaan penting berikutnya, secara default satu pertanyaan fokus per giliran. Jika project existing yang perlu diperiksa atau project baru yang akan dibuat, pastikan apakah targetnya Local atau GitHub; minta path folder atau URL repository setelahnya. Lokasi bukan izin: minta izin read-only secara terpisah sebelum memeriksa project. Jangan berhenti dengan pernyataan menunggu instruksi dan jangan mengubah project tanpa izin yang sesuai.
 
-4. Setelah onboarding, AI harus langsung memulai Product Discovery dengan pertanyaan penting yang belum terjawab. Jika tujuan project belum disampaikan, AI wajib menanyakannya.
-5. Jawab pertanyaan discovery secara bertahap sampai kebutuhan awal cukup jelas.
+4. Setelah onboarding, AI harus menjalankan discovery secara bertahap dan aktif: gali tujuan, lanjutkan pertanyaan berdasarkan jawaban, serta pastikan lokasi Local/GitHub bila project perlu diakses atau dibuat.
+5. Lokasi project dan izin pemeriksaan harus dikonfirmasi secara terpisah; jangan membaca atau mengubah project sebelum izin yang sesuai diberikan.
 
 ### Jika AI benar-benar tidak dapat mengakses repository
 
