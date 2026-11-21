@@ -19,8 +19,9 @@ Saat menerima link repository ini, lakukan seluruh langkah berikut sebelum memul
 1. Identifikasi owner, nama repository, branch, dan struktur repository dari link yang diberikan.
 2. Periksa file dan folder Markdown yang benar-benar tersedia. Jangan mengandalkan daftar file yang diingat atau inventaris statis.
 3. Baca README terlebih dahulu.
-4. Setelah README, baca seluruh dokumen Markdown yang termasuk dalam Starter Pack, termasuk dokumen di subfolder jika ada.
-5. Catat nama file, fungsi, dan status pembacaannya agar tidak ada dokumen yang terlewat.
+4. Setelah README, **wajib** baca seluruh 10 modul panduan di root. Ini cukup untuk memahami sistem kerja Starter Pack.
+5. `references/` dan `scripts/` adalah pendukung, bukan modul panduan. Saat onboarding cukup catat keberadaannya. Jangan menuntaskan keduanya lebih dulu, dan jangan menganggapnya hilang bila tidak dibaca.
+6. Catat nama file, fungsi, dan status pembacaannya agar tidak ada dokumen yang terlewat.
 
 ### 1.2 Baca seluruh isi sampai selesai
 
@@ -125,7 +126,9 @@ Repository ini memuat dua folder pendukung di luar dokumen panduan. Keduanya buk
 
 ### `scripts/`
 
-Helper yang benar-benar dieksekusi. Perintah di dokumen yang menyebut path ini boleh dijalankan.
+Helper yang benar-benar dieksekusi.
+
+**Perintah ini hanya membaca (read-only).** `stdio_mcp_client.mjs` melakukan handshake MCP lalu meminta daftar tool; ia tidak memasang, mengubah, atau menghapus apa pun. Keberadaan file ini **bukan** izin untuk instalasi, perubahan konfigurasi, atau modifikasi sistem. Persetujuan untuk itu tetap diatur `MASTER_BOOTSTRAP.md` bagian 8 dan `06_AUTO_SETUP_TOOLS.md` bagian 2.
 
 | Path | Peran |
 |---|---|

@@ -63,6 +63,8 @@ Buat file-file berikut. Jika suatu bagian belum diketahui, tulis `UNKNOWN`, `NOT
 
 ### Wajib dibuat
 
+**Catatan penting tentang nama file di dokumen ini.** `AI_NEW_CHAT_START_HERE.md` dan `HANDOVER_MANIFEST.md` adalah **artefak yang dibuat saat migrasi**, bukan bagian dari 10 dokumen Starter Pack. Keduanya tidak ada di repository dan tidak akan ditemukan saat onboarding normal. Jangan mencarinya, dan jangan menganggapnya hilang.
+
 1. **AI_NEW_CHAT_START_HERE.md**
    - Dokumen pertama yang harus dibaca AI baru.
    - Berisi instruksi agar AI baru meminta Starter Pack dan file tambahan sendiri.
@@ -258,6 +260,8 @@ Selain dokumen, source project, asset, konfigurasi aman, database yang diperluka
 
 **USER tidak bertugas menebak dokumen yang diperlukan. AI baru bertanggung jawab membaca manifest, mengenali kekurangan, dan meminta file yang dibutuhkan.**
 
+**Jangan menempelkan identitas perangkat ke dokumen.** Hostname, UUID mesin, serial, nama akun OS, atau path absolut berisi nama pengguna tidak boleh masuk ke dokumen Starter Pack maupun paket handover. Informasi itu tidak membantu AI baru bekerja, dan berbahaya begitu dokumen dibagikan.
+
 ---
 
 # 9. Instruksi Singkat Siap Salin
@@ -273,4 +277,3 @@ Selain dokumen, source project, asset, konfigurasi aman, database yang diperluka
 ---
 
 **Akhir dokumen — PROJECT MIGRATION PROTOCOL v2.0**
-

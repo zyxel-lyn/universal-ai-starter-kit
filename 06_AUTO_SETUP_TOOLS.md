@@ -146,9 +146,36 @@ RUNTIME:
 - Date checked:
 ```
 
-### 4.2 Status Terverifikasi (Baseline Mesin Referensi)
+### 4.2 Status Terverifikasi (Mesin Penulis, BUKAN Mesin Anda)
 
-Bagian ini mencatat status yang **sudah dibuktikan pada runtime nyata**, agar sesi berikutnya tidak memverifikasi ulang dari nol. Periksa ulang hanya bila mesin, versi, atau konfigurasi berubah.
+> **Baca ini sebelum membaca tabel.**
+>
+> Tabel di bawah mencatat hasil pengujian pada **satu mesin tertentu milik penulis dokumen ini**, bukan pada mesin yang sedang Anda gunakan. Status `READY` di tabel ini **tidak berlaku** untuk runtime Anda sampai Anda memverifikasinya sendiri.
+>
+> Jika Anda melakukan onboarding di platform lain (web chat, sandbox, mesin berbeda), status jujur untuk **seluruh baris** tabel ini pada runtime Anda adalah `NOT VERIFIED`.
+
+**Identitas mesin penulis:**
+
+| Atribut | Nilai |
+|---|---|
+| Jenis | Satu laptop pribadi, Windows 11, lokal (bukan sandbox/cloud) |
+| Runtime AI | CLI agent dengan akses shell dan filesystem lokal |
+| Scope klaim | Hanya berlaku untuk mesin itu, pada tanggal yang tercatat |
+
+Hostname, UUID, dan path lengkap mesin sengaja **tidak** dicantumkan. Identitas perangkat tidak membantu AI lain bekerja, dan tidak boleh disebar bersama dokumen.
+
+**Artinya bagi Anda:**
+
+| Situasi Anda | Status yang boleh Anda klaim |
+|---|---|
+| Mesin yang sama, konfigurasi tidak berubah | Boleh mengandalkan tabel, tetap catat tanggal akses |
+| Mesin berbeda, platform sama | `NOT VERIFIED` sampai Anda memverifikasi sendiri |
+| Web chat atau sandbox tanpa akses filesystem | `NOT AVAILABLE` untuk semua aset yang butuh filesystem |
+| Versi tool berbeda dari yang tercatat | `NOT VERIFIED` sampai diuji ulang |
+
+Membaca file `scripts/stdio_mcp_client.mjs` dari GitHub **tidak** membuktikan file itu ada di filesystem Anda. Melihat dokumentasi Browser MCP **tidak** membuktikan Chrome dan daemon Anda terpasang.
+
+Tabel ini mencatat status yang **sudah dibuktikan pada runtime nyata**, agar sesi pada mesin yang sama tidak memverifikasi ulang dari nol. Periksa ulang hanya bila mesin, versi, atau konfigurasi berubah.
 
 | Aset | Status | Bukti | Diperiksa |
 |---|---|---|---|
