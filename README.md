@@ -149,7 +149,7 @@ Untuk project yang sudah berjalan dan perlu dipindahkan ke chat, AI, platform, a
 
 Struktur repository aktual adalah sumber kebenaran. AI wajib menginventarisasi ulang isi repository saat onboarding dan tidak boleh mengarang file yang tidak tersedia.
 
-### 3.1 Daftar Lengkap File (13 file)
+### 3.1 Daftar Lengkap File (14 file)
 
 Daftar ini disediakan agar AI yang **tidak dapat melihat struktur direktori** (misalnya web chat yang hanya bisa membuka URL satu per satu) tetap tahu persis file apa yang ada dan di path mana. Gunakan daftar ini sebagai rujukan; tetap verifikasi keberadaannya bila punya akses repository.
 
@@ -157,6 +157,7 @@ Daftar ini disediakan agar AI yang **tidak dapat melihat struktur direktori** (m
 
 | No | Path persis | Peran |
 |---|---|---|
+| 0 | `QUICKSTART.md` | Versi ringkas untuk AI dengan konteks terbatas (web chat). Bukan pengganti modul |
 | 1 | `README.md` | Entry point dan prosedur onboarding |
 | 2 | `MASTER_BOOTSTRAP.md` | Aturan utama, prinsip kerja, dan routing modul |
 | 3 | `01_PRODUCT_DISCOVERY.md` | Memahami masalah, kebutuhan, dan ruang lingkup produk |
@@ -181,7 +182,7 @@ Daftar ini disediakan agar AI yang **tidak dapat melihat struktur direktori** (m
 |---|---|---|
 | 13 | `scripts/stdio_mcp_client.mjs` | Driver MCP stdio generik untuk memverifikasi server shadcn dan Ant Design |
 
-**Tidak ada file lain.** Jika AI tidak menemukan salah satu dari 13 path di atas, laporkan sebagai `NOT AVAILABLE` beserta metode akses yang dicoba. Jangan menyimpulkan seluruh repository kosong hanya karena satu cara akses gagal — coba jalur alternatif (halaman file GitHub, raw URL, atau GitHub API) sebelum menyimpulkan.
+**Tidak ada file lain.** Jika AI tidak menemukan salah satu dari 14 path di atas, laporkan sebagai `NOT AVAILABLE` beserta metode akses yang dicoba. Jangan menyimpulkan seluruh repository kosong hanya karena satu cara akses gagal — coba jalur alternatif (halaman file GitHub, raw URL, atau GitHub API) sebelum menyimpulkan.
 
 **Catatan untuk akses web chat:** halaman direktori `github.com/<owner>/<repo>/tree/main` sering gagal diambil oleh fasilitas pembacaan web. Kegagalan itu **bukan** bukti file tidak ada. Gunakan URL raw langsung:
 
@@ -190,6 +191,19 @@ https://raw.githubusercontent.com/zyxel-lyn/universal-ai-starter-kit/main/<PATH>
 ```
 
 Contoh: `.../main/references/BROWSER_MCP_PROFILE.md`
+
+### 3.1.1 Kapan memakai QUICKSTART
+
+| Kondisi AI | Yang dibaca |
+|---|---|
+| Web chat (ChatGPT, Gemini) tanpa akses filesystem | `QUICKSTART.md` lebih dulu, lalu modul relevan satu per satu |
+| CLI agent dengan akses file (Hermes, Codex, Cursor, Claude Code) | `README.md` ini, lalu modul sesuai routing `MASTER_BOOTSTRAP.md` |
+| Konteks terbatas atau pembacaan sering terpotong | `QUICKSTART.md` sebagai pegangan utama |
+
+`QUICKSTART.md` memuat aturan inti, status, alur, dan pagar izin. Ia **tidak** memuat detail
+UI system, engineering standards, QA, dan continuity — untuk itu modul lengkap tetap diperlukan.
+
+Jika ada perbedaan antara `QUICKSTART.md` dan modul, **modul yang menang**.
 
 ### 3.2 Folder pendukung
 
