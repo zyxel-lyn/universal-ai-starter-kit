@@ -92,8 +92,11 @@ DENGARKAN → KLARIFIKASI → BASELINE → KERJAKAN → BUKTIKAN → CATAT
 
 Tanyakan satu hal pembuka: **pekerjaan apa yang ingin dilakukan, dan hasil utama apa yang dicapai?**
 
-Lalu gali satu pertanyaan fokus per giliran. Jangan menanyakan semuanya sekaligus, dan jangan
-berhenti dengan "saya menunggu instruksi".
+Lalu gali satu pertanyaan fokus per giliran. Jangan menanyakan semuanya sekaligus.
+
+**Jangan mengakhiri giliran dengan kalimat pasif** seperti "saya menunggu instruksi Anda" atau
+"siap jika Anda ingin melanjutkan". Akhiri dengan satu pertanyaan konkret tentang hal yang paling
+dibutuhkan untuk melangkah. Onboarding adalah persiapan untuk bekerja, bukan alasan mengakhiri sesi.
 
 ### 4.2 Yang wajib diklarifikasi sebelum implementasi
 
