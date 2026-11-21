@@ -7,6 +7,12 @@ purpose: "Pengelolaan scope, WBS, prioritas, approval, perubahan requirement, ri
 
 # 05 — Project Management
 
+> **Modul terkait:** scope dan acceptance criteria diturunkan dari `01_PRODUCT_DISCOVERY.md`;
+> bukti teknis diambil dari `04_QA_TESTING.md`; keputusan jangka panjang dicatat di
+> `DECISIONS.md` dan checkpoint di `PROJECT_STATE.md` sesuai `07_PROJECT_CONTINUITY.md`.
+> Routing lengkap ada di `MASTER_BOOTSTRAP.md`.
+
+
 Dokumen ini mengatur bagaimana project direncanakan, dibagi, diprioritaskan, disetujui, dilacak, dan diserahkan. Gunakan proses secukupnya: project kecil membutuhkan kontrol sederhana; project besar atau berisiko membutuhkan artefak dan gate yang lebih formal.
 
 ## 1. Project Management Principles

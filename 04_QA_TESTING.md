@@ -7,6 +7,12 @@ purpose: "Strategi pengujian, verifikasi, audit UX, aksesibilitas, visual, integ
 
 # 04 — QA & Testing
 
+> **Modul terkait:** requirement dan alur yang diuji berasal dari `01_PRODUCT_DISCOVERY.md`;
+> standar implementasi yang menjadi objek pengujian ada di `03_ENGINEERING_STANDARDS.md`;
+> status pekerjaan dan acceptance criteria ada di `05_PROJECT_MANAGEMENT.md`; hasil akhir dan
+> checkpoint dicatat lewat `07_PROJECT_CONTINUITY.md`. Routing lengkap ada di `MASTER_BOOTSTRAP.md`.
+
+
 Dokumen ini mengatur cara membuktikan bahwa implementasi bekerja sesuai requirement. QA bukan sekadar menjalankan satu command lalu menyebut project selesai. Pilih pemeriksaan berdasarkan risiko dan perubahan aktual, lalu laporkan bukti serta batas verifikasinya.
 
 ## 1. QA Principles

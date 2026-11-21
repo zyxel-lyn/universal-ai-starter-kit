@@ -205,6 +205,28 @@ authorization header ke log, laporan, atau chat.
 
 ---
 
+## 6.4 Artefak Project — Bukan File Repository
+
+Beberapa nama file yang sering disebut di Starter Pack **tidak ada** di repository. Itu normal:
+file berikut dibuat per project, di folder project, bukan di Starter Pack.
+
+| Artefak | Dibuat kapan | Isi |
+|---|---|---|
+| `PRODUCT.md` | Awal project | Tujuan produk, pengguna, konteks bisnis |
+| `FLOW_BASELINE.md` | Setelah discovery | Alur, role, layar, aturan bisnis yang disepakati |
+| `DESIGN.md` | Sebelum UI dikerjakan | Arah visual dan keputusan desain konkret |
+| `UI_SYSTEM.md` | UI non-trivial | Token, komponen, varian, state |
+| `DECISIONS.md` | Setiap keputusan jangka panjang | Keputusan, alasan, konsekuensi |
+| `PROJECT_STATE.md` | Setiap checkpoint | Kondisi project dan tindakan berikutnya |
+| `WBS.md` | Setelah scope disetujui | Pekerjaan, prioritas, status, acceptance criteria |
+| `QA_REPORT.md` | Setelah pengujian | Hasil uji, bukti, defect |
+| `RISK_REGISTER.md` | Bila ada risiko berarti | Risiko, dampak, mitigasi |
+| `AI_NEW_CHAT_START_HERE.md` | Saat migrasi | Entry point untuk AI baru |
+| `HANDOVER_MANIFEST.md` | Saat migrasi | Daftar dokumen dan sumber yang diserahkan |
+
+**Jangan mencari file-file ini di repository, dan jangan menganggapnya hilang.** Mereka belum
+dibuat karena project belum mulai. Buat saat tahapnya tiba, bukan di awal sebagai file kosong.
+
 ## 7. Kapan Membuka Modul Lengkap
 
 Modul ada di repository. Buka hanya yang relevan.

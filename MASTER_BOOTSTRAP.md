@@ -145,7 +145,14 @@ Setelah pemeriksaan lingkungan, modul, dan checkpoint selesai:
 
 # 3. Routing Modul Berdasarkan Pekerjaan
 
-Baca modul sesuai kebutuhan. Modul yang sudah dibaca dan masih relevan tidak perlu dibaca ulang tanpa alasan.
+**Urutan yang berlaku:** saat onboarding, `README` mewajibkan seluruh modul panduan dibaca. Aturan
+"sesuai kebutuhan" di bawah berlaku **setelah** onboarding selesai, yaitu saat mengerjakan project.
+
+Jangan memakai aturan "sesuai kebutuhan" untuk membatalkan kewajiban onboarding. Keduanya berlaku
+di fase berbeda, bukan saling membatalkan.
+
+Setelah onboarding: baca modul sesuai kebutuhan. Modul yang sudah dibaca dan masih relevan tidak
+perlu dibaca ulang tanpa alasan.
 
 | Pekerjaan | Modul utama | Modul pendukung |
 |---|---|---|
