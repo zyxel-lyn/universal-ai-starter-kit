@@ -20,8 +20,9 @@ Saat menerima link repository ini, lakukan seluruh langkah berikut sebelum memul
 2. Periksa file dan folder Markdown yang benar-benar tersedia. Jangan mengandalkan daftar file yang diingat atau inventaris statis.
 3. Baca README terlebih dahulu.
 4. Setelah README, **wajib** baca seluruh modul panduan di root. Jumlahnya 9 modul panduan lain (README sendiri adalah entry point, bukan modul yang dibaca ulang), sehingga total dokumen inti adalah 10 file. Daftar path persisnya ada di bagian 3.1. Ini cukup untuk memahami sistem kerja Starter Pack.
-5. `references/` dan `scripts/` adalah pendukung, bukan modul panduan. Saat onboarding cukup catat keberadaannya. Jangan menuntaskan keduanya lebih dulu, dan jangan menganggapnya hilang bila tidak dibaca.
-6. Catat nama file, fungsi, dan status pembacaannya agar tidak ada dokumen yang terlewat.
+5. **Jika Anda AI di web chat dengan konteks terbatas** (ChatGPT, Gemini, atau pembacaan yang sering terpotong), mulai dari `QUICKSTART.md` lebih dulu. File itu memuat aturan inti dalam bentuk ringkas dan tidak akan terpotong. Setelah itu baca modul lengkap satu per satu sesuai kebutuhan. Lihat bagian 3.1.1.
+6. `references/` dan `scripts/` adalah pendukung, bukan modul panduan. Saat onboarding cukup catat keberadaannya. Jangan menuntaskan keduanya lebih dulu, dan jangan menganggapnya hilang bila tidak dibaca.
+7. Catat nama file, fungsi, dan status pembacaannya agar tidak ada dokumen yang terlewat.
 
 ### 1.2 Baca seluruh isi sampai selesai
 
@@ -130,6 +131,35 @@ Jangan membuat atau mengubah project sebelum tujuan dan ruang lingkup awal dipah
 
 4. Setelah onboarding, AI harus menjalankan discovery secara bertahap dan aktif: gali tujuan, lanjutkan pertanyaan berdasarkan jawaban, serta pastikan lokasi Local/GitHub bila project perlu diakses atau dibuat.
 5. Lokasi project dan izin pemeriksaan harus dikonfirmasi secara terpisah; jangan membaca atau mengubah project sebelum izin yang sesuai diberikan.
+
+### Instruksi onboarding untuk AI di web chat
+
+Instruksi di atas dirancang untuk AI yang bisa membaca repository secara utuh. AI di web chat
+(ChatGPT, Gemini) memotong isi halaman ~12-20%, sehingga sering berakhir dengan banyak
+`PARTIAL READ` dan mengira ada aturan yang hilang.
+
+Untuk kondisi itu, ganti langkah membaca dengan instruksi berikut:
+
+> Ini adalah Universal AI Development Starter Pack: https://github.com/zyxel-lyn/universal-ai-starter-kit
+>
+> Mulai dengan membaca file ini sampai selesai:
+> https://raw.githubusercontent.com/zyxel-lyn/universal-ai-starter-kit/main/QUICKSTART.md
+>
+> File itu memuat aturan inti, status yang wajib dipakai, alur kerja, pagar izin, dan kapan membuka
+> modul lengkap. Untuk sesi onboarding ini, cukup file itu.
+>
+> Jika respons pembacaan Anda terpotong (tanda `...`, dokumen berhenti di tengah, atau jumlah baris
+> lebih sedikit dari metadata GitHub), gunakan status `PARTIAL READ` dan sebutkan bagian mana yang
+> belum terbaca. Jangan menyimpulkan bagian yang tidak terlihat sebagai tidak ada.
+>
+> Setelah membaca, laporkan: berapa baris yang Anda terima versus yang dilaporkan GitHub, status
+> pembacaan, dan pemahaman Anda atas aturan yang mengikat. Lalu mulai Product Discovery secara aktif:
+> tanyakan project/pekerjaan apa yang ingin dilakukan dan hasil utamanya, satu pertanyaan fokus per
+> giliran. Pastikan target Local atau GitHub sebelum membuat artefak apa pun. Lokasi bukan izin:
+> minta izin read-only secara terpisah.
+
+Modul lengkap tetap dibuka satu per satu ketika pekerjaan membutuhkannya, sesuai tabel di
+`QUICKSTART.md` bagian 7.
 
 ### Jika AI benar-benar tidak dapat mengakses repository
 
