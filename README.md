@@ -121,6 +121,14 @@ Untuk project yang sudah berjalan dan perlu dipindahkan ke chat, AI, platform, a
 
 Struktur repository aktual adalah sumber kebenaran. AI wajib menginventarisasi ulang isi repository saat onboarding dan tidak boleh mengarang file yang tidak tersedia.
 
+Repository ini juga memuat `scripts/`, berisi helper yang dipanggil modul 06:
+
+| Path | Peran |
+|---|---|
+| `scripts/stdio_mcp_client.mjs` | Driver MCP stdio generik untuk memverifikasi server seperti shadcn dan Ant Design |
+
+Perintah yang menyebut path di `scripts/` boleh dijalankan karena file-nya benar-benar ada di repository ini.
+
 Secara konseptual, dokumen dikelompokkan sebagai berikut:
 
 | Dokumen | Peran |

@@ -304,8 +304,7 @@ Artefak yang dapat digunakan:
 - `DECISIONS.md` — keputusan penting, status, alasan, konsekuensi.
 - `PROJECT_STATE.md` — kondisi proyek saat ini dan tindakan berikutnya.
 - `WBS.md` — pekerjaan, prioritas, dependensi, status, dan acceptance criteria.
-- Graphify outputs — bukti pemetaan struktur jika tersedia.
-- Codebase Memory index — graph retrieval lokal jika MCP tersebut tersedia dan index masih fresh.
+- Graphify outputs atau Codebase Memory index — bukti pemetaan struktur, sesuai `RETRIEVAL:` yang dicatat di `DECISIONS.md` (penentu: `03_ENGINEERING_STANDARDS.md` bagian 12). Jangan memelihara keduanya sekaligus.
 
 Setiap artefak memiliki fungsi berbeda. Hindari menyalin penjelasan panjang yang sama ke banyak file.
 

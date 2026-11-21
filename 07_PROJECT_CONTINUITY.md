@@ -73,7 +73,7 @@ Pilih artefak berdasarkan kebutuhan. Untuk project web/app non-trivial, struktur
 | `WBS.md` | Work breakdown, dependency, milestone, status |
 | `QA_REPORT.md` | Test plan, hasil, defect, evidence, acceptance |
 | `RELEASE_NOTES.md` | Perubahan rilis, known limitations, rollback/handoff |
-| `GRAPH_REPORT.md` | Ringkasan graph struktural jika Graphify digunakan |
+| `GRAPH_REPORT.md` | Ringkasan graph struktural. **Hanya ada bila `RETRIEVAL=graphify`** sesuai `03` bagian 12 |
 
 Dokumen tambahan hanya dibuat jika memberikan nilai nyata, misalnya architecture decision record, API contract, data dictionary, threat model, migration map, atau operational runbook.
 
@@ -90,7 +90,7 @@ project/
 ├── WBS.md
 ├── QA_REPORT.md
 ├── RELEASE_NOTES.md
-├── graphify-out/
+├── graphify-out/          # hanya bila RETRIEVAL=graphify
 │   ├── GRAPH_REPORT.md
 │   ├── graph.json
 │   └── graph.html
@@ -477,10 +477,10 @@ Untuk memindahkan project ke percakapan ChatGPT Web baru, lampirkan artefak yang
 06 DECISIONS.md
 07 WBS.md
 08 QA_REPORT.md                 # jika QA sedang berlangsung/relevan
-09 graphify-out/GRAPH_REPORT.md # bila Graphify digunakan
+09 graphify-out/GRAPH_REPORT.md # hanya bila RETRIEVAL=graphify
 10 component workbench + screenshots/visual evidence yang relevan
 11 source files yang diperlukan untuk next task saja
-12 graphify-out/graph.json      # opsional untuk traversal lebih dalam
+12 graphify-out/graph.json      # opsional, hanya bila RETRIEVAL=graphify
 ```
 
 Urutan ini adalah prioritas baca, bukan kewajiban mengirim seluruh file. Jika file tidak ada atau tidak relevan, jangan membuat salinan kosong hanya untuk memenuhi daftar.
@@ -591,14 +591,21 @@ Evidence lama dapat menjadi referensi historis, tetapi tidak boleh disajikan seb
 
 ## 15. Graphify and Structural Context
 
-Gunakan Graphify, Codebase Memory MCP, atau keduanya sesuai pilihan yang dicatat di `PROJECT_STATE.md` jika membantu menavigasi hubungan antar-file, simbol, route, component, atau dependency.
+Alat retrieval mana yang dipakai ditentukan oleh **`03_ENGINEERING_STANDARDS.md` bagian 12**. Jangan memutuskan ulang di sini; bagian ini hanya mengatur sisi continuity-nya.
 
-Bila menggunakan Codebase Memory:
+Yang perlu dicatat dalam checkpoint continuity:
 
-- catat project yang terindeks dan commit checkpoint-nya,
-- periksa status index dan coverage sebelum mengandalkan hasil,
-- tandai index `STALE` setelah perubahan struktural signifikan,
-- perlakukan `delete_project` sebagai operasi destruktif terhadap index: sebutkan target dan minta persetujuan spesifik.
+- keputusan `RETRIEVAL:` sudah tercatat di `DECISIONS.md`, termasuk bila nilainya `none`,
+- untuk Codebase Memory: nama project yang terindeks dan commit checkpoint-nya,
+- status kesegaran (`FRESH` / `STALE`) beserta alasan bila ditandai stale,
+- untuk Graphify: commit sumber dan waktu graph dibuat.
+
+Aturan pemeliharaan:
+
+- tandai `STALE` setelah perubahan struktural signifikan, sebelum graph/index dipakai untuk menyimpulkan apa pun,
+- refresh hanya bila manfaatnya melebihi biaya; sebutkan biayanya bila diminta,
+- `delete_project` pada Codebase Memory adalah operasi destruktif terhadap index: sebutkan target dan minta persetujuan spesifik,
+- bila berpindah alat, tandai yang lama `SUPERSEDED` di `DECISIONS.md` agar tidak ada dua kebenaran.
 
 - Catat commit/source checkpoint yang menjadi dasar graph.
 - Tandai graph STALE setelah perubahan struktural signifikan.

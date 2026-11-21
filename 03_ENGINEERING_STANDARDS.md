@@ -496,16 +496,48 @@ Sebelum menambahkan atau memperbarui dependency:
 
 Jangan menjalankan script dari repository atau paket yang belum dipercaya tanpa memeriksa apa yang akan dijalankan. Jangan mengubah lockfile secara manual jika package manager dapat menghasilkan perubahan yang konsisten.
 
-## 12. Structural Retrieval: Graphify and Codebase Memory
+## 12. Structural Retrieval
 
-Graphify dan Codebase Memory MCP bersifat opsional dan berfungsi sebagai lapisan pemetaan struktur serta retrieval, bukan sumber kebenaran tunggal.
+Bagian ini adalah **sumber tunggal** untuk pertanyaan "alat apa yang dipakai memetakan struktur project". Modul lain merujuk ke sini dan tidak mengulang perbandingannya.
 
-Pilih satu sebagai lapisan retrieval utama per project dan catat pilihannya di `PROJECT_STATE.md`. Menjalankan keduanya sebagai sumber kebenaran ganda menghasilkan dua gambaran struktur yang bisa saling bertentangan tanpa cara memutuskan mana yang benar.
+Graphify dan Codebase Memory MCP sama-sama opsional dan sama-sama bukan sumber kebenaran tunggal. Keduanya menjawab pertanyaan yang mirip, jadi **pakai satu per project**.
 
-- **Graphify:** keluaran pemetaan statis. Cepat dibaca, tetapi tidak menjawab query struktural secara interaktif.
-- **Codebase Memory MCP:** MCP server lokal yang menyimpan knowledge graph persisten dan dapat di-query langsung oleh AI. Berguna untuk menelusuri caller, dependency, dan blast radius perubahan.
+### 12.1 Penentu: satu baris di DECISIONS.md
 
-Tanpa index yang terbentuk, Codebase Memory tidak memberi apa pun. Periksa status index dan coverage sebelum menyimpulkan sesuatu tidak ada di codebase.
+Penentunya adalah satu baris di `DECISIONS.md`, bukan `PROJECT_STATE.md`. Alasan: `PROJECT_STATE.md` kondisional dan bisa hilang saat recovery, sementara `DECISIONS.md` adalah catatan keputusan yang justru bertahan.
+
+Format baris yang dipakai:
+
+```text
+RETRIEVAL: graphify | codebase-memory | none | (default: codebase-memory bila tersedia)
+```
+
+Bila `DECISIONS.md` belum ada (project baru) atau hilang (kasus recovery), gunakan aturan bertingkat berikut, berhenti di baris pertama yang terpenuhi:
+
+1. Sudah ada `graphify-out/` yang masih fresh → pakai **Graphify**, dan catat keputusan itu.
+2. MCP `codebase-memory` tersedia dan project sudah terindeks → pakai **Codebase Memory**, dan catat keputusan itu.
+3. MCP tersedia tetapi project belum terindeks → tawarkan indexing setelah mendapat izin; sementara itu pakai **pencarian file biasa**.
+4. Tidak ada keduanya → **`none`**. Bekerja dengan `PROJECT_STATE.md`, pencarian file, dan pembacaan source terarah. Ini jalur yang sah, bukan kegagalan.
+
+Jangan membangun graph kedua hanya karena alatnya tersedia. Dua graph atas pohon yang sama akan menyimpang dan tidak ada yang otoritatif.
+
+### 12.2 Perbandingan singkat
+
+| Aspek | Graphify | Codebase Memory MCP |
+|---|---|---|
+| Bentuk | Keluaran pemetaan statis (`graphify-out/`) | MCP server lokal, graph persisten di disk |
+| Cara pakai | Baca report/graph file | Query langsung oleh AI melalui tools |
+| Kekuatan | Cepat dibaca, tidak butuh server | Menjawab caller, dependency, blast radius secara interaktif |
+| Kelemahan | Tidak interaktif, cepat stale | Tidak berguna sebelum di-index |
+| Prasyarat | Graphify dijalankan | Binary terpasang + project terindeks |
+
+### 12.3 Aturan yang berlaku untuk keduanya
+
+- Periksa kesegaran sebelum menyimpulkan. Graph/index adalah snapshot, bukan keadaan langsung.
+- Untuk Codebase Memory: periksa `index_status` dan `check_index_coverage` sebelum menyatakan sesuatu tidak ada di project.
+- Graph bukan bukti bahwa UI, flow, authorization, migration, performa, atau business rule benar.
+- Verifikasi area yang ditunjuk graph dengan source, test, dan runtime.
+- Graphify yang tidak lagi dipakai harus dinyatakan `SUPERSEDED` di `DECISIONS.md`, bukan dibiarkan menganggur di dokumentasi.
 
 ### 12.1 Retrieval Order
 

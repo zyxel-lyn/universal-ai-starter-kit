@@ -271,6 +271,10 @@ Skill adalah sumber keahlian spesialis. URL atau nama skill dalam dokumen bukan 
 
 ## 5.1 Candidate External Skills
 
+> **Sumber tunggal.** Daftar ini adalah satu-satunya daftar kandidat skill eksternal di Starter Pack. Modul `06` merujuk ke sini dan hanya menambahkan apa yang khusus tentang instalasi, bukan mengulang nama dan jumlahnya. Jika sebuah skill ditambahkan atau dihapus, ubah di sini lebih dulu.
+
+Kandidat di bawah adalah **referensi**, bukan dependensi. Pencantuman tidak berarti skill terpasang, dan tidak berarti wajib dipakai.
+
 Daftar kandidat yang tercantum dalam sumber:
 - UI UX Pro Max: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
 - Taste Skill: https://github.com/leonxlnx/taste-skill
@@ -284,6 +288,8 @@ Daftar kandidat yang tercantum dalam sumber:
 - Vercel Composition Patterns: https://github.com/vercel-labs/agent-skills/tree/main/skills/composition-patterns
 - Vercel open Agent Skills CLI/ecosystem: https://github.com/vercel-labs/skills
 - Anti Slop (paket enam skill): https://github.com/miqdadbadjuber/anti-slop
+
+Catatan komposisi: entri `Vercel React Best Practices`, `Vercel Composition Patterns`, dan `Vercel Web Design Guidelines` adalah tiga sub-skill dari satu paket `vercel-labs/agent-skills`, bukan tiga paket terpisah. Saat menghitung jumlah skill terpasang, hitung paketnya, bukan barisnya. Anti Slop juga satu paket berisi enam skill dengan alasan yang sama.
 
 **Critical Skill Rule:** sebelum menyatakan skill digunakan:
 - pastikan skill terpasang/tersedia, atau

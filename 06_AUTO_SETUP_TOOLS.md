@@ -146,6 +146,29 @@ RUNTIME:
 - Date checked:
 ```
 
+### 4.2 Status Terverifikasi (Baseline Mesin Referensi)
+
+Bagian ini mencatat status yang **sudah dibuktikan pada runtime nyata**, agar sesi berikutnya tidak memverifikasi ulang dari nol. Periksa ulang hanya bila mesin, versi, atau konfigurasi berubah.
+
+| Aset | Status | Bukti | Diperiksa |
+|---|---|---|---|
+| Codebase Memory MCP | `READY` | binary `codebase-memory-mcp` v0.12.1 di PATH; 19 tool MCP aktif (`mcp__codebase_memory__*`); `list_projects` mengembalikan 4 project terindeks | 21 Nov 2026 |
+| Anti Slop | `READY` | 6 folder skill di `~/.config/.../skills/` (`antislop`, `-ui`, `-human`, `-code`, `-copywriting`, `-layoutmobile`) | 21 Nov 2026 |
+| `scripts/stdio_mcp_client.mjs` | `READY` | handshake ke `@ant-design/cli mcp` berhasil: serverInfo `antd` v6.7.1, 8 tools | 21 Nov 2026 |
+| shadcn MCP | `NOT VERIFIED` | belum dijalankan pada mesin ini | — |
+| Ant Design MCP | `PARTIAL` | terverifikasi lewat driver stdio, belum didaftarkan sebagai MCP native | 21 Nov 2026 |
+| Browser MCP | `READY` | tool `browser` tersedia pada runtime | 21 Nov 2026 |
+| Anti Slop mode | `NOT SET` | `~/.config/antislop/settings.json` belum ada; mode belum disimpan | 21 Nov 2026 |
+
+Cara membaca tabel ini:
+
+- `READY` berarti sudah dijalankan dan hasilnya teramati, bukan hanya tercantum di dokumentasi.
+- Entri dengan tanggal `—` berarti **belum pernah diuji**. Jangan menaikkan statusnya tanpa bukti baru.
+- Status di sini menggambarkan mesin referensi. Runtime lain harus diverifikasi sendiri.
+- Bila versi berubah, status kembali ke `NOT VERIFIED` sampai diuji ulang.
+
+Jangan mengubah tabel ini menjadi klaim. Setiap kenaikan status membutuhkan satu baris bukti yang bisa diperiksa ulang.
+
 ## 5. AUTO-SETUP Workflow
 
 Lakukan langkah berikut secara berurutan. Langkah yang tidak relevan atau tidak dapat dijangkau harus diberi status yang jujur, bukan dipaksakan.
@@ -210,9 +233,11 @@ Verifikasi handshake dan jumlah tool aktual. Jangan menganggap versi/tool count 
 
 **Peran:** MCP server lokal yang membangun knowledge graph persisten dari source code, dokumentasi, konfigurasi, dan infrastructure project. Dipakai untuk menemukan simbol, menelusuri caller/dependency, menilai blast radius perubahan, dan mengambil snippet source secara terarah.
 
-**Hubungan dengan Graphify:** CBM dan Graphify adalah dua alat berbeda untuk tujuan serupa. CBM adalah MCP server yang query-nya dijalankan langsung oleh AI; Graphify adalah keluaran pemetaan statis. Pilih salah satu sebagai lapisan retrieval utama per project, jangan menjalankan keduanya sebagai sumber kebenaran ganda. Bila keduanya ada, `PROJECT_STATE.md` harus mencatat mana yang dipakai.
+**Hubungan dengan Graphify:** keputusan alat retrieval mana yang dipakai ditentukan oleh `03_ENGINEERING_STANDARDS.md` bagian 12, dan dicatat sebagai satu baris `RETRIEVAL:` di `DECISIONS.md`. Modul ini tidak memutuskan ulang; ia hanya memasang CBM dan mencatat statusnya. Jangan menjalankan Graphify dan CBM sebagai sumber kebenaran ganda.
 
 **Sumber dan lisensi:** https://github.com/DeusData/codebase-memory-mcp (MIT). Runtime native, tanpa Docker dan tanpa API key. Index disimpan lokal pada mesin user.
+
+**Status pada mesin referensi:** `READY`, v0.12.1, 4 project terindeks. Lihat tabel status di bagian 4.2. Bila mesin atau versi berbeda, verifikasi ulang sebelum mengandalkan status itu.
 
 **Windows (PowerShell):**
 
@@ -241,7 +266,10 @@ Unduh-lalu-jalankan lebih diutamakan daripada `curl | bash` bila koneksi atau is
 
 **Verifikasi:**
 
-1. Periksa binary tersedia dan dapat dipanggil dari shell aktif.
+1. Periksa binary tersedia dan dapat dipanggil dari shell aktif:
+   ```powershell
+   codebase-memory-mcp --version
+   ```
 2. Inventarisasi konfigurasi MCP yang ditulis installer (pada Hermes: `$HERMES_HOME/config.yaml`). Installer menulis konfigurasi untuk client yang terdeteksi; jangan membuat entri duplikat.
 3. Restart runtime/agent sebelum mengklaim tool aktif.
 4. Index satu project uji secara terarah, lalu periksa status index dan coverage-nya.
@@ -270,25 +298,11 @@ Profil teknis dan prosedur deploy terdapat pada Bagian 12.
 
 ### Step 5 — Skill Eksternal yang Memerlukan Persetujuan
 
-Daftar berikut adalah referensi kandidat skill yang dapat dievaluasi jika relevan. Pencantuman dalam daftar bukan persetujuan untuk mengunduh, memasang, atau mengaktifkannya. Setiap instalasi memerlukan persetujuan eksplisit pengguna setelah aset, sumber, versi, lokasi, dan dampaknya dijelaskan.
+Daftar kandidat skill eksternal **tidak diulang di sini**. Sumber tunggalnya adalah `02_UI_UX_SYSTEM.md` bagian 5.1. Modul ini hanya mengatur cara memasang, memverifikasi, dan mencatat statusnya.
 
-| # | Skill | Repository |
-|---|---|---|
-| 1 | UI UX Pro Max | https://github.com/nextlevelbuilder/ui-ux-pro-max-skill |
-| 2 | Taste Skill | https://github.com/leonxlnx/taste-skill |
-| 3 | Impeccable | https://github.com/pbakaus/impeccable |
-| 4 | Emil Kowalski Skills | https://github.com/emilkowalski/skills |
-| 5 | UX/UI Agent Skills | https://github.com/plugin87/ux-ui-agent-skills |
-| 6 | UI Craft | https://github.com/educlopez/ui-craft |
-| 7 | Apple Design Skill | https://github.com/dickwu/apple-design-skill |
-| 8 | Vercel Agent Skills | https://github.com/vercel-labs/agent-skills |
-| 9 | Anti Slop | https://github.com/miqdadbadjuber/anti-slop |
+Pencantuman dalam daftar kandidat bukan persetujuan untuk mengunduh, memasang, atau mengaktifkannya. Setiap instalasi memerlukan persetujuan eksplisit pengguna setelah aset, sumber, versi, lokasi, dan dampaknya dijelaskan.
 
-Vercel Agent Skills memuat sub-skill yang relevan:
-
-- Web Design Guidelines
-- React Best Practices
-- Composition Patterns
+Beberapa kandidat adalah paket berisi banyak skill (Vercel Agent Skills, Anti Slop). Saat melaporkan status, hitung paket yang terpasang, bukan jumlah file `SKILL.md`.
 
 ### Prosedur khusus Anti Slop
 
@@ -334,7 +348,15 @@ Verifikasi:
 3. Skill yang baru dipasang belum terdaftar pada sesi yang sedang berjalan; restart/reload runtime sebelum mengklaim aktif.
 4. Catat versi/npm release dan tanggal pasang.
 
-Mode kerja Anti Slop ditanyakan sekali di awal sesi: `during` (diterapkan sambil menulis) atau `after` (audit setelah selesai). Preferensi dapat disimpan melalui `npx antislop-ai --mode during`. Jangan mengubah preferensi tersimpan pengguna tanpa instruksi eksplisit.
+Mode kerja Anti Slop ditanyakan sekali di awal sesi: `during` (diterapkan sambil menulis) atau `after` (audit setelah selesai).
+
+**Default Starter Pack: `during`.** Alasannya praktis: `during` mencegah slop muncul dan menghindari pekerjaan ulang, sementara `after` selalu berarti satu putaran audit tambahan. Simpan sebagai preferensi agar tidak ditanyakan berulang di setiap sesi:
+
+```bash
+npx antislop-ai --mode during
+```
+
+Bila preferensi belum tersimpan, tanyakan sekali, gunakan `during` sebagai usulan, lalu tawarkan menyimpannya. Jangan mengubah preferensi tersimpan pengguna tanpa instruksi eksplisit.
 
 Batasan yang wajib dijaga:
 
@@ -954,9 +976,16 @@ Perlakukan sebagai migrasi:
 
 ## 17. Appendix A — Generic stdio MCP Driver
 
-Gunakan driver berikut hanya bila runtime tidak memiliki MCP native yang sesuai dan dapat menjalankan server stdio. Pastikan package/server tepercaya dan command-nya telah ditinjau.
+Gunakan driver ini hanya bila runtime tidak memiliki MCP native yang sesuai dan dapat menjalankan server stdio. Pastikan package/server tepercaya dan command-nya telah ditinjau.
 
-Simpan sebagai `scripts/stdio_mcp_client.mjs` hanya bila memang dibutuhkan dan belum tersedia.
+**File ini sudah tersedia di repository** pada `scripts/stdio_mcp_client.mjs`. Jangan membuat ulang. Blok di bawah adalah salinan rujukan untuk audit isi, bukan instruksi untuk menulis file baru ke workspace project.
+
+Kedua command pada Step 1 dan Step 2 memakai driver ini dan **sudah diuji jalan** pada mesin Windows: handshake ke `@ant-design/cli mcp` mengembalikan serverInfo `antd` versi 6.7.1 dengan 8 tools.
+
+Catatan kompatibilitas yang sudah diperbaiki di file tersebut:
+
+- Pada Windows, `npx`, `npm`, dan `node` adalah shim `.cmd`. `spawn()` tidak melewati `PATHEXT`, sehingga nama tanpa ekstensi gagal dengan `ENOENT`. Driver sekarang meresolve command bare melalui shell hanya pada Windows.
+- Jika proses gagal di-spawn, driver langsung menolak request yang menunggu alih-alih menggantung sampai timeout habis. Kegagalan dilaporkan dalam hitungan milidetik.
 
 ```javascript
 #!/usr/bin/env node
@@ -1123,7 +1152,7 @@ main();
 
 Catatan:
 
-- Driver ini adalah helper generik, bukan pengganti penuh runtime MCP.
+- Driver ini adalah helper generik, bukan pengganti penuh runtime MCP. Lokasi resminya `scripts/stdio_mcp_client.mjs` di repository Starter Pack.
 - Pemecahan command menjadi executable/args memiliki batas untuk quoting kompleks. Untuk command kompleks gunakan konfigurasi argumen eksplisit dan terstruktur, bukan shell parsing yang lebih permisif.
 - Periksa apakah protocol version masih didukung server aktual. Perbarui berdasarkan dokumentasi server, bukan menebak.
 - Gunakan hanya tool yang memang diperlukan. Jangan jalankan tool mutasi hanya untuk mengetes koneksi.
