@@ -123,6 +123,30 @@ Lakukan ketika requirement ambigu, interaksi kompleks, atau automation belum ter
 
 Manual test bukan alasan untuk mengklaim seluruh kombinasi telah diuji.
 
+### Bukti minimum saat tidak ada test otomatis
+
+Sebagian project — terutama yang dikerjakan sendiri sambil belajar — tidak punya test suite.
+Dokumen ini tetap menuntut bukti, jadi bukti minimal harus didefinisikan. Tanpa definisi,
+AI hanya punya dua pilihan buruk: mengklaim "sudah dicek" (dilarang) atau menulis
+"belum terverifikasi" untuk semuanya sehingga QA tidak berguna.
+
+Untuk setiap klaim perilaku, bukti minimum yang sah adalah:
+
+| Yang diklaim | Bukti minimum |
+|---|---|
+| Layar tampil | Tangkapan layar atau deskripsi lokasi yang bisa diperiksa ulang |
+| Aksi berhasil | Langkah reproduksi + hasil yang teramati, bukan "berfungsi" |
+| Validasi menolak input | Input yang dicoba + pesan/dampak yang muncul |
+| Akses role dibatasi | Akun/peran yang dipakai + apa yang terlihat, dan apa yang tidak |
+| Alur utama selesai | Urutan langkah dari masuk sampai hasil akhir |
+
+Aturan pelaporan:
+
+- Tulis `VERIFIED — <bukti apa>` atau `NOT VERIFIED — <alasan>` per butir. Jangan gabungkan.
+- Cantumkan apa yang **tidak** diuji. Daftar kosong mencurigakan untuk pengujian manual.
+- Satu kali mencoba bukan bukti seluruh kombinasi. Sebutkan cakupan yang benar-benar dicoba.
+- Tangkapan layar tanpa keterangan bukan bukti bahwa perilaku benar; sebutkan apa yang dibuktikannya.
+
 ## 4. Test Design
 
 ### 4.1 Derive Tests from Acceptance Criteria

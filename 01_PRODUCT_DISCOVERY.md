@@ -175,6 +175,8 @@ Tanyakan hanya preferensi produk yang belum jelas, misalnya:
 
 Rekomendasi UI awal boleh diberikan sebelum semua detail selesai, tetapi harus diberi label **PROVISIONAL**. Jangan mengunci UI system sebelum flow produk cukup stabil.
 
+**Sebelum komponen UI pertama ditulis:** pastikan `DESIGN.md` sudah ada dan memuat keputusan visual konkret. Bila belum ada, buat lebih dulu mengikuti `02_UI_UX_SYSTEM.md` bagian 6.2. Jawaban seperti "modern" atau "bersih" belum memenuhi syarat sebagai arah; lihat prosedur mengubah permintaan kabur di bagian 6.2.2.
+
 ## Gate H — Delivery & WBS
 
 Ubah flow produk yang telah dikonfirmasi menjadi beberapa fase implementasi dengan:
@@ -185,6 +187,42 @@ Ubah flow produk yang telah dikonfirmasi menjadi beberapa fase implementasi deng
 - acceptance criteria yang dapat diuji.
 
 Jangan memulai implementasi besar sebelum baseline yang relevan disetujui.
+
+## Gate I — Kapasitas dan Konflik Scope
+
+Gate ini **wajib** dilewati sebelum WBS dikunci, dan wajib diangkat bila ada tanda berikut:
+
+- client menyebut batas waktu yang ketat,
+- client mengerjakan sendiri atau sedang belajar,
+- tidak ada anggaran,
+- permintaan mencakup lebih dari satu peran pengguna sekaligus.
+
+Tanyakan dan catat empat hal:
+
+1. **Waktu yang benar-benar tersedia** per minggu, bukan hanya tenggat akhir.
+2. **Kemampuan yang sudah dikuasai** dan yang belum, karena itu menentukan biaya tiap fitur.
+3. **Siapa yang mengerjakan** — satu orang, tim, atau ada bantuan.
+4. **Apa yang boleh dikorbankan** bila waktu tidak cukup.
+
+Lalu lakukan pemeriksaan kewajaran: bandingkan kebutuhan yang sudah `CONFIRMED` dengan kapasitas
+yang dinyatakan. Jika scope jelas melebihi kapasitas, **jangan memotong sendiri.**
+
+Sampaikan hasilnya sebagai satu keputusan terbuka, dengan tiga pilihan:
+
+```text
+Scope saat ini diperkirakan melebihi kapasitas yang Anda sebutkan.
+Pilih salah satu:
+A. Kurangi scope — saya usulkan mana yang ditunda, Anda setujui.
+B. Perpanjang waktu — sebutkan tenggat baru yang realistis.
+C. Tambah tenaga atau alat — sebutkan bentuknya.
+```
+
+Aturan yang mengikat:
+
+- Pemotongan scope **selalu** keputusan client, dicatat di `DECISIONS.md` sebagai `CONFIRMED`.
+- Jangan diam-diam membuang fitur lalu menyebutnya "MVP". Itu mengarang keputusan.
+- Jangan pula menerima seluruh scope lalu gagal di tengah tanpa pernah menyebut risikonya.
+- Bila client memilih A, sebutkan fitur yang ditunda secara eksplisit dan apa yang hilang tanpanya.
 
 ---
 

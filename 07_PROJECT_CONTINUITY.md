@@ -589,6 +589,33 @@ Tandai evidence STALE bila:
 
 Evidence lama dapat menjadi referensi historis, tetapi tidak boleh disajikan sebagai verifikasi terbaru.
 
+## 14.9 Project Baru Tanpa Repository
+
+Beberapa field di dokumen ini mengasumsikan adanya commit: `Version/commit`, `Source commit`,
+`Last verified commit`. Untuk project baru, commit belum ada saat checkpoint pertama ditulis.
+
+Aturan untuk kondisi ini:
+
+1. Catat status repository secara eksplisit: `REPOSITORY: NONE` selama belum diinisialisasi.
+2. Tulis field commit sebagai `NONE — belum ada repository`, bukan dikosongkan. Field kosong
+   ambigu antara "belum ada" dan "lupa dicatat".
+3. Inisialisasi repository **hanya dengan persetujuan client**, karena membuat repository
+   dan melakukan commit adalah tindakan yang mengubah kondisi project.
+
+Jika client menyetujui, urutan yang aman:
+
+```bash
+git init
+git add -A
+git commit -m "chore: initial scaffold"
+```
+
+Setelah commit pertama ada, ganti `REPOSITORY: NONE` dengan hash commit tersebut di
+`PROJECT_STATE.md`, sehingga checkpoint berikutnya punya titik pembanding.
+
+Jangan membuat commit pertama diam-diam. Jangan pula menunda inisialisasi lalu terus menulis
+`NONE` sepanjang project — itu membuat riwayat perubahan tidak bisa ditelusuri saat dibutuhkan.
+
 ## 15. Graphify and Structural Context
 
 Alat retrieval mana yang dipakai ditentukan oleh **`03_ENGINEERING_STANDARDS.md` bagian 12**. Jangan memutuskan ulang di sini; bagian ini hanya mengatur sisi continuity-nya.

@@ -521,7 +521,32 @@ Hindari hard-coded colors yang tersebar di komponen.
 
 ## 6.2 Design Truth Files
 
-Jika akses repository tersedia, pelihara sesuai kebutuhan:
+### 6.2.1 Kapan file ini WAJIB dibuat
+
+Bedakan dua kondisi, karena kewajibannya berbeda:
+
+| Kondisi | Kewajiban |
+|---|---|
+| `DESIGN.md` **sudah ada** | Pelihara dan perbarui; jangan mengarang ulang |
+| `DESIGN.md` **belum ada**, UI akan dikerjakan | **Buat sebelum komponen pertama ditulis** |
+| `DESIGN.md` belum ada, pekerjaan bukan UI | Tidak wajib |
+
+Untuk UI yang akan diserahkan ke client, `DESIGN.md` **bukan opsional**. Tanpa file itu, Anti Slop
+tidak punya arah untuk dipatuhi, dan hasilnya wajib disebut draft.
+
+**Isi minimum `DESIGN.md`** bila baru dibuat:
+
+- tujuan visual dalam satu paragraf (bukan daftar kata sifat),
+- minimal tiga keputusan visual konkret yang mengikat: tipografi, skala spasi, dan satu batasan
+  yang membedakan produk ini dari template (misalnya bahasa bentuk, cara memakai warna, atau
+  kepadatan informasi),
+- apa yang secara sengaja **tidak** dipakai,
+- rujukan yang disukai dan yang ditolak, bila client menyebutkannya.
+
+Jangan mengisi `DESIGN.md` dengan kata seperti "modern, bersih, minimalis" tanpa keputusan konkret.
+Itu bukan arah, dan tidak memenuhi syarat sebagai prasyarat.
+
+Jika akses repository tersedia, pelihara file berikut sesuai kebutuhan:
 - `PRODUCT.md` — product truth dan pengguna.
 - `DESIGN.md` — visual language, token philosophy, composition rules.
 - `UI_SYSTEM.md` — component registry, variants, states, interaction contracts, dan preview/workbench status untuk UI non-trivial. Proyek kecil boleh menaruhnya sebagai bagian khusus di `DESIGN.md`.
@@ -530,6 +555,27 @@ Jika akses repository tersedia, pelihara sesuai kebutuhan:
 - `WBS.md` — work breakdown dan gates.
 
 `DESIGN.md` bukan pelengkap opsional bila Anti Slop dipakai. Anti Slop menghapus slop tetapi tidak mengisi arah; tanpa `DESIGN.md` hasilnya steril dan wajib disebut draft. Untuk UI yang akan diserahkan ke client, `DESIGN.md` adalah prasyarat.
+
+### 6.2.2 Mengubah permintaan kabur menjadi arah
+
+Client sering hanya berkata "modern", "bersih", "profesional", atau "seperti startup". Itu bukan arah.
+Jangan menerjemahkannya sendiri, dan jangan menyerahkannya ke selera AI.
+
+Ajukan pertanyaan yang memaksa keputusan konkret. Cukup dua atau tiga, jangan seluruh daftar:
+
+1. **Pembanding:** sebutkan satu situs/produk yang tampilannya paling mendekati, dan satu yang paling tidak disukai. Alasan tidak perlu.
+2. **Batasan:** mana yang lebih penting, terlihat padat-informatif atau lapang-dan-tenang?
+3. **Warna:** apakah ada warna yang wajib dipakai atau wajib dihindari, misalnya karena logo atau kemasan?
+4. **Tone:** formal-korporat, hangat-personal, atau teknis-tegas?
+
+Setelah jawaban masuk, tulis hasilnya ke `DESIGN.md` sebagai keputusan, bukan sebagai kata sifat.
+Contoh yang memenuhi syarat: *"Tipografi sans-serif dengan tinggi baris longgar; dua warna selain
+netral; sudut tajam tanpa radius; kepadatan rendah."* Contoh yang tidak memenuhi syarat:
+*"modern dan minimalis."*
+
+Bila client menolak menjawab atau tidak punya preferensi, tulis di `DESIGN.md` bahwa arah ditetapkan
+oleh AI sebagai usulan, tandai `PROPOSED BY AI`, dan sebutkan konsekuensinya: hasil dapat diganti
+setelah client melihat versi pertama.
 
 Jangan menduplikasi penjelasan panjang yang sama di banyak file. Setiap dokumen memiliki tugas berbeda.
 
