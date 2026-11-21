@@ -19,7 +19,7 @@ Saat menerima link repository ini, lakukan seluruh langkah berikut sebelum memul
 1. Identifikasi owner, nama repository, branch, dan struktur repository dari link yang diberikan.
 2. Periksa file dan folder Markdown yang benar-benar tersedia. Jangan mengandalkan daftar file yang diingat atau inventaris statis.
 3. Baca README terlebih dahulu.
-4. Setelah README, **wajib** baca seluruh 10 modul panduan di root. Ini cukup untuk memahami sistem kerja Starter Pack.
+4. Setelah README, **wajib** baca seluruh 10 modul panduan di root. Daftar path persisnya ada di bagian 3.1. Ini cukup untuk memahami sistem kerja Starter Pack.
 5. `references/` dan `scripts/` adalah pendukung, bukan modul panduan. Saat onboarding cukup catat keberadaannya. Jangan menuntaskan keduanya lebih dulu, dan jangan menganggapnya hilang bila tidak dibaca.
 6. Catat nama file, fungsi, dan status pembacaannya agar tidak ada dokumen yang terlewat.
 
@@ -122,45 +122,61 @@ Untuk project yang sudah berjalan dan perlu dipindahkan ke chat, AI, platform, a
 
 Struktur repository aktual adalah sumber kebenaran. AI wajib menginventarisasi ulang isi repository saat onboarding dan tidak boleh mengarang file yang tidak tersedia.
 
-Repository ini memuat dua folder pendukung di luar dokumen panduan. Keduanya bukan artefak project; jangan menyalinnya ke project baru.
+### 3.1 Daftar Lengkap File (13 file)
 
-### `scripts/`
+Daftar ini disediakan agar AI yang **tidak dapat melihat struktur direktori** (misalnya web chat yang hanya bisa membuka URL satu per satu) tetap tahu persis file apa yang ada dan di path mana. Gunakan daftar ini sebagai rujukan; tetap verifikasi keberadaannya bila punya akses repository.
 
-Helper yang benar-benar dieksekusi.
+**10 modul panduan** (wajib dibaca saat onboarding) — semuanya di root repository:
+
+| No | Path persis | Peran |
+|---|---|---|
+| 1 | `README.md` | Entry point dan prosedur onboarding |
+| 2 | `MASTER_BOOTSTRAP.md` | Aturan utama, prinsip kerja, dan routing modul |
+| 3 | `01_PRODUCT_DISCOVERY.md` | Memahami masalah, kebutuhan, dan ruang lingkup produk |
+| 4 | `02_UI_UX_SYSTEM.md` | Proses desain UI/UX dan konsistensi sistem visual |
+| 5 | `03_ENGINEERING_STANDARDS.md` | Standar teknis dan implementasi engineering |
+| 6 | `04_QA_TESTING.md` | Strategi verifikasi, pengujian, dan pelaporan kualitas |
+| 7 | `05_PROJECT_MANAGEMENT.md` | Perencanaan, pelacakan, dan pengelolaan pekerjaan |
+| 8 | `06_AUTO_SETUP_TOOLS.md` | Evaluasi dan penyiapan tools dengan persetujuan pengguna |
+| 9 | `07_PROJECT_CONTINUITY.md` | Menjaga konteks, keputusan, dan kesinambungan project |
+| 10 | `PROJECT_MIGRATION_PROTOCOL.md` | Handover dan migrasi project antar lingkungan kerja |
+
+**2 file referensi** (bacaan pendukung, bukan modul panduan):
+
+| No | Path persis | Isi |
+|---|---|---|
+| 11 | `references/STDIO_MCP_DRIVER.md` | Salinan driver stdio dan contoh browser test plan |
+| 12 | `references/BROWSER_MCP_PROFILE.md` | Profil teknis Browser MCP |
+
+**1 file skrip** (alat yang dieksekusi, bukan bacaan):
+
+| No | Path persis | Peran |
+|---|---|---|
+| 13 | `scripts/stdio_mcp_client.mjs` | Driver MCP stdio generik untuk memverifikasi server shadcn dan Ant Design |
+
+**Tidak ada file lain.** Jika AI tidak menemukan salah satu dari 13 path di atas, laporkan sebagai `NOT AVAILABLE` beserta metode akses yang dicoba. Jangan menyimpulkan seluruh repository kosong hanya karena satu cara akses gagal — coba jalur alternatif (halaman file GitHub, raw URL, atau GitHub API) sebelum menyimpulkan.
+
+**Catatan untuk akses web chat:** halaman direktori `github.com/<owner>/<repo>/tree/main` sering gagal diambil oleh fasilitas pembacaan web. Kegagalan itu **bukan** bukti file tidak ada. Gunakan URL raw langsung:
+
+```text
+https://raw.githubusercontent.com/zyxel-lyn/universal-ai-starter-kit/main/<PATH>
+```
+
+Contoh: `.../main/references/BROWSER_MCP_PROFILE.md`
+
+### 3.2 Folder pendukung
+
+Kedua folder berikut bukan artefak project; jangan menyalinnya ke project baru.
+
+`scripts/` berisi helper yang benar-benar dieksekusi.
 
 **Perintah ini hanya membaca (read-only).** `stdio_mcp_client.mjs` melakukan handshake MCP lalu meminta daftar tool; ia tidak memasang, mengubah, atau menghapus apa pun. Keberadaan file ini **bukan** izin untuk instalasi, perubahan konfigurasi, atau modifikasi sistem. Persetujuan untuk itu tetap diatur `MASTER_BOOTSTRAP.md` bagian 8 dan `06_AUTO_SETUP_TOOLS.md` bagian 2.
 
-| Path | Peran |
-|---|---|
-| `scripts/stdio_mcp_client.mjs` | Driver MCP stdio generik untuk memverifikasi server seperti shadcn dan Ant Design |
-
-### `references/`
-
-Bacaan pendukung yang dipisahkan dari modul utama agar modul tetap ringkas saat dibaca di awal sesi. Baca hanya bila tugas memang membutuhkannya.
-
-| Path | Isi |
-|---|---|
-| `references/STDIO_MCP_DRIVER.md` | Salinan driver stdio dan contoh browser test plan |
-| `references/BROWSER_MCP_PROFILE.md` | Profil teknis Browser MCP |
+`references/` berisi bacaan pendukung yang dipisahkan dari modul utama agar modul tetap ringkas saat dibaca di awal sesi.
 
 Perbedaan keduanya: `scripts/` adalah alat yang dijalankan, `references/` adalah bacaan. Materi yang sudah dipindahkan ke `references/` tidak perlu dibaca rutin.
 
-Secara konseptual, dokumen dikelompokkan sebagai berikut:
-
-| Dokumen | Peran |
-|---|---|
-| `README.md` | Entry point dan prosedur onboarding |
-| `MASTER_BOOTSTRAP.md` | Aturan utama, prinsip kerja, dan routing modul |
-| `01_PRODUCT_DISCOVERY.md` | Memahami masalah, kebutuhan, dan ruang lingkup produk |
-| `02_UI_UX_SYSTEM.md` | Proses desain UI/UX dan konsistensi sistem visual |
-| `03_ENGINEERING_STANDARDS.md` | Standar teknis dan implementasi engineering |
-| `04_QA_TESTING.md` | Strategi verifikasi, pengujian, dan pelaporan kualitas |
-| `05_PROJECT_MANAGEMENT.md` | Perencanaan, pelacakan, dan pengelolaan pekerjaan |
-| `06_AUTO_SETUP_TOOLS.md` | Evaluasi dan penyiapan tools dengan persetujuan pengguna (MCP shadcn/Ant Design/Codebase Memory/Browser, skill termasuk Anti Slop) |
-| `07_PROJECT_CONTINUITY.md` | Menjaga konteks, keputusan, dan kesinambungan project |
-| `PROJECT_MIGRATION_PROTOCOL.md` | Handover dan migrasi project antar lingkungan kerja |
-
-Tabel ini menjelaskan peran yang diharapkan, bukan pengganti pemeriksaan file aktual. Jika nama atau struktur file di repository berubah, ikuti kondisi repository yang sebenarnya dan laporkan perbedaannya.
+Daftar path lengkap, peran, dan cara mengaksesnya sudah ada di bagian 3.1 di atas.
 
 ---
 
