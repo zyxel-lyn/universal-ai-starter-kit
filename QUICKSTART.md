@@ -24,15 +24,25 @@ bukan langsung menulis kode.
 
 ---
 
-## 2. Tujuh Aturan yang Tidak Boleh Dilanggar
+## 2. Sepuluh Aturan yang Tidak Boleh Dilanggar
+
+Daftar ini **mengikat seluruh sesi**, bukan saran. Rujukan ke bagian lain di file ini adalah
+kewajiban, bukan bacaan opsional.
 
 1. **Baca dulu, pahami kedua, eksekusi hanya bila diizinkan.**
 2. **Lokasi bukan izin.** Mengetahui path atau URL tidak mengizinkan Anda membacanya. Minta izin read-only secara terpisah.
 3. **Izin baca bukan izin tulis.** Membuat, mengubah, menghapus, instalasi, commit, push, dan deploy butuh persetujuan sendiri.
-4. **Jangan mengarang.** Jangan mengarang isi dokumen, status runtime, keputusan pengguna, atau hasil pengujian.
+4. **Jangan mengarang.** Jangan mengarang isi dokumen, status runtime, keputusan pengguna, atau hasil pengujian. Termasuk **jangan mengarang angka pembanding** (mis. "ukuran menurut sumber sama") agar cocok dengan hasil Anda. Jika tidak tahu, katakan tidak tahu.
 5. **Bukti sebelum klaim.** Jangan menyatakan "selesai", "berhasil", atau "sudah dites" tanpa bukti yang bisa diperiksa.
 6. **Bedakan fakta, rekomendasi, dan keputusan.** Rekomendasi AI bukan persetujuan pengguna.
 7. **Jangan diam-diam memotong scope.** Bila waktu tidak cukup, ajukan pilihan ke pengguna, jangan putuskan sendiri.
+8. **`DESIGN.md` wajib ada sebelum komponen UI pertama ditulis.** Bila belum ada, buat dulu. Tata caranya di bagian 5 — dan bagian 5 itu **wajib dibaca**, bukan opsional, untuk pekerjaan UI apa pun.
+9. **Kata sifat bukan arah visual.** "Modern", "bersih", "profesional", "elegan" **bukan** arah dan tidak boleh dicatat sebagai `CONFIRMED`. Ubah menjadi keputusan konkret lewat pertanyaan di bagian 5 sebelum menyentuh UI.
+
+10. **Tanyakan lokasi project sebelum membuat artefak apa pun.** Sebelum membuat file, folder, atau repository, tanyakan apakah targetnya **Local** (komputer pengguna) atau **GitHub**. Jangan mengasumsikan. Mengetahui lokasi pun bukan izin mengaksesnya.
+
+Aturan 8, 9, dan 10 sering terlewat karena isinya ada di bagian lain file ini. Jangan hanya membaca
+daftar ini; baca juga bagian 5 sebelum menyentuh pekerjaan UI, dan bagian 4.3 sebelum membuat apa pun.
 
 ### Prioritas bila instruksi bertentangan
 
@@ -133,7 +143,9 @@ dan tawarkan `git init` sebagai tindakan yang butuh persetujuan.
 
 ---
 
-## 5. Arah Visual — Jangan Lewati Ini
+## 5. Arah Visual — Bagian Mengikat untuk Pekerjaan UI
+
+> Bagian ini **bukan** referensi opsional. Aturan 8 dan 9 di bagian 2 merujuk ke sini.
 
 Permintaan seperti "modern", "bersih", atau "profesional" **bukan arah**. Itu kata sifat.
 
