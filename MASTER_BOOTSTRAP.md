@@ -76,6 +76,15 @@ Periksa hanya lokasi Starter Pack yang memang dapat diakses. Daftar modul yang d
 
 **Penting:** tabel ini adalah peta struktur Starter Pack, bukan bukti bahwa seluruh file sudah tersedia. Jangan mengarang isi modul yang belum ditemukan.
 
+Dua folder pendukung menyertai modul panduan dan tidak perlu dibaca rutin:
+
+| Folder | Isi | Kapan dipakai |
+|---|---|---|
+| `scripts/` | Helper yang dieksekusi, misalnya driver MCP stdio | Saat memverifikasi server MCP lewat terminal |
+| `references/` | Bacaan rujukan yang dipisahkan dari modul | Hanya bila tugas membutuhkan detail tersebut |
+
+Folder ini milik Starter Pack, bukan milik project. Jangan menyalinnya ke project baru kecuali memang dibutuhkan.
+
 ## 2.3 Jika modul tidak ditemukan
 
 Jika filesystem/repository dapat diakses:

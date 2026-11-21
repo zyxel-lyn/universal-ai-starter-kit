@@ -121,13 +121,26 @@ Untuk project yang sudah berjalan dan perlu dipindahkan ke chat, AI, platform, a
 
 Struktur repository aktual adalah sumber kebenaran. AI wajib menginventarisasi ulang isi repository saat onboarding dan tidak boleh mengarang file yang tidak tersedia.
 
-Repository ini juga memuat `scripts/`, berisi helper yang dipanggil modul 06:
+Repository ini memuat dua folder pendukung di luar dokumen panduan. Keduanya bukan artefak project; jangan menyalinnya ke project baru.
+
+### `scripts/`
+
+Helper yang benar-benar dieksekusi. Perintah di dokumen yang menyebut path ini boleh dijalankan.
 
 | Path | Peran |
 |---|---|
 | `scripts/stdio_mcp_client.mjs` | Driver MCP stdio generik untuk memverifikasi server seperti shadcn dan Ant Design |
 
-Perintah yang menyebut path di `scripts/` boleh dijalankan karena file-nya benar-benar ada di repository ini.
+### `references/`
+
+Bacaan pendukung yang dipisahkan dari modul utama agar modul tetap ringkas saat dibaca di awal sesi. Baca hanya bila tugas memang membutuhkannya.
+
+| Path | Isi |
+|---|---|
+| `references/STDIO_MCP_DRIVER.md` | Salinan driver stdio dan contoh browser test plan |
+| `references/BROWSER_MCP_PROFILE.md` | Profil teknis Browser MCP |
+
+Perbedaan keduanya: `scripts/` adalah alat yang dijalankan, `references/` adalah bacaan. Materi yang sudah dipindahkan ke `references/` tidak perlu dibaca rutin.
 
 Secara konseptual, dokumen dikelompokkan sebagai berikut:
 

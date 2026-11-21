@@ -197,7 +197,7 @@ Ekspektasi baseline: serverInfo `shadcn`, sekitar 7 tools.
 
 Verifikasi:
 
-1. Pastikan driver tersedia; bila tidak, gunakan Appendix A pada modul ini untuk membuatnya.
+1. Pastikan driver tersedia di `scripts/stdio_mcp_client.mjs`. Bila file itu tidak ada, salin dari `references/STDIO_MCP_DRIVER.md` bagian A.
 2. Jalankan command dengan timeout yang cukup untuk unduhan pertama.
 3. Catat serverInfo dan jumlah tools aktual.
 4. Tandai `READY` hanya jika handshake dan daftar tools berhasil.
@@ -294,7 +294,7 @@ Browser MCP hanya dapat digunakan bila runtime memiliki jalur nyata ke mesin use
 - Jangan mengklaim dapat mengontrol Chrome user dari cloud bila tidak ada jalur koneksi yang terverifikasi.
 - Bila tidak tersedia, gunakan browser/runtime testing alternatif yang tersedia.
 
-Profil teknis dan prosedur deploy terdapat pada Bagian 12.
+Profil teknis dan prosedur deploy ada di `references/BROWSER_MCP_PROFILE.md`.
 
 ### Step 5 — Skill Eksternal yang Memerlukan Persetujuan
 
@@ -698,122 +698,25 @@ Jika runtime menyediakan MCP native:
 
 Gunakan driver stdio bila runtime tidak menyediakan koneksi native tetapi terminal dapat menjalankan server stdio.
 
-Codebase Memory MCP adalah binary native, bukan server `npx` per sesi. Jalankan melalui konfigurasi MCP yang ditulis installer, bukan melalui driver generik di Appendix A, kecuali runtime benar-benar hanya mendukung stdio manual.
+Codebase Memory MCP adalah binary native, bukan server `npx` per sesi. Jalankan melalui konfigurasi MCP yang ditulis installer, bukan melalui driver generik di `references/STDIO_MCP_DRIVER.md` bagian A, kecuali runtime benar-benar hanya mendukung stdio manual.
 
 ## 12. Browser MCP Profile
 
-### 12.1 Arsitektur
+Detail teknis Browser MCP (arsitektur, tool, pairing, status, kit deployment) dipindahkan ke file referensi:
 
-Profil Browser MCP yang tercatat di source:
+**`references/BROWSER_MCP_PROFILE.md`**
 
-- Browser: Chrome asli pada mesin user.
-- Extension: browser extension.
-- Server: npm package `@browsermcp/mcp`.
-- Entry point: `dist/index.js`.
-- Daemon: proses terpisah pada `ws://127.0.0.1:9010..9012`.
-- Home daemon: `~/.browsermcp`.
-- Windows home: `C:\Users\<user>\.browsermcp`.
-- Metadata/log: `daemon.json`, `daemon.log`.
+Baca file itu **hanya** ketika tugas membutuhkan pengujian di Chrome asli pada mesin pengguna.
 
-Port dan struktur ini adalah profil baseline yang pernah diuji, bukan jaminan semua versi menggunakan detail yang sama.
+Ringkasan yang cukup untuk sebagian besar pekerjaan:
 
-### 12.2 Tool and Command Model
+- Browser MCP mengendalikan Chrome pengguna melalui extension dan daemon lokal pada `ws://127.0.0.1:9010..9012`.
+- Butuh jalur nyata ke mesin pengguna. Runtime sandbox atau cloud tanpa akses ke mesin itu berstatus `NOT AVAILABLE`.
+- Pairing dilakukan lewat popup extension dengan kode 6 digit. Kode pairing berotasi dan tidak boleh masuk laporan.
+- Setelah sesi selesai, daemon tidak dijamin tetap hidup. Verifikasi sebelum mengandalkan.
 
-Tool utama: `browser`, input berupa `{ commands }`.
+---
 
-Command yang tercatat:
-
-- `goto <url>`
-- `snapshot -i`
-- `click --text <text>`
-- `wait --text <text>`
-- `fill --text <text> --value <value>`
-- `press --text <text> --key <key>`
-- `eval --code <js>`
-- `get title`
-- `get url`
-- `get text`
-- `console --errors`
-- `requests --filter <filter>`
-- `screenshot --full --path <path>`
-- `browser list`
-- `help`
-
-Gunakan command sesuai versi aktual. Jangan menganggap daftar command di atas selalu lengkap.
-
-### 12.3 Pairing
-
-Pola pairing pada profil:
-
-1. jalankan probe/daemon,
-2. buka popup extension Chrome,
-3. masukkan kode pairing 6 digit,
-4. user klik **Allow**,
-5. periksa koneksi melalui command sederhana.
-
-Kode pairing berotasi antar sesi daemon. Jangan menyimpan atau menampilkan pairing secret dalam report/checkpoint.
-
-Verifikasi awal yang ringan dapat menggunakan `browser list`. Bila extension belum terpasang/terhubung, tool seharusnya mengembalikan petunjuk pairing terbaru.
-
-### 12.4 Status and Shutdown
-
-Endpoint profil yang tercatat:
-
-- status: `GET http://127.0.0.1:<port>/browsermcp/status`
-- shutdown: `POST /shutdown?token=<token>`
-
-Token shutdown berada di metadata daemon. Jangan memasukkannya ke chat, log, atau laporan. Hentikan daemon hanya sesuai kebutuhan dan setelah memastikan proses target yang benar.
-
-### 12.5 Runtime Availability
-
-- Runtime lokal yang sama dengan Chrome/mesin user: dapat menggunakan stdio server bila package, extension, pairing, dan akses tersedia.
-- Runtime sandbox/cloud tanpa akses shell/file ke mesin user: `NOT AVAILABLE`.
-- Browser automation alternatif milik runtime dapat digunakan bila Browser MCP tidak tersedia.
-
-### 12.6 Kit Deployment Pattern
-
-Struktur konseptual kit:
-
-**Agent side**
-- `push_bmcp_kit.py`: orchestrator deploy/run/status.
-- `eval-uji.py`: evaluator assertions + console noise filter.
-- `plan-rute-uji.json`: sequence test plan.
-- `pull_out.py`: retrieve result without rerunning plan.
-
-**User machine**
-- `bmcp.mjs`: driver probe/plan.
-- `package.json`: dependency declarations.
-- `node_modules/@browsermcp/mcp`: installed dependency.
-
-Prosedur dasar bila kit memang dibutuhkan:
-
-1. pastikan target folder kit benar,
-2. kirim file driver dan package metadata,
-3. install dependency di folder kit,
-4. jalankan probe,
-5. minta user melakukan pairing melalui extension,
-6. susun test plan dari routes dan expected behavior aktual,
-7. jalankan plan,
-8. tarik hasil,
-9. evaluasi assertion berdasarkan source project dan acceptance criteria,
-10. laporkan hasil beserta evidence.
-
-Jangan deploy kit hanya karena profile ini tersedia. Gunakan ketika tugas membutuhkan browser asli dan runtime memiliki jalur akses ke mesin user.
-
-### 12.7 Browser Test Plan Pattern
-
-Pola per route:
-
-```text
-goto {base}<route>
-snapshot -i
-get title
-console --errors
-```
-
-Tambahkan aksi interaksi sesuai acceptance criteria. Jangan menganggap title atau console bersih cukup untuk membuktikan seluruh flow berhasil.
-
-Aserti harus diturunkan dari source, route, requirement, dan acceptance criteria project. Filter noise console hanya bila kategorinya dipahami dan tidak menyembunyikan error nyata.
 
 ## 13. Custom Tool Map
 
@@ -974,214 +877,23 @@ Perlakukan sebagai migrasi:
 
 > Identifikasi platform dan workspace aktif. Baca bootstrap dan checkpoint project terbaru. Gunakan ulang file/configuration yang sudah tersedia. Jangan meminta client mengulang informasi yang sudah dikonfirmasi. Jalankan AUTO-SETUP secara idempoten, tanpa duplikasi. Jangan mengulang full audit kecuali evidence stale, kontradiktif, berisiko, atau tidak cukup. Bila artefak tidak dapat diakses, diagnosis scope, path, permission, dan runtime sebelum mengusulkan transfer.
 
-## 17. Appendix A — Generic stdio MCP Driver
+## 17. Referensi Pendukung
 
-Gunakan driver ini hanya bila runtime tidak memiliki MCP native yang sesuai dan dapat menjalankan server stdio. Pastikan package/server tepercaya dan command-nya telah ditinjau.
+Dua bagian rujukan dipisahkan dari modul ini agar tetap ringkas saat dibaca di awal sesi:
 
-**File ini sudah tersedia di repository** pada `scripts/stdio_mcp_client.mjs`. Jangan membuat ulang. Blok di bawah adalah salinan rujukan untuk audit isi, bukan instruksi untuk menulis file baru ke workspace project.
+| File | Isi | Baca ketika |
+|---|---|---|
+| `references/STDIO_MCP_DRIVER.md` | Salinan driver MCP stdio generik dan contoh browser test plan | Memverifikasi server MCP lewat terminal, atau menyusun test plan browser |
+| `references/BROWSER_MCP_PROFILE.md` | Profil teknis Browser MCP | Tugas membutuhkan Chrome asli pada mesin pengguna |
 
-Kedua command pada Step 1 dan Step 2 memakai driver ini dan **sudah diuji jalan** pada mesin Windows: handshake ke `@ant-design/cli mcp` mengembalikan serverInfo `antd` versi 6.7.1 dengan 8 tools.
+Driver yang dibahas di referensi tersebut **sudah ada sebagai file nyata**: `scripts/stdio_mcp_client.mjs`. Jangan membuat ulang. Bagian kode di referensi adalah salinan untuk audit isi.
 
-Catatan kompatibilitas yang sudah diperbaiki di file tersebut:
+Kedua command verifikasi pada Step 1 dan Step 2 memakai driver itu dan sudah diuji jalan pada Windows. Catatan kompatibilitasnya ada di `references/STDIO_MCP_DRIVER.md` bagian A.
 
-- Pada Windows, `npx`, `npm`, dan `node` adalah shim `.cmd`. `spawn()` tidak melewati `PATHEXT`, sehingga nama tanpa ekstensi gagal dengan `ENOENT`. Driver sekarang meresolve command bare melalui shell hanya pada Windows.
-- Jika proses gagal di-spawn, driver langsung menolak request yang menunggu alih-alih menggantung sampai timeout habis. Kegagalan dilaporkan dalam hitungan milidetik.
+---
 
-```javascript
-#!/usr/bin/env node
-/**
- * Generic MCP stdio driver for servers such as shadcn and Ant Design.
- * Requires Node.js 18+.
- *
- * Examples:
- *   node stdio_mcp_client.mjs --server "npx -y shadcn@latest mcp" --list
- *   node stdio_mcp_client.mjs --server "npx -y @ant-design/cli mcp" --list
- *   node stdio_mcp_client.mjs --server "npx -y shadcn@latest mcp" \
- *     --call <tool> --args '{"foo":"bar"}'
- */
-import { spawn } from "node:child_process";
 
-const args = process.argv.slice(2);
-
-function getOpt(name, fallback = null) {
-  const index = args.indexOf(name);
-  return index >= 0 && args[index + 1] ? args[index + 1] : fallback;
-}
-
-const serverCommand = getOpt("--server");
-const listTools = args.includes("--list");
-const toolName = getOpt("--call");
-const rawToolArgs = getOpt("--args", "{}");
-const timeoutMs = Number.parseInt(getOpt("--timeout", "90000"), 10);
-
-if (!serverCommand || (!listTools && !toolName)) {
-  console.error(
-    'Usage: --server "<command>" --list OR --server "<command>" --call <tool> --args \'{"json":true}\''
-  );
-  process.exit(1);
-}
-
-if (!Number.isFinite(timeoutMs) || timeoutMs < 1000) {
-  console.error("[FATAL] Invalid timeout");
-  process.exit(1);
-}
-
-const parts = serverCommand.match(/(?:[^\s"]+|"[^"]*")+/g) ?? [];
-const executable = parts.shift()?.replace(/^"|"$/g, "");
-const commandArgs = parts.map((part) => part.replace(/^"|"$/g, ""));
-
-if (!executable) {
-  console.error("[FATAL] Empty server command");
-  process.exit(1);
-}
-
-const child = spawn(executable, commandArgs, {
-  stdio: ["pipe", "pipe", "inherit"],
-  windowsHide: true,
-});
-
-let buffer = "";
-let nextId = 0;
-const pending = new Map();
-
-function send(message) {
-  child.stdin.write(JSON.stringify(message) + "\n");
-}
-
-function request(method, params) {
-  return new Promise((resolve, reject) => {
-    const id = ++nextId;
-    const timer = setTimeout(() => {
-      pending.delete(id);
-      reject(new Error(`Timeout waiting for ${method} (id=${id})`));
-    }, timeoutMs);
-
-    pending.set(id, { resolve, reject, timer });
-    send({ jsonrpc: "2.0", id, method, params });
-  });
-}
-
-child.stdout.on("data", (chunk) => {
-  buffer += chunk.toString("utf8");
-  let index;
-
-  while ((index = buffer.indexOf("\n")) >= 0) {
-    const line = buffer.slice(0, index).trim();
-    buffer = buffer.slice(index + 1);
-    if (!line) continue;
-
-    let message;
-    try {
-      message = JSON.parse(line);
-    } catch {
-      continue;
-    }
-
-    if (message.id !== undefined && pending.has(message.id)) {
-      const item = pending.get(message.id);
-      clearTimeout(item.timer);
-      pending.delete(message.id);
-
-      if (message.error) item.reject(new Error(JSON.stringify(message.error)));
-      else item.resolve(message.result);
-    }
-  }
-});
-
-child.on("exit", (code) => {
-  for (const item of pending.values()) {
-    clearTimeout(item.timer);
-    item.reject(new Error(`Server exited with code ${code}`));
-  }
-  pending.clear();
-});
-
-async function main() {
-  try {
-    const init = await request("initialize", {
-      protocolVersion: "2025-06-18",
-      capabilities: {},
-      clientInfo: { name: "stdio-mcp-driver", version: "1.0.0" },
-    });
-
-    console.error(`[init] server: ${JSON.stringify(init?.serverInfo)}`);
-    send({ jsonrpc: "2.0", method: "notifications/initialized" });
-
-    if (listTools) {
-      const result = await request("tools/list", {});
-      const tools = result?.tools ?? [];
-      console.log(`total tools: ${tools.length}`);
-
-      for (const tool of tools) {
-        const description = (tool.description ?? "")
-          .replace(/\n/g, " ")
-          .slice(0, 120);
-        console.log(`- ${tool.name}: ${description}`);
-      }
-    } else {
-      let parsedArgs;
-      try {
-        parsedArgs = JSON.parse(rawToolArgs);
-      } catch {
-        throw new Error("--args is not valid JSON");
-      }
-
-      const result = await request("tools/call", {
-        name: toolName,
-        arguments: parsedArgs,
-      });
-      console.log(JSON.stringify(result, null, 2));
-    }
-
-    child.kill();
-    process.exit(0);
-  } catch (error) {
-    console.error(`[FAILED] ${error.message}`);
-    child.kill();
-    process.exit(2);
-  }
-}
-
-child.on("error", (error) => {
-  console.error(`[SPAWN FAILED] ${error.message}`);
-  process.exitCode = 2;
-});
-
-main();
-```
-
-Catatan:
-
-- Driver ini adalah helper generik, bukan pengganti penuh runtime MCP. Lokasi resminya `scripts/stdio_mcp_client.mjs` di repository Starter Pack.
-- Pemecahan command menjadi executable/args memiliki batas untuk quoting kompleks. Untuk command kompleks gunakan konfigurasi argumen eksplisit dan terstruktur, bukan shell parsing yang lebih permisif.
-- Periksa apakah protocol version masih didukung server aktual. Perbarui berdasarkan dokumentasi server, bukan menebak.
-- Gunakan hanya tool yang memang diperlukan. Jangan jalankan tool mutasi hanya untuk mengetes koneksi.
-
-## 18. Appendix B — Browser MCP Test Plan Example
-
-Template berikut bersifat ilustratif. Isi route dan assertions dari source project aktual.
-
-```json
-{
-  "name": "browser-smoke-test",
-  "base": "{base}",
-  "steps": [
-    {
-      "name": "open-home",
-      "commands": [
-        "goto {base}/",
-        "snapshot -i",
-        "get title",
-        "console --errors"
-      ]
-    }
-  ]
-}
-```
-
-Satu route yang terbuka bukan bukti seluruh aplikasi lolos QA. Hubungkan setiap step dengan acceptance criteria dan test report.
-
-## 19. Final Operating Rules
+## 18. Final Operating Rules
 
 1. AUTO-SETUP bersifat idempoten dan terbatas pada daftar yang disetujui.
 2. Runtime aktual selalu lebih tinggi daripada catatan historis.
