@@ -19,7 +19,7 @@ Saat menerima link repository ini, lakukan seluruh langkah berikut sebelum memul
 1. Identifikasi owner, nama repository, branch, dan struktur repository dari link yang diberikan.
 2. Periksa file dan folder Markdown yang benar-benar tersedia. Jangan mengandalkan daftar file yang diingat atau inventaris statis.
 3. Baca README terlebih dahulu.
-4. Setelah README, **wajib** baca seluruh 10 modul panduan di root. Daftar path persisnya ada di bagian 3.1. Ini cukup untuk memahami sistem kerja Starter Pack.
+4. Setelah README, **wajib** baca seluruh modul panduan di root. Jumlahnya 9 modul panduan lain (README sendiri adalah entry point, bukan modul yang dibaca ulang), sehingga total dokumen inti adalah 10 file. Daftar path persisnya ada di bagian 3.1. Ini cukup untuk memahami sistem kerja Starter Pack.
 5. `references/` dan `scripts/` adalah pendukung, bukan modul panduan. Saat onboarding cukup catat keberadaannya. Jangan menuntaskan keduanya lebih dulu, dan jangan menganggapnya hilang bila tidak dibaca.
 6. Catat nama file, fungsi, dan status pembacaannya agar tidak ada dokumen yang terlewat.
 

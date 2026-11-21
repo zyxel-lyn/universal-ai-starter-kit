@@ -844,7 +844,7 @@ Gunakan checklist ini secara adaptif:
 [ ] 5. Verifikasi Codebase Memory MCP; pastikan index status dan coverage
        dibaca sebelum mengandalkan hasil graph.
 [ ] 6. Verifikasi Browser MCP jika tugas dan akses mesin user relevan.
-[ ] 7. Periksa sembilan repository skill yang disetujui; hindari duplikasi.
+[ ] 7. Periksa kandidat skill sesuai daftar sumber tunggal di `02_UI_UX_SYSTEM.md` bagian 5.1. Semua kandidat, bukan skill yang sudah disetujui otomatis. Jangan memasang tanpa persetujuan eksplisit.
 [ ] 8. Verifikasi Anti Slop terpasang dan mode (during/after) diketahui.
 [ ] 9. Inventaris skill platform yang benar-benar tersedia/enabled.
 [ ] 10. Catat version, commit, status, dan evidence.

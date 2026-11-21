@@ -539,7 +539,7 @@ Jangan membangun graph kedua hanya karena alatnya tersedia. Dua graph atas pohon
 - Verifikasi area yang ditunjuk graph dengan source, test, dan runtime.
 - Graphify yang tidak lagi dipakai harus dinyatakan `SUPERSEDED` di `DECISIONS.md`, bukan dibiarkan menganggur di dokumentasi.
 
-### 12.1 Retrieval Order
+### 12.4 Retrieval Order
 
 Untuk project berjalan:
 
@@ -552,7 +552,7 @@ Untuk project berjalan:
 
 Jangan membaca seluruh repository berulang kali jika state dan graph masih fresh.
 
-### 12.2 Freshness
+### 12.5 Freshness
 
 Anggap graph berpotensi stale jika:
 
@@ -564,7 +564,7 @@ Anggap graph berpotensi stale jika:
 
 Refresh graph sebelum membuat kesimpulan struktural yang bergantung padanya.
 
-### 12.3 Graph Is Not Proof
+### 12.6 Graph Is Not Proof
 
 Graphify tidak membuktikan:
 
@@ -578,7 +578,7 @@ Graphify tidak membuktikan:
 
 Gunakan graph untuk menentukan tempat yang perlu diperiksa. Gunakan test, runtime, audit, dan bukti visual untuk membuktikan perilaku.
 
-### 12.4 Audit Scope
+### 12.7 Audit Scope
 
 Pilih scope paling kecil yang cukup:
 
