@@ -31,6 +31,28 @@ Saat menerima link repository ini, lakukan seluruh langkah berikut sebelum memul
 - Jangan menganggap respons yang terpotong sebagai kegagalan akses.
 - **Jangan meminta ZIP, lampiran, atau unggahan ulang hanya karena batas panjang respons.** Lanjutkan pembacaan secara bertahap.
 
+#### Mendeteksi pembacaan yang terpotong
+
+Alat pembaca web dan web chat sering **memotong isi halaman tanpa memberi tahu**. Ini penyebab kesalahan paling umum saat onboarding: bagian yang terpotong dianggap tidak ada, lalu AI menyimpulkan sebuah aturan, tabel, atau file hilang dari repository.
+
+Tanda pembacaan Anda terpotong:
+
+- Ada penanda `...`, `[...]`, `truncated`, atau `omitted` di tengah teks.
+- Jumlah baris yang Anda terima **lebih sedikit** dari yang dilaporkan GitHub pada file yang sama.
+- Dokumen berhenti mendadak di tengah kalimat, tabel, atau blok kode.
+- Ada lompatan nomor section (misalnya dari `## 3` langsung ke `## 5`).
+
+Jika salah satu tanda di atas muncul:
+
+1. **Jangan** menyimpulkan bagian yang tidak terlihat sebagai tidak ada.
+2. Ambil ulang file itu dengan rentang baris eksplisit, atau buka URL raw langsung.
+3. Bandingkan jumlah baris yang Anda peroleh dengan metadata file di GitHub.
+4. Bila tetap tidak lengkap, laporkan sebagai **pembacaan sebagian**, bukan sebagai file hilang.
+
+Status yang benar untuk kasus ini adalah `PARTIAL READ`, bukan `NOT AVAILABLE`. Bedanya penting: `NOT AVAILABLE` berarti file tidak ada di repository, sedangkan `PARTIAL READ` berarti file ada tetapi belum selesai Anda baca.
+
+Akibatnya, jangan pernah menyatakan onboarding selesai dengan status `PARTIAL READ` pada dokumen wajib. Lanjutkan pembacaan, atau katakan terus terang dokumen mana yang belum tuntas.
+
 Jika sebuah file benar-benar tidak dapat diakses setelah jalur yang wajar dicoba, laporkan nama file, kendala spesifik, dan metode akses yang sudah dicoba. Jangan mengaku telah membaca file yang gagal diakses.
 
 ### 1.3 Pahami hubungan dan prioritas dokumen
@@ -66,8 +88,13 @@ Setelah seluruh dokumen berhasil dibaca, berikan satu laporan onboarding yang me
 2. Fungsi singkat setiap dokumen.
 3. Hubungan, prioritas, dan urutan penggunaan modul.
 4. Hasil pemeriksaan konflik, referensi silang, dan file yang hilang.
-5. Status pembacaan setiap file: selesai atau gagal, disertai alasan yang spesifik.
+5. Status pembacaan setiap file memakai salah satu dari tiga label berikut:
+   - `READ` — dibaca sampai akhir dan sudah diverifikasi panjangnya.
+   - `PARTIAL READ` — terbaca sebagian karena respons terpotong; sebutkan bagian mana yang belum.
+   - `NOT AVAILABLE` — tidak dapat diakses setelah jalur alternatif dicoba; sebutkan metode yang sudah dicoba.
 6. Kesiapan menerapkan workflow dan batasan yang masih ada.
+
+Jangan memakai `READ` untuk file yang panjangnya belum Anda bandingkan dengan metadata GitHub. Jangan memakai `NOT AVAILABLE` untuk file yang hanya terpotong saat dibaca — itu `PARTIAL READ`. Membaurkan dua status ini membuat laporan terlihat selesai padahal ada bagian yang belum terbaca, dan itu bentuk klaim tanpa bukti.
 
 Jangan menyatakan onboarding selesai jika masih ada dokumen yang belum dibaca. Setelah laporan onboarding diberikan, langsung mulai Product Discovery secara aktif:
 

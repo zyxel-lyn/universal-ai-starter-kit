@@ -90,7 +90,7 @@ Folder ini milik Starter Pack, bukan milik project. Jangan menyalinnya ke projec
 Jika filesystem/repository dapat diakses:
 1. Cari file dengan nama persis di root Starter Pack yang telah teridentifikasi.
 2. Jangan mencari di seluruh komputer atau folder lain tanpa instruksi pengguna.
-3. Jika file tidak ada atau tidak dapat dibaca, tandai `NOT AVAILABLE`.
+3. Jika file tidak ada atau tidak dapat dibaca, tandai `NOT AVAILABLE`. Jika file ada tetapi respons pembacaan Anda terpotong, tandai `PARTIAL READ`, bukan `NOT AVAILABLE`. Bedanya penting: `NOT AVAILABLE` berarti file tidak ada di repository, sedangkan `PARTIAL READ` berarti file ada tetapi belum selesai dibaca. Rincian cara membedakannya ada di `README.md` bagian 1.2.
 
 Jika modul tidak tersedia di filesystem:
 1. Beri tahu pengguna nama modul yang belum tersedia.
