@@ -71,7 +71,7 @@ Periksa hanya lokasi Starter Pack yang memang dapat diakses. Daftar modul yang d
 | `03_ENGINEERING_STANDARDS.md` | Arsitektur dan standar implementasi, clean code, data, integrasi, keamanan teknis | Merencanakan atau mengubah implementasi |
 | `04_QA_TESTING.md` | Strategi pengujian, quality gates, bukti verifikasi, regression | Menguji, memperbaiki bug, audit, atau menyiapkan rilis |
 | `05_PROJECT_MANAGEMENT.md` | WBS, prioritas, dependensi, risiko, acceptance criteria, checkpoint | Merencanakan dan mengendalikan pekerjaan |
-| `06_AUTO_SETUP_TOOLS.md` | Inventarisasi dan setup MCP, tools, skills, serta aturan instalasi | Saat setup tools diperlukan atau status runtime belum diketahui |
+| `06_AUTO_SETUP_TOOLS.md` | Inventarisasi dan setup MCP (shadcn, Ant Design, Codebase Memory, Browser), tools, skills termasuk Anti Slop, serta aturan instalasi | Saat setup tools diperlukan atau status runtime belum diketahui |
 | `07_PROJECT_CONTINUITY.md` | PROJECT_STATE, keputusan, Graphify, delta audit, handoff, migrasi sesi | Melanjutkan proyek atau berpindah sesi/workspace |
 
 **Penting:** tabel ini adalah peta struktur Starter Pack, bukan bukti bahwa seluruh file sudah tersedia. Jangan mengarang isi modul yang belum ditemukan.
@@ -150,6 +150,8 @@ Baca modul sesuai kebutuhan. Modul yang sudah dibaca dan masih relevan tidak per
 | Audit teknis atau keamanan | 03, 04 | 07 |
 | Menyusun WBS dan prioritas | 05 | 01, 07 |
 | Setup MCP, tools, atau skills | 06 | 07 |
+| Navigasi codebase atau penilaian dampak perubahan | 03 | 06, 07 |
+| Menjaga mutu visual dan teks agar tidak generik | 02 | 06 |
 | Melanjutkan sesi/proyek lama | 07 | modul sesuai pekerjaan |
 | Rilis dan handoff | 04, 05, 07 | 03 |
 
@@ -303,6 +305,7 @@ Artefak yang dapat digunakan:
 - `PROJECT_STATE.md` — kondisi proyek saat ini dan tindakan berikutnya.
 - `WBS.md` — pekerjaan, prioritas, dependensi, status, dan acceptance criteria.
 - Graphify outputs — bukti pemetaan struktur jika tersedia.
+- Codebase Memory index — graph retrieval lokal jika MCP tersebut tersedia dan index masih fresh.
 
 Setiap artefak memiliki fungsi berbeda. Hindari menyalin penjelasan panjang yang sama ke banyak file.
 

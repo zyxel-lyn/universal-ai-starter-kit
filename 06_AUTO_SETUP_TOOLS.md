@@ -17,8 +17,9 @@ Modul ini mencakup:
 
 - identifikasi runtime dan workspace,
 - AUTO-SETUP MCP shadcn dan Ant Design,
+- AUTO-SETUP Codebase Memory MCP (graph retrieval proyek),
 - pemeriksaan Browser MCP pada mesin user,
-- instalasi dan routing skill eksternal yang tercantum,
+- instalasi dan routing skill eksternal yang tercantum, termasuk Anti Slop,
 - inventaris skill native platform,
 - keamanan instalasi dan konfigurasi,
 - model persistensi workspace/runtime,
@@ -205,7 +206,56 @@ Ekspektasi baseline: serverInfo `antd`, sekitar 8 tools.
 
 Verifikasi handshake dan jumlah tool aktual. Jangan menganggap versi/tool count baseline sebagai jaminan versi terkini.
 
-### Step 3 — Browser MCP
+### Step 3 — Codebase Memory MCP (CBM)
+
+**Peran:** MCP server lokal yang membangun knowledge graph persisten dari source code, dokumentasi, konfigurasi, dan infrastructure project. Dipakai untuk menemukan simbol, menelusuri caller/dependency, menilai blast radius perubahan, dan mengambil snippet source secara terarah.
+
+**Hubungan dengan Graphify:** CBM dan Graphify adalah dua alat berbeda untuk tujuan serupa. CBM adalah MCP server yang query-nya dijalankan langsung oleh AI; Graphify adalah keluaran pemetaan statis. Pilih salah satu sebagai lapisan retrieval utama per project, jangan menjalankan keduanya sebagai sumber kebenaran ganda. Bila keduanya ada, `PROJECT_STATE.md` harus mencatat mana yang dipakai.
+
+**Sumber dan lisensi:** https://github.com/DeusData/codebase-memory-mcp (MIT). Runtime native, tanpa Docker dan tanpa API key. Index disimpan lokal pada mesin user.
+
+**Windows (PowerShell):**
+
+```powershell
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/DeusData/codebase-memory-mcp/main/install.ps1 -OutFile install.ps1
+notepad install.ps1            # periksa isi script sebelum eksekusi
+Unblock-File .\install.ps1
+.\install.ps1                  # tambahkan --skip-config bila hanya ingin binary
+```
+
+Bila muncul execution policy error:
+
+```powershell
+Set-ExecutionPolicy -Scope Process Bypass
+# atau
+powershell -ExecutionPolicy Bypass -File .\install.ps1
+```
+
+**macOS / Linux:**
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/DeusData/codebase-memory-mcp/main/install.sh | bash
+```
+
+Unduh-lalu-jalankan lebih diutamakan daripada `curl | bash` bila koneksi atau isi script belum diperiksa.
+
+**Verifikasi:**
+
+1. Periksa binary tersedia dan dapat dipanggil dari shell aktif.
+2. Inventarisasi konfigurasi MCP yang ditulis installer (pada Hermes: `$HERMES_HOME/config.yaml`). Installer menulis konfigurasi untuk client yang terdeteksi; jangan membuat entri duplikat.
+3. Restart runtime/agent sebelum mengklaim tool aktif.
+4. Index satu project uji secara terarah, lalu periksa status index dan coverage-nya.
+5. Tandai `READY` hanya bila koneksi MCP benar-benar menjawab dan index project uji terbentuk.
+
+**Catatan penting:**
+
+- Belum ada index berarti belum ada graph. `index_status` tanpa project terindeks bukan bukti CBM siap dipakai.
+- Index bersifat lokal dan persisten, tetapi tidak otomatis segar. Tandai `STALE` setelah perubahan struktural besar dan index ulang sebelum menyimpulkan blast radius.
+- Coverage index bisa parsial (file dilewati, bahasa belum terdukung, PDF tanpa text layer). Periksa coverage sebelum menyatakan sesuatu "tidak ada di codebase".
+- Hasil graph bukan bukti bahwa UI, flow, authorization, atau business rule benar. Tetap verifikasi dengan source, test, dan runtime.
+- Index hanya pada project yang izin aksesnya sudah diberikan.
+
+### Step 4 — Browser MCP
 
 **Peran:** menguji website di Chrome asli pada mesin user melalui ekstensi dan daemon lokal.
 
@@ -218,7 +268,7 @@ Browser MCP hanya dapat digunakan bila runtime memiliki jalur nyata ke mesin use
 
 Profil teknis dan prosedur deploy terdapat pada Bagian 12.
 
-### Step 4 — Skill Eksternal yang Memerlukan Persetujuan
+### Step 5 — Skill Eksternal yang Memerlukan Persetujuan
 
 Daftar berikut adalah referensi kandidat skill yang dapat dievaluasi jika relevan. Pencantuman dalam daftar bukan persetujuan untuk mengunduh, memasang, atau mengaktifkannya. Setiap instalasi memerlukan persetujuan eksplisit pengguna setelah aset, sumber, versi, lokasi, dan dampaknya dijelaskan.
 
@@ -232,12 +282,65 @@ Daftar berikut adalah referensi kandidat skill yang dapat dievaluasi jika releva
 | 6 | UI Craft | https://github.com/educlopez/ui-craft |
 | 7 | Apple Design Skill | https://github.com/dickwu/apple-design-skill |
 | 8 | Vercel Agent Skills | https://github.com/vercel-labs/agent-skills |
+| 9 | Anti Slop | https://github.com/miqdadbadjuber/anti-slop |
 
 Vercel Agent Skills memuat sub-skill yang relevan:
 
 - Web Design Guidelines
 - React Best Practices
 - Composition Patterns
+
+### Prosedur khusus Anti Slop
+
+Anti Slop bukan satu skill tunggal, melainkan satu paket berisi enam skill yang saling melengkapi. Paket ini adalah **filter**, bukan sumber arah desain: ia menolak pola UI/teks/kode generik, tetapi tidak menentukan warna, font, atau layout. Arah visual tetap berasal dari `DESIGN.md` atau brief client.
+
+Daftar skill dan perannya:
+
+| Skill | Cakupan | Dipakai untuk |
+|---|---|---|
+| `antislop` | Filter inti: 40 rules, tier, Delivery Gate, liveliness | Selalu dimuat |
+| `antislop-ui` | Layout, color, component, decoration, motion, struktur, performance | Pekerjaan UI dan visual |
+| `antislop-copywriting` | Headline, CTA, tone, fake stats, anti-AI writing | Copy dan teks |
+| `antislop-human` | Contrast, keyboard, focus, states, affordance | Accessibility |
+| `antislop-layoutmobile` | Reflow, breakpoint, grid, overflow, tap target | Responsive |
+| `antislop-code` | Komentar kode bergaya AI: mana yang dibuang, mana yang disimpan | Kebersihan komentar |
+
+Sumber dan lisensi: https://github.com/miqdadbadjuber/anti-slop (MIT). Nama paket npm adalah `antislop-ai`; `npx antislop` adalah package lain dan bukan proyek ini.
+
+Pilihan instalasi, pilih **satu**:
+
+1. **Installer** (paling lengkap):
+   ```bash
+   npx antislop-ai
+   ```
+   Installer menanyakan skill yang dipilih, scope (project atau global), dan agent yang dipakai, lalu menulis pointer agar aturan termuat setiap sesi.
+
+2. **Skills directory** (hanya menyalin folder skill):
+   ```bash
+   npx skills add miqdadbadjuber/anti-slop
+   ```
+
+3. **Plugin** untuk agent yang mendukung plugin, misalnya Claude Code, Codex, Cursor, Cline, Kimi Code, Antigravity.
+
+4. **Single file** bila runtime tidak mendukung skill sama sekali:
+   ```bash
+   curl -o antislop.md https://raw.githubusercontent.com/miqdadbadjuber/anti-slop/main/antislop.md
+   ```
+
+Verifikasi:
+
+1. Periksa folder skill benar-benar terbentuk dan `SKILL.md` dapat dibaca.
+2. Periksa pointer aturan termuat pada giliran berikutnya, bukan hanya pada sesi instalasi.
+3. Skill yang baru dipasang belum terdaftar pada sesi yang sedang berjalan; restart/reload runtime sebelum mengklaim aktif.
+4. Catat versi/npm release dan tanggal pasang.
+
+Mode kerja Anti Slop ditanyakan sekali di awal sesi: `during` (diterapkan sambil menulis) atau `after` (audit setelah selesai). Preferensi dapat disimpan melalui `npx antislop-ai --mode during`. Jangan mengubah preferensi tersimpan pengguna tanpa instruksi eksplisit.
+
+Batasan yang wajib dijaga:
+
+- Anti Slop tidak boleh dipakai sebagai alasan menolak permintaan client. Ia menyaring mutu, bukan menggantikan keputusan produk.
+- Tanpa `DESIGN.md`, hasilnya wajib disebut sebagai draft tanpa arah, bukan deliverable final.
+- Konflik antara brief client dan aturan Anti Slop harus disebutkan beserta nama aturannya, lalu diputuskan client, bukan diputuskan sendiri.
 
 Prosedur setiap repository:
 
@@ -257,7 +360,7 @@ Prosedur setiap repository:
 8. Jangan menganggap clone berhasil berarti skill otomatis terdaftar/aktif.
 9. Verifikasi skill dapat dibaca sebelum menyatakan siap digunakan.
 
-### Step 5 — Inventaris Skill Native Platform
+### Step 6 — Inventaris Skill Native Platform
 
 Periksa daftar skill yang tersedia pada runtime aktif.
 
@@ -271,7 +374,7 @@ Jangan:
 - menginstal ulang skill native tanpa alasan,
 - memanggil skill yang disabled atau tidak dapat dibaca.
 
-### Step 6 — Status, Pencatatan, dan Sambungan Project
+### Step 7 — Status, Pencatatan, dan Sambungan Project
 
 Setelah setup:
 
@@ -294,8 +397,11 @@ AUTO-SETUP: SELESAI PENUH / SELESAI SEBAGIAN
 - WORKSPACE       : <root> (platform <name>)
 - SHADCN MCP      : READY / FAILED / NOT AVAILABLE
 - ANTD MCP        : READY / FAILED / NOT AVAILABLE
+- CBM MCP         : READY / PARTIAL / NOT AVAILABLE
+- INDEX COVERAGE  : <project terindeks, status freshness, area terlewat>
 - BROWSER MCP     : READY / PARTIAL / NOT AVAILABLE
 - EXTERNAL SKILLS : <N> ready · <M> already available · <K> failed
+- ANTI SLOP       : READY / PARTIAL / NOT AVAILABLE (<mode: during/after>)
 - PLATFORM SKILLS : <verified relevant list>
 - PROJECT STATE   : FRESH / STALE / NOT FOUND / NOT ACCESSIBLE
 - EVIDENCE        : <commands, versions, tool counts, commits>
@@ -416,6 +522,12 @@ Jika hanya menggunakan prinsip publik, katakan bahwa yang digunakan adalah refer
 | Vercel Web Design Guidelines | Web UI implementation and accessibility review |
 | Vercel React Best Practices | React/Next.js performance and implementation |
 | Vercel Composition Patterns | React component API and composition architecture |
+| Anti Slop (core) | Filter pola AI generik: rules, tier, Delivery Gate, liveliness |
+| Anti Slop UI | Layout, komponen, dekorasi, motion, struktur, performance |
+| Anti Slop Copywriting | Headline, CTA, tone, fake stats, kebersihan markdown |
+| Anti Slop Human | Contrast, keyboard, focus, states, affordance interaksi |
+| Anti Slop Layout Mobile | Reflow lintas lebar layar, breakpoint, grid, overflow, tap target |
+| Anti Slop Code | Kebersihan komentar kode bergaya AI |
 
 ### 10.3 Targeted Skill Policy
 
@@ -426,7 +538,8 @@ Panduan maksimum:
 - discovery/planning: 1–2 skill,
 - active UI design/build: 1–3 skill,
 - audit/polish: 1–3 skill,
-- final review: Apple Design Skill bila tersedia dan relevan.
+- final review: Apple Design Skill bila tersedia dan relevan,
+- arah dan mutu visual: Anti Slop core selalu aktif sebagai filter, ditambah maksimal satu skill Anti Slop yang paling relevan (`antislop-ui`, `antislop-copywriting`, `antislop-human`, `antislop-layoutmobile`, atau `antislop-code`).
 
 Gunakan sub-skill yang paling kecil dan tepat. Contoh UX/UI Agent Skills:
 
@@ -462,7 +575,7 @@ Tambahkan skill baru hanya bila:
 
 Skill baru di luar daftar harus melalui approval client.
 
-## 11. MCP Profiles: shadcn and Ant Design
+## 11. MCP Profiles: shadcn, Ant Design, and Codebase Memory
 
 ### 11.1 shadcn MCP
 
@@ -486,9 +599,64 @@ npx -y @ant-design/cli mcp
 
 Peran: dokumentasi/API/demo/token/semantic/changelog Ant Design.
 
-### 11.3 stdio Lifecycle
+### 11.3 Codebase Memory MCP
 
-Kedua server dicatat sebagai stdio JSON-RPC. Pada profil yang diuji, proses bersifat stateless per sesi:
+Instalasi:
+
+```powershell
+# Windows
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/DeusData/codebase-memory-mcp/main/install.ps1 -OutFile install.ps1
+Unblock-File .\install.ps1
+.\install.ps1
+```
+
+```bash
+# macOS / Linux
+curl -fsSL https://raw.githubusercontent.com/DeusData/codebase-memory-mcp/main/install.sh | bash
+```
+
+Karakteristik profil:
+
+- Runtime native dalam C, tanpa Docker dan tanpa language runtime tambahan.
+- Index dan graph disimpan lokal pada mesin user.
+- Tidak memerlukan API key atau service hosted.
+- Koneksi ke agent melalui MCP; installer menulis konfigurasi untuk client yang terdeteksi, termasuk `$HERMES_HOME/config.yaml` pada Hermes.
+- Tersedia juga akses CLI langsung dan varian paket npm/PyPI/Go.
+
+Baseline tools yang tercatat di sumber (17 tools). Nama dan jumlah dapat berubah antar rilis; verifikasi pada runtime aktif:
+
+- `index_repository`
+- `search_graph`
+- `query_graph`
+- `trace_path`
+- `get_code_snippet`
+- `get_file_outline`
+- `get_graph_schema`
+- `compare_graphs`
+- `get_architecture`
+- `search_code`
+- `list_projects`
+- `delete_project`
+- `index_status`
+- `check_index_coverage`
+- `detect_changes`
+- `manage_adr`
+- `ingest_traces`
+
+Alur kerja yang disarankan:
+
+1. index project (lokal, izin harus sudah ada),
+2. periksa `index_status` sebelum mengandalkan hasil,
+3. cari simbol atau area terdampak dengan query terarah,
+4. ambil snippet atau outline, lalu buka source asli untuk verifikasi,
+5. periksa `check_index_coverage` sebelum menyatakan sesuatu tidak ada,
+6. index ulang bila perubahan struktural membuat graph stale.
+
+`delete_project` adalah operasi destruktif terhadap index. Perlakukan seperti operasi sensitif pada bagian 3.2: sebutkan target dan minta persetujuan spesifik. Index dapat dibangun ulang, tetapi data proyek di dalamnya tidak boleh hilang tanpa persetujuan.
+
+### 11.4 stdio Lifecycle
+
+Server shadcn dan Ant Design dicatat sebagai stdio JSON-RPC. Pada profil yang diuji, keduanya bersifat stateless per sesi. Codebase Memory berbeda: binary-nya persisten dan index disimpan di disk, sehingga sesi baru dapat melanjutkan graph yang sudah ada.
 
 1. jalankan driver ketika dibutuhkan,
 2. lakukan handshake dan list/call,
@@ -498,7 +666,7 @@ Kedua server dicatat sebagai stdio JSON-RPC. Pada profil yang diuji, proses bers
 
 Jangan menganggap server berjalan permanen setelah pemeriksaan selesai.
 
-### 11.4 Native MCP vs Generic Driver
+### 11.5 Native MCP vs Generic Driver
 
 Jika runtime menyediakan MCP native:
 
@@ -507,6 +675,8 @@ Jika runtime menyediakan MCP native:
 - hindari menjalankan driver duplikat tanpa alasan.
 
 Gunakan driver stdio bila runtime tidak menyediakan koneksi native tetapi terminal dapat menjalankan server stdio.
+
+Codebase Memory MCP adalah binary native, bukan server `npx` per sesi. Jalankan melalui konfigurasi MCP yang ditulis installer, bukan melalui driver generik di Appendix A, kecuali runtime benar-benar hanya mendukung stdio manual.
 
 ## 12. Browser MCP Profile
 
@@ -719,14 +889,17 @@ Gunakan checklist ini secara adaptif:
 [ ] 2. Verifikasi shell, filesystem, Node/npm/npx/Git yang diperlukan.
 [ ] 3. Verifikasi shadcn MCP atau inventaris native MCP.
 [ ] 4. Verifikasi Ant Design MCP atau inventaris native MCP.
-[ ] 5. Verifikasi Browser MCP jika tugas dan akses mesin user relevan.
-[ ] 6. Periksa delapan repository skill yang disetujui; hindari duplikasi.
-[ ] 7. Inventaris skill platform yang benar-benar tersedia/enabled.
-[ ] 8. Catat version, commit, status, dan evidence.
-[ ] 9. Laporkan AUTO-SETUP.
-[ ] 10. Pulihkan PROJECT_STATE project aktif jika tersedia.
-[ ] 11. Lanjutkan dari baseline dan checkpoint yang valid.
-[ ] 12. Untuk tugas web/app, gunakan discovery, UI-system gate, WBS,
+[ ] 5. Verifikasi Codebase Memory MCP; pastikan index status dan coverage
+       dibaca sebelum mengandalkan hasil graph.
+[ ] 6. Verifikasi Browser MCP jika tugas dan akses mesin user relevan.
+[ ] 7. Periksa sembilan repository skill yang disetujui; hindari duplikasi.
+[ ] 8. Verifikasi Anti Slop terpasang dan mode (during/after) diketahui.
+[ ] 9. Inventaris skill platform yang benar-benar tersedia/enabled.
+[ ] 10. Catat version, commit, status, dan evidence.
+[ ] 11. Laporkan AUTO-SETUP.
+[ ] 12. Pulihkan PROJECT_STATE project aktif jika tersedia.
+[ ] 13. Lanjutkan dari baseline dan checkpoint yang valid.
+[ ] 14. Untuk tugas web/app, gunakan discovery, UI-system gate, WBS,
        engineering, dan QA modules yang relevan.
 ```
 
@@ -986,8 +1159,9 @@ Satu route yang terbuka bukan bukti seluruh aplikasi lolos QA. Hubungkan setiap 
 3. Tool/skill harus diverifikasi sebelum diklaim aktif.
 4. Gagal satu capability tidak boleh menghentikan pekerjaan yang tidak bergantung padanya.
 5. Browser MCP membutuhkan jalur akses nyata ke mesin user.
-6. Secret tidak boleh masuk ke log, screenshot, status report, atau handoff.
-7. Skill dipilih secara selektif sesuai tahap.
-8. Skill baru di luar daftar membutuhkan intake dan approval.
-9. Jangan mengulang audit atau setup tanpa alasan.
-10. Project state dan handoff harus mencatat evidence, bukan klaim.
+6. Index Codebase Memory bersifat lokal namun tidak otomatis segar; periksa status dan coverage sebelum mengandalkan hasil graph.
+7. Secret tidak boleh masuk ke log, screenshot, status report, atau handoff.
+8. Skill dipilih secara selektif sesuai tahap. Anti Slop menyaring mutu, bukan menggantikan `DESIGN.md`.
+9. Skill baru di luar daftar membutuhkan intake dan approval.
+10. Jangan mengulang audit atau setup tanpa alasan.
+11. Project state dan handoff harus mencatat evidence, bukan klaim.

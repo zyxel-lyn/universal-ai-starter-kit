@@ -496,9 +496,16 @@ Sebelum menambahkan atau memperbarui dependency:
 
 Jangan menjalankan script dari repository atau paket yang belum dipercaya tanpa memeriksa apa yang akan dijalankan. Jangan mengubah lockfile secara manual jika package manager dapat menghasilkan perubahan yang konsisten.
 
-## 12. Graphify and Project Retrieval
+## 12. Structural Retrieval: Graphify and Codebase Memory
 
-Graphify bersifat opsional dan berfungsi sebagai lapisan pemetaan struktur serta retrieval, bukan sumber kebenaran tunggal.
+Graphify dan Codebase Memory MCP bersifat opsional dan berfungsi sebagai lapisan pemetaan struktur serta retrieval, bukan sumber kebenaran tunggal.
+
+Pilih satu sebagai lapisan retrieval utama per project dan catat pilihannya di `PROJECT_STATE.md`. Menjalankan keduanya sebagai sumber kebenaran ganda menghasilkan dua gambaran struktur yang bisa saling bertentangan tanpa cara memutuskan mana yang benar.
+
+- **Graphify:** keluaran pemetaan statis. Cepat dibaca, tetapi tidak menjawab query struktural secara interaktif.
+- **Codebase Memory MCP:** MCP server lokal yang menyimpan knowledge graph persisten dan dapat di-query langsung oleh AI. Berguna untuk menelusuri caller, dependency, dan blast radius perubahan.
+
+Tanpa index yang terbentuk, Codebase Memory tidak memberi apa pun. Periksa status index dan coverage sebelum menyimpulkan sesuatu tidak ada di codebase.
 
 ### 12.1 Retrieval Order
 

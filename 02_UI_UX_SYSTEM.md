@@ -283,6 +283,7 @@ Daftar kandidat yang tercantum dalam sumber:
 - Vercel React Best Practices: https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices
 - Vercel Composition Patterns: https://github.com/vercel-labs/agent-skills/tree/main/skills/composition-patterns
 - Vercel open Agent Skills CLI/ecosystem: https://github.com/vercel-labs/skills
+- Anti Slop (paket enam skill): https://github.com/miqdadbadjuber/anti-slop
 
 **Critical Skill Rule:** sebelum menyatakan skill digunakan:
 - pastikan skill terpasang/tersedia, atau
@@ -356,6 +357,23 @@ Gunakan setelah UI yang koheren sudah ada, untuk:
 - Apple HIG review ketika Apple platforms relevan secara langsung.
 
 Untuk web non-Apple, perlakukan Apple HIG sebagai secondary craft lens, bukan mandat membuat produk terlihat seperti iOS/macOS.
+
+### anti-slop
+
+Paket filter, bukan sumber arah desain. Gunakan untuk:
+- menyaring pola UI, teks, dan kode yang generik seperti hasil AI,
+- Delivery Gate PASS/FAIL sebelum menyerahkan pekerjaan,
+- memastikan liveliness, bukan hanya "bersih".
+
+Tiga hal yang wajib dipahami sebelum memakainya:
+
+1. **Anti Slop tidak menciptakan arah visual.** Ia menolak yang generik tanpa memberi identitas. Arah tetap datang dari `DESIGN.md`.
+2. **Tanpa `DESIGN.md`, hasilnya adalah draft tanpa arah.** Jangan menyebutnya deliverable final, dan jangan memakai hasilnya sebagai pembenaran bahwa desain sudah selesai.
+3. **Skill inti memuat aturan secara global; sub-skill dimuat sesuai kebutuhan.** `antislop-ui` untuk visual dan layout, `antislop-copywriting` untuk teks, `antislop-human` untuk aksesibilitas, `antislop-layoutmobile` untuk responsif, `antislop-code` untuk kebersihan komentar.
+
+Konflik antara brief client dan aturan Anti Slop diselesaikan dengan menyebut nama aturannya lalu meminta keputusan client. Jangan menyimpang diam-diam, dan jangan menolak permintaan client hanya karena aturan internal.
+
+Prosedur instalasi dan verifikasi ada di `06_AUTO_SETUP_TOOLS.md`.
 
 ### vercel-labs/web-design-guidelines
 Cocok untuk:
@@ -504,6 +522,8 @@ Jika akses repository tersedia, pelihara sesuai kebutuhan:
 - `DECISIONS.md` — keputusan arsitektur/desain beserta alasan.
 - `PROJECT_STATE.md` — kondisi ringkas saat ini dan tindakan berikutnya.
 - `WBS.md` — work breakdown dan gates.
+
+`DESIGN.md` bukan pelengkap opsional bila Anti Slop dipakai. Anti Slop menghapus slop tetapi tidak mengisi arah; tanpa `DESIGN.md` hasilnya steril dan wajib disebut draft. Untuk UI yang akan diserahkan ke client, `DESIGN.md` adalah prasyarat.
 
 Jangan menduplikasi penjelasan panjang yang sama di banyak file. Setiap dokumen memiliki tugas berbeda.
 

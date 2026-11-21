@@ -591,7 +591,14 @@ Evidence lama dapat menjadi referensi historis, tetapi tidak boleh disajikan seb
 
 ## 15. Graphify and Structural Context
 
-Gunakan Graphify jika membantu menavigasi hubungan antar-file, simbol, route, component, atau dependency.
+Gunakan Graphify, Codebase Memory MCP, atau keduanya sesuai pilihan yang dicatat di `PROJECT_STATE.md` jika membantu menavigasi hubungan antar-file, simbol, route, component, atau dependency.
+
+Bila menggunakan Codebase Memory:
+
+- catat project yang terindeks dan commit checkpoint-nya,
+- periksa status index dan coverage sebelum mengandalkan hasil,
+- tandai index `STALE` setelah perubahan struktural signifikan,
+- perlakukan `delete_project` sebagai operasi destruktif terhadap index: sebutkan target dan minta persetujuan spesifik.
 
 - Catat commit/source checkpoint yang menjadi dasar graph.
 - Tandai graph STALE setelah perubahan struktural signifikan.

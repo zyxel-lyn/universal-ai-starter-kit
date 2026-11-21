@@ -132,7 +132,7 @@ Secara konseptual, dokumen dikelompokkan sebagai berikut:
 | `03_ENGINEERING_STANDARDS.md` | Standar teknis dan implementasi engineering |
 | `04_QA_TESTING.md` | Strategi verifikasi, pengujian, dan pelaporan kualitas |
 | `05_PROJECT_MANAGEMENT.md` | Perencanaan, pelacakan, dan pengelolaan pekerjaan |
-| `06_AUTO_SETUP_TOOLS.md` | Evaluasi dan penyiapan tools dengan persetujuan pengguna |
+| `06_AUTO_SETUP_TOOLS.md` | Evaluasi dan penyiapan tools dengan persetujuan pengguna (MCP shadcn/Ant Design/Codebase Memory/Browser, skill termasuk Anti Slop) |
 | `07_PROJECT_CONTINUITY.md` | Menjaga konteks, keputusan, dan kesinambungan project |
 | `PROJECT_MIGRATION_PROTOCOL.md` | Handover dan migrasi project antar lingkungan kerja |
 
